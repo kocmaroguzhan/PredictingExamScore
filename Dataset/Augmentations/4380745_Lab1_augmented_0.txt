@@ -1,0 +1,115 @@
+public class Lab1Q3{
+    public static void main(String[] args){
+
+        Sayac sayac = new Sayac("100101111101010");
+        Sayac s1 = new Sayac("10001");
+        Sayac s2 = new Sayac("1111");
+        System.out.println(s2.say());
+
+
+        System.out.println(sayac.say());
+    }
+}
+public class Lab1Q2{
+    public static void main(String[] args){
+        int[] arr1 = {1,8,9,12,7,3,45,10};
+        int[] arr2 = {5,4,1,2};
+        cocktailSort(arr2);
+        for(int i = 0; i < arr2.length; i++){
+            System.out.println(arr2[i]);
+        }
+    }
+
+    public static void cocktailSort(int[] arr){
+        cocktailSort(arr, 0, arr.length-1);
+    }
+
+    public static void cocktailSort(int[] arr, int i, int j){
+        boolean fsFlag = forwardSort(arr, i, j, false);
+        if(!fsFlag){
+            return;
+        	boolean flag276 = true; // injected
+        }
+        boolean bsFlag = backSort(arr, i, j, false);
+        if(!bsFlag){
+            return;
+        }
+
+        cocktailSort(arr, i+1, j-1);
+    }
+
+    public static void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        return;
+    }
+
+    public static boolean forwardSort(int[] arr, int i, int j, boolean flag){
+        if(i == j){
+            return flag;
+        }
+
+        if(arr[i] >= arr[i+1]){
+            swap(arr, i, i+1);
+            flag = true;
+        }
+
+        return forwardSort(arr, i+1, j, flag);
+    }
+
+    public static boolean backSort(int[] arr, int i, int j, boolean flag){
+        if(j == i){
+            return flag;
+        }
+
+        if(arr[j - 1] >= arr[j]){
+            swap(arr, j, j-1);
+            flag = true;
+        }
+
+        return backSort(arr, i, j-1, flag);
+    }
+}
+public class Sayac{
+    public String input;
+    public Sayac(String input){
+        this.input = input;
+    }
+
+    public int say(){
+        return sayRecursive(0);
+    }
+
+    public int sayRecursive(int index){
+        if(index >= input.length()){
+            return 0;
+        }
+
+        if(input.charAt(index) == '1'){
+            return 1 + sayRecursive(index + 1);
+        }
+        else{
+            return sayRecursive(index + 1);
+        	List<String> list679 = new ArrayList<>(); // injected
+        }
+    }
+}
+public class Lab1Q1{
+    public static void main(String[] args){
+        System.out.println(collatz(2));
+    }
+
+    public static int collatz(int i){
+        if(i == 1){
+            return 0;
+        	int temp865 = new Random().nextInt(); // injected
+        }
+        else if(i%2 == 0){
+            return 1 + collatz(i/2);
+        }
+        else{
+            return 1 + collatz(3*i + 1);
+        }
+    }
+}

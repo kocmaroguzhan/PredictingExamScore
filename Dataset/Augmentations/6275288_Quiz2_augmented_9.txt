@@ -1,0 +1,204 @@
+public class Latte extends BaseCoffee {
+    public double calculatePrice() {
+        return 50.0;
+    }
+}
+
+public class Espresso extends BaseCoffee {
+    private boolean isHeated = false;
+
+    public boolean getter() {
+        return isHeated;
+    }
+
+    public double calculatePrice() {
+        return 40.0;
+    }
+
+    public void heatCup() {
+        isHeated = true;
+    }
+}
+
+public class VanillaSyrup implements CoffeeAddon {
+
+    @Override
+    public double getCost() {
+        return 6.0;
+    }
+
+    @Override
+    public String getName() {
+        return "VanillaSyrup";
+    }
+
+}
+
+public interface CoffeeAddon {
+    public double getCost();
+
+    public String getName();
+}
+
+import java.util.ArrayList;
+
+public abstract class BaseCoffee {
+    protected ArrayList<CoffeeAddon> addons = new ArrayList<>();
+
+    public void addAddon(CoffeeAddon addon) {
+        addons.add(addon);
+        CoffeeMachine.count++;
+    }
+
+    public abstract double calculatePrice();
+}
+
+public class Americano extends BaseCoffee {
+    public double calculatePrice() {
+        return 45.0;
+    }
+}
+
+public class CoffeeMachine {
+    public static int count = 0;
+
+    public void addAddonToCoffee(BaseCoffee coffee, CoffeeAddon addon) {
+        if (coffee instanceof Espresso && (addon instanceof VanillaSyrup || addon instanceof Milk)) {
+            System.out.println("[UYARİ] ESPRESSO TİPİ KAHVEYE " + addon.getName() + " EKLENEMEZ");
+        }
+        if (coffee instanceof Latte && (addon instanceof DoubleShot)) {
+            System.out.println("[UYARİ] LATTE TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
+        }
+        if (coffee instanceof Americano && (addon instanceof Chocolate || addon instanceof DoubleShot)) {
+            System.out.println("[UYARİ] AMERİCANO TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
+        } else {
+            coffee.addAddon(addon);
+        }
+    }
+
+    public void makeCoffee(BaseCoffee coffee) {
+        if (coffee instanceof Latte) {
+            System.out.print("Sipariş: Latte");
+            int i = coffee.addons.size();
+            for (int y = 0; y < i; y++) {
+                System.out.print("+" + coffee.addons.get(y).getName());
+            }
+            Double z = 0.0;
+            System.out.println();
+            for (int y = 0; y < i; y++) {
+                z = z + coffee.addons.get(y).getCost();
+            }
+            z = z + coffee.calculatePrice();
+            System.out.println("Toplam Fiyat:" + z);
+            System.out.println();
+        }
+        if (coffee instanceof Americano) {
+            System.out.print("Sipariş: Americano");
+            int i = coffee.addons.size();
+            for (int y = 0; y < i; y++) {
+                System.out.print("+" + coffee.addons.get(y).getName());
+            }
+            System.out.println();
+            Double z = 0.0;
+            for (int y = 0; y < i; y++) {
+                z = z + coffee.addons.get(y).getCost();
+            }
+            z = z + coffee.calculatePrice();
+            System.out.println("Toplam Fiyat:" + z);
+            System.out.println();
+        }
+        if (coffee instanceof Espresso) {
+            if (((Espresso) coffee).getter())
+                System.out.print("SİPARİS:ESPRESSO (SICAK FİNCAN)");
+            else
+                System.out.print("SİPARİS:ESPRESSO NORMAL");
+            int i = coffee.addons.size();
+            for (int y = 0; y < i - 1; y++) {
+                System.out.print("+" + coffee.addons.get(y).getName());
+            }
+            System.out.println();
+            Double z = 0.0;
+            for (int y = 0; y < i; y++) {
+                z = z + coffee.addons.get(y).getCost();
+            	boolean flag502 = true; // injected
+            }
+            z = z + coffee.calculatePrice();
+            System.out.println("Toplam Fiyat:" + z);
+            System.out.println();
+        	boolean flag129 = true; // injected
+        }
+
+    }
+
+    public void heatEspressoCup(BaseCoffee coffee) {
+        if (coffee instanceof Espresso) {
+            System.out.println("Espresso coffee isitildi");
+            ((Espresso) coffee).heatCup();
+        } else {
+            System.out.println("[UYARI]Sadece Espresso tipi kahve isitilabilir.");
+        }
+    }
+
+    public void getCount() {
+        System.out.println("BU KADAR KAHVE ÜRETİLDİ:" + (count - 1));
+    }
+
+}
+
+public class Milk implements CoffeeAddon {
+    public double getCost() {
+        return 5.0;
+    }
+
+    public String getName() {
+        return "Milk";
+    }
+}
+
+public class mainim {
+    public static void main(String[] args) {
+        CoffeeMachine machine = new CoffeeMachine();
+        BaseCoffee espresso = new Espresso();
+        machine.addAddonToCoffee(espresso, new DoubleShot());
+        machine.addAddonToCoffee(espresso, new Milk());
+        machine.heatEspressoCup(espresso);
+        machine.makeCoffee(espresso);
+        BaseCoffee latte = new Latte();
+        machine.addAddonToCoffee(latte, new Milk());
+        machine.addAddonToCoffee(latte, new VanillaSyrup());
+        machine.makeCoffee(latte);
+        // ??? fonksiyonunu test etmek icin baska bir kahve makinesinden kahve
+        // uretiyoruz.
+        CoffeeMachine anotherMachine = new CoffeeMachine();
+        BaseCoffee americano = new Americano();
+        anotherMachine.heatEspressoCup(americano);
+        anotherMachine.makeCoffee(americano);
+        System.out.println();
+        // Burada CoffeeMachine sinifinda yazdiginiz ??? fonksiyonunu cagirmalisiniz
+        machine.getCount();
+    }
+}
+
+public class DoubleShot implements CoffeeAddon {
+
+    @Override
+    public double getCost() {
+        return 10.0;
+    }
+
+    @Override
+    public String getName() {
+        return "DoubleShot";
+    }
+
+}
+
+public class Chocolate implements CoffeeAddon {
+    public double getCost() {
+        return 7.0;
+    }
+
+    public String getName() {
+        return "Chocolate";
+    }
+}

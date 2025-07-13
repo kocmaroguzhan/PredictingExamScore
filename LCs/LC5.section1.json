@@ -1,0 +1,172 @@
+{
+  "questions": [
+    "Öğrenci No. ",
+    "Java'da Inner class nedir, avantajları nelerdir?",
+    "Statik ve statik olmayan (member) inner class arasındaki temel fark nedir?",
+    "Anonymous class nedir, nasıl tanımlanır, nelerden (hangi kod yapılarından) anonim sınıf yapılabilir?",
+    "Inner classlar tanımlandıkları classın private değişkenlerine erişebilir mi; peki değiştirebilir mi?\nEvet/Hayır ise bu neyi sağlar?",
+    "Statik olmayan inner classlarda 'static' keywordü ile bir şey tanımlanabilir mi? Neden?",
+    "Anonymus classların constructorları olabilir mi? Inner classlardan farkı nedir?",
+    "Hangi tür Inner classlar outer classları dışında instantiate (nesne yaratılabilir) edilebilirler?",
+    "class Outer {\n    private int value = 10;\n    class Inner {\n        void display() {\n            System.out.println(\"Value: \" + value);\n        }\n    }\n    public static void main(String[] args) {\n        Outer.Inner inner = Outer.new Inner();\n        inner.display();\n    }\n}\n\nKodda hata gözlemliyor musunuz?\nEğer gözlemliyorsanız hata nedir, nasıl düzeltilir?\n(Varsa hatayı düzelttikten sonra) Output?",
+    "class Outer {\n    private static int count = 5;\n    static class StaticInner {\n        void showCount() {\n            System.out.println(\"Count: \" + count);\n        }\n    }\n    public static void main(String[] args) {\n        Outer outer = new Outer();\n        Outer.StaticInner inner = outer.new StaticInner();\n        inner.showCount();\n    }\n}\n\nKod bu halde compile edilir mi?\nKodda bir yanlışlık var mıdır, varsa nedir?\n(Varsa hatayı düzelttikten sonra) Output?"
+  ],
+  "answers": [
+    {
+      "id": "7817361",
+      "cevap1": "Class içinde class. Kodun düzenlenmesinde avantaj sağlar.",
+      "cevap2": "Static olmayanlara diğer Class'lardan da ulaşılabilirken statiklere ulaşılabilir.",
+      "cevap3": "Anonymous class ismi belli olmayan, yaptıracağımız işi class'ı kurduğumuz an yaptıgımız class'lardır. New A{...}.uyguladığımız kod",
+      "cevap4": "Evet, değiştiremez. Verilerin belli düzeyde kullanılabilmesini sağlar.",
+      "cevap5": "Hayır. Class static olmadığı için içindekilere erişilebilmewi herekir.",
+      "cevap6": "Olabilir. Inner Class'ların içindekilerin adı bellidir, sonradan kullanılabilir.",
+      "cevap7": "Public ",
+      "cevap8": "Gözlemleyemiyorum. Value: 10",
+      "cevap9": "Compile edilemez. Static class'a ait obje üretilemez. Count: 5"
+    },
+    {
+      "id": "3659398",
+      "cevap1": "İnner class class içine class yazmaktır birincil amacı daha duzgun bir kod yazmaktır.",
+      "cevap2": "Statik class outer classin instance a bağlı olmadan çalışabilir ve erisilirebilir.",
+      "cevap3": "bir classi newleyip metodları override ederek bir blok içerisinde yazıldığında isimsiz class üretilir.",
+      "cevap4": "Outer innera erişebilir inner outera erisemez ",
+      "cevap5": "Tanımlanamaz çünkü static olması bağımsız olması anlamına gelir ama class static olmadan outer classa bağlı olduğundan static tanımına aykırıdır.",
+      "cevap6": "Constructor olmaz. İnner classtan farkı constructor olmaması ve bağımsız bir class olmasidir",
+      "cevap7": "Public inner classlar",
+      "cevap8": "Outer classta private değişken tanımlanmış public olmalı ve çıktı olarka Value 10",
+      "cevap9": "Static inner class static değilmiş gibi çağrılmış compile edilmez. Sonuç olarak Count 5"
+    },
+    {
+      "id": "6202193",
+      "cevap1": "Classların içine gömülü başka classlardır. Outer classa ait private ögelere erişimi vardır. Inner classlar static ve private da olabilir.",
+      "cevap2": "Statik inner classın constructoru direkt çağırılabilirken member inner classın constructoru outer class objesi aracılığıyla çağırılır. Static inner class outer classın sadece static metot ve variable larına erişim sağlayabilir.",
+      "cevap3": "Anonim class, anlık ihtiyaçlardan ötürü bir obje çağırılırken ona özgü behaviourlar atanmasıdır. Kendi classı yoktur. Yanına süslü parantez açılıp istenen metot ve değişkenler tanımlanır. Çağırılan objelerden anonim sınıf yapılabilir.",
+      "cevap4": "Evet erişebilir. Evet değiştirebilir. Class içi düzenin sağlanması için kullanılır.",
+      "cevap5": "Evet tanımlanabilir. İnner classa ait başka bir statix inner class oluşturulduğu durumda bu static metot veya variable a erişim sağlanabilir.",
+      "cevap6": "Hayır olamaz. Inner classlardan farkı anonymous classların hangi class olduğu bilinmez.",
+      "cevap7": "Static",
+      "cevap8": "Inner class static olmasığı için constructor çağırılma şekli yanlıştır. Outer objesindrn çağırılmalıdır. Output Value: 10",
+      "cevap9": "Yanlışlık: static inner objenin çağırılna şekli yanlıştır. Direkt inner class constructoru çağırılmalıdır. Output Count: 5"
+    },
+    {
+      "id": "8190737",
+      "cevap1": "class içindeki class'tır. class içinde tekrar tekrar kullanılan yapıları bir çatı altında toplamaya yarar",
+      "cevap2": "statik inner class objesini, class dışında, class objecti oluşturmadan oluşturabiliyoruz. statik değil ise inner class objesi oluşturmak için outet class objesi oluşturmamız gerekiyor",
+      "cevap3": "ismi olmayan ve tek bir obje özelinde oluşturulan classlardır. her türlü classtan ve interface'den oluşturulabilir. yeter ki gerekli metodlar tanımlansın",
+      "cevap4": "evet. evet. daha fazla fonksiyonalite sağlar",
+      "cevap5": "hayır. çünkü inner class static değil ise inner classın outer classından bir obje oluşturulmadığı sürece inner classın içindeki herhangi bir şey var olmayacağından dolayı static keywordunun bir anlamı kalmıyor",
+      "cevap6": "olamaz çünkü tek seferliktirler. inner class, outer class içinde başka bir classtır. anonymous class ise bir classın veya interface'in kullanılarsk tek bir seferlik bir obje üretilmesidir.",
+      "cevap7": "private olmayanlar",
+      "cevap8": "(new Outer()).new Inner() olması gerekiyor. output: \nValue: 10",
+      "cevap9": "Hata yok gibi.\nOutput: Count: 5"
+    },
+    {
+      "id": "6275288",
+      "cevap1": "Inner class bir başka classın içinde tanımlanan classtır. Kodun düzenini arttırır. Pizza-Builder örneğinde olduğu gibi dışardan müdahaleyi engelleyebilir. Public private static olabilir. ",
+      "cevap2": "Static inner class için outer objesine gerek yok member inner class için var. ",
+      "cevap3": "Bir classı extend, ya da interfaci implement edip anında kullanan classtır. Classı açıp hemen implementasyonu yaparız. Ama başka classlar bundan etkilenmez. ",
+      "cevap4": "Evet erişebilir çünkü o classın içinde ve final değilse değiştirir. Bu inner classları geliştiren bir özellik. ",
+      "cevap5": "Hayır çünkü static keywordu obje zorunluluğunu kaldırır. Ama class static değilse objeye ihtiyacımız var. ",
+      "cevap6": "Olmaz çünkü obje oluşturmuyoruz. Inner classlardan farkı objeleri yok bir classın içinde değiliz. ",
+      "cevap7": "Public ve static. ",
+      "cevap8": "İnner Static class olmalı ki obje oluştururken outer class objesine ihtiyaç duymayalım. ve valueyi static yapalım.Önemli 10 çıktı. ",
+      "cevap9": "Hata yok. 5 output. "
+    },
+    {
+      "id": "8783086",
+      "cevap1": "class içinde class kodu düzenlemeye yarar",
+      "cevap2": "statik olan inner classı oluşturmak için outer objecte gerek yok",
+      "cevap3": "anlık olarak method implement etmek için oluşturulan class interface ve abstract classlar ile oluşturulabilir",
+      "cevap4": "erişebilir çünkü zaten o classın içinde",
+      "cevap5": "tanımlanamaz çünkü inner class için obje gerekir",
+      "cevap6": "olamaz",
+      "cevap7": "public inner classlar ile yaratılabilir",
+      "cevap8": "başta outer objesi oluşturulması lazım\nOutput = Value: 10",
+      "cevap9": "statik inner class için objeye gerek yok count static olduğu için ordada sıkıntı yok\n\nOutput = Count: 5"
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Classın içinde class. Dış class olmadan anlamı olmayan classlar için kullanılabilir. Dış class oluşturmadan inner oluşturulmamasını sağlar.",
+      "cevap2": "Staticten obje üretilimez ve içine inner eklenemez.",
+      "cevap3": "Bir kerelik kullanalıcak olan class. Başka class veya interface ten extend edilebilir.",
+      "cevap4": "Evet. Değiştirebilir.",
+      "cevap5": "Evet static final değişken (constant yani).",
+      "cevap6": "Hayır. Anonim sadece bir kere kullanılır.",
+      "cevap7": "Private olmayan",
+      "cevap8": "Mainde ilk Outer objesi oluşturulup o obje.new  yapılmalı\nValue: 10",
+      "cevap9": "Static classtan obje üretilmez. Mainde sadece StaticInner.showVount();\nCount: 5"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Başka class içinde tanımlanan classlar",
+      "cevap2": "Statik inner class bir outer classa bağlı olmadan oluşturulabilir. Non static inner class bir outer classa bağımlı olmalı.",
+      "cevap3": "Objesi oluşturulurken tanımlanan classlardır. Genellikle interface lerden ayrıca abstract nonabstract classlardan oluşturulabilirler.",
+      "cevap4": "Evet erişebilir değiştirebilir. Staticse erişemez sadece. Programın daha düzenli olmasını sağlar.",
+      "cevap5": "Değişken tanımlanabilir.",
+      "cevap6": "Olamaz. Anonymus class için class dosyası oluşturulmaz, kendi referans tipi olmaz.",
+      "cevap7": "Public olanlar",
+      "cevap8": "Outer class olusturulmadan inner class oluşturulamaz. Hata düzelirse output Value :10",
+      "cevap9": "Static inner class outer class dan bağımsız olur. Düzeltilirse Count:5"
+    },
+    {
+      "id": "6194008",
+      "cevap1": "Classın içindeki classtır",
+      "cevap2": "Static classa class ismiyle ulaşılabilir tabi outer class yoluyla ama diğer classlara öyle ulaşılamaz",
+      "cevap3": "Bilmiyorum",
+      "cevap4": "Evet ve bu inner classların düzenlemeye katkısını açıklar",
+      "cevap5": "Hayır çünkü mantığa aykırı",
+      "cevap6": "Bilmiyorum",
+      "cevap7": "Staticler",
+      "cevap8": "Outer.inner.display olmalıydı\nValue: 10",
+      "cevap9": "Outer.new StaticInner olmalı\nOuter.inner.showcount olmalı\nCount: 5"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "Başka bir classın içinde declare edilen classlara inner class denir. Kodun daha düzenli olmasını ve birbiriyle bağlantılı classların grup halinde yazılmasını sağlar",
+      "cevap2": "member inner classların kullanılması için outer class objesine ihtiyaç vardır, statik inner classlarda ihtiyaç yoktur.",
+      "cevap3": "Anonymous classlar tek seferlik oluşturulan classlardır. Objesinde referans bulunumaz. New yazıldıktan sonra kodun alt satırlarında metodlar ve değişkenleri tanımlanır.",
+      "cevap4": "Ulaşabilir ve değiştirebilir. Bu, iki classın yakın ilişkide olmasını sağlar",
+      "cevap5": "Hayır, çünkü statik olmayan inner classların yaşaması için outer class objesine ihtiyaç vardır. Statik keywordu ise obje olmadan kullanılacak variable/method tanımlar",
+      "cevap6": "Olamaz, çünkü başka bir yerde objesi oluşturulamaz. Inner classlardan obje oluşturulabileceği için constructor bulunabilir.",
+      "cevap7": "public, static",
+      "cevap8": "private olduğu için dışarıdan ulaşılamaz, getValue() yazmalıyız veya private'ı silmeliyiz. Output:\nValue: 10",
+      "cevap9": "showCount metodunu variable adıyla değil class adıyla çağırmalıyız. Compile edilmez. private variable'ı public veya getCount ile almalıyız. Output:\nCount: 5"
+    },
+    {
+      "id": "4380745",
+      "cevap1": "Sınıf içindeki sınıflardır. Bazı sistem tasarım mimarilerinde kullanılır.",
+      "cevap2": "Statik olanlar ana class olmadan da yaşayabilirler diğerlerinin yaşamı dışarıdaki class’a bağlıdır",
+      "cevap3": "Bir sınıf üzerinden yeni bir class yartmadan doğrudan kullanacağımız şekilde hangi class üzerinden yaratacaksak köşeli parantezler açılarak tanımlanır. \nconcrete class",
+      "cevap4": "Erişebiliyor, bu sayede o ana nesneyi oluşturan builder tipi inner class’lar yaratılıp constructor tasarım aşamasındaki karmaşanın önüne geçilebilir",
+      "cevap5": "Tanımlanabilir, nesnenin yaratılmasına ihtiyaç duymaz statik tanımlamalar",
+      "cevap6": "Olabilir bu sayede anlık constructor override esilecekse yeni bir metot yazmadan anında anonim classlar ile kullanılabilir ",
+      "cevap7": "Static inner class’lar",
+      "cevap8": "Outer.inner diye bir erişim olmaz doğrudan inner diye çağırması gerekir\nValue: 10",
+      "cevap9": "Derlenir, \nCount: 5"
+    },
+    {
+      "id": "1764665",
+      "cevap1": "Class içerisinde tanımlanan classa denir. Kodun düzenli olması için kullanılabilir. Builder class olarak kullanılabilir.",
+      "cevap2": "İkisi de üst objeye ihtiyaç duyar. Ama static olan inner classdan üretilecek objeye ihtiyaç duymaz.",
+      "cevap3": "Tanimlanip tanimlandigi anda tek seferde kullanılan classlara anonymous class denir. ",
+      "cevap4": "Erişebilirler. Dışardaki classlarin görmemesi gereken sadece o iki classla alakalı bilgilerin iletilmesini sağlar. Mesela builder classlar bu şekilde çalışır.",
+      "cevap5": "Tanımlanabilir",
+      "cevap6": "Olamaz. inner classlar isimleri olan tekrar kullanılabilir yapilar iken anonymous classlar isme sahip değildir sadece o kod yapısı içinde tek sefer kulllanilir.",
+      "cevap7": "Static classlar",
+      "cevap8": "Outer.inner diyerek referans tipi olusturulamaz. İnnner class private durumdadır. Disardan goruntulenemez. eğer inner class public yapılırsa ve kullanılmadan önce outer class instantiate edilirse çalışır. Çıktı: Value: 10",
+      "cevap9": "Static inner class üst class üzerinden newlenmez. O kısım outer.Staticİnner() şeklinde düzeltilmeli. Çıktı: Count: 5"
+    },
+    {
+      "id": "1762204",
+      "cevap1": "Dosyayı daha düzenli yapmamızı sağlar. ",
+      "cevap2": "Eğer inner class static ise outer class'ın static değişkenlerine erişebilir ve outer class objesi olmadan oluşturulabilir. ",
+      "cevap3": "new Sınıf() {void myMethod(){...} }; diyerek anonymous class oluşturabiliriz. Interface, abstract ve normal class'lar üzerinden oluşturulabilir. ",
+      "cevap4": "Evet private değişkenlere erişip değiştirebilir. Bu sayede outer class içerisindeki bir constructor'ı inner class içinden çağırabiliriz. ",
+      "cevap5": "Hayır tanımlanamaz. ",
+      "cevap6": "Hayır olamaz. Inner class'larda ise constructor olabilir. ",
+      "cevap7": "Inner class static ise outer class olmadan oluşturabiliriz. Çünkü her şey static final olarak tanımlanır. ",
+      "cevap8": "Inner class'ı oluşturup ve value değerine ulaşabilmemiz için once outer class için obje oluşturup onun üzerinden inner class oluşturmalıydık. Onu yaptıktan sonra cevap:\nValue: 10",
+      "cevap9": "Kod bu şekilde çalışır. Output:\nCount: 5"
+    }
+  ]
+}

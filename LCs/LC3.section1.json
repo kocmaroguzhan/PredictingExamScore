@@ -1,0 +1,191 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Java'da 'method binding' kavramı ne anlama gelir, çeşitleri nelerdir?",
+    "Hangi tür metotlarda static hangi durumlarda dynamic binding yapılır, static binding yapılan metotların modifierleri nelerdir?",
+    "Dinamik bağlamada JVM'nin görevi nedir?",
+    "Java'da tüm bindingler dinamik olsaydı ne olurdu, nasıl bir sorunla karşılaşırdık?",
+    "Java'da down casting explicit şekilde yapılır, bunun nedeni nedir; implicit şekilde yaparsak ne olur?",
+    "Java'da method overriding yapılırken access modifierleri ile ilgili bir kısıt var mıdır, mesela protected bir metot public bir şekilde override edilebilir mi? Bunun polimorfizm ile ilişkisini açıklayınız.",
+    "class Animal {\n    void makeSound() {\n        System.out.println(\"Animal sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void makeSound() {\n        System.out.println(\"Bark\");\n    }\n}\n\nclass Cat extends Animal {\n    void makeSound(){\n        System.out.println(\"Meov\");\n    }\n}\n\npublic class TestSound {\n    public static void main(String[] args) {\n        Animal[] animals = {new Dog(), new Cat()};\n        for (Animal animal : animals)\n            animal.makeSound();\n    }\n}\n\nOutput?\nBurada statik bağlama mı dinamik bağlama mı gözlemlemektesiniz?",
+    "class Parent {\n    void display() {\n        System.out.println(\"Parent display\");\n    }\n}\n\nclass Child extends Parent {\n    void display() {\n        System.out.println(\"Child display\");\n    }\n    void special() {\n        System.out.println(\"Child special\");\n    }\n}\n\npublic class Demo {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        p.display();\n        p.special();\n    }\n}\n\nKodda bir yanlışlık görüyor musunuz, varsa nerede?\n(Eğer varsa yanlış satır silindikten sonra) Output?\nBurada static binding mi dinamik binding mi gözlemlemektesiniz?"
+  ],
+  "answers": [
+    {
+      "id": "7817361",
+      "cevap1": "Method bağlama anlamına gelir. Abstraction ",
+      "cevap2": "A",
+      "cevap3": "A",
+      "cevap4": "Bilgiler korunamazdı",
+      "cevap5": "A",
+      "cevap6": "Örnek olarak public bir method private olarak override edilebilir ancak tersi yapılamaz.",
+      "cevap7": "Bark Meov",
+      "cevap8": "Child display child special dinamik"
+    },
+    {
+      "id": "8190737",
+      "cevap1": "Kullanılacak metodun hangi tanıma göre kullanılacağını belirlemektir. statik ve dinamik olabilir",
+      "cevap2": "overriding olmayan veya override edilemeyen metodlarda static, overriding olan metodlarda dinamik binding yapılır. static binding için final keywordu kullanılır",
+      "cevap3": "metodun tanımını runtime'da bulmaktır",
+      "cevap4": "kod daha yavaş çalışırdı",
+      "cevap5": "compiler error alırız",
+      "cevap6": "bir canlı yemek yiyebiliyorsa bir köpek de yemek yiyebilmelidir. protected bir metod public olarak override edilebilir",
+      "cevap7": "dinamik",
+      "cevap8": "p.special() komutu çalışmayacaktır ve compiler error alınacaktır. bu satır silindikten sonra output \"Child special\" olacaktır. Dinamik binding bulunuyor"
+    },
+    {
+      "id": "3659398",
+      "cevap1": "Bağlama anlamına geliyor 2 çeşit bağlama vardır static ve dynamic early compile zamanı çalışır dynamic run time zamanı çalışır makinenin karar mekanizması içindir.",
+      "cevap2": "Static metodlar olduğunda static binding uygulanır override olduğunda dynamic bindic kullanilir.",
+      "cevap3": "Hangi methodun kullanılacağına karar verir.",
+      "cevap4": "Efektif olmazdi",
+      "cevap5": "Çünkü downcast edildiginde override edilmiş bir metodda çocuk classin özelliklerini taşıması için açık bir şekilde downcast edilir.",
+      "cevap6": "Kümeleme olarak aşağı gidilebilir yani public bir method protected override edilebilir ama tam tersi mümkün değildir.",
+      "cevap7": "Dinamik",
+      "cevap8": "Child display child special output olur burada override olduğundan dinamiktir"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "Metodun hangi parametrelere ve classa göre çalışacağının belirlenmesidir. Çeşitler dynamic binding ve static binding'dir.",
+      "cevap2": "static binding olması için static, final veya private keywordleri kullanılır. Metod override'lanmadıysa static binding gerçekleşir, compile edilirken bindlanır. Metod başka bir classta da var ise dynamic binding gerçekleşir.",
+      "cevap3": "JVM dinamik bağlamada metodun hangi classtan çağırılacağını runtime'da belirler.",
+      "cevap4": "metodlardan önce final veya static yazmamızın bir anlamı kalmazdı, bütün yük runtime'a yüklenirdi.",
+      "cevap5": ".",
+      "cevap6": "private bir metod override edilemez. Protected metodların içine subclasslar da dahil olduğu için override edilebilir. Alt classların üst classlara ait metodları inherit etmesi polimorfizmin özelliğidir.",
+      "cevap7": "Bark\nMeov\ndinamik\n",
+      "cevap8": "p.special() çalışmaz' çünkü parent classında special metodu yoktur. Silmeliyiz.\nOutput: \"Child Display\"\ndynamic binding gözlemlenir"
+    },
+    {
+      "id": "2051651",
+      "cevap1": "?",
+      "cevap2": "?",
+      "cevap3": "?",
+      "cevap4": "?",
+      "cevap5": "?",
+      "cevap6": "?",
+      "cevap7": "Bark, meow. dinamik",
+      "cevap8": "Yanlış yok. Dinamik binding. Output: child display /n child special"
+    },
+    {
+      "id": "9830856",
+      "cevap1": "bir metodun hangi türünün çağrılacağına karar vermesidir, static ve dynamic olarak iki çeşidi vardır",
+      "cevap2": "constructor, final ve private metotlarda static binding yapılır; override edilmiş metotlarda dynamic binding yapılır ",
+      "cevap3": "hangi sınıfa ait olduğunu belirler ve ona göre metodu çağırır",
+      "cevap4": "jvm ayırt edemezdi ve compilor hata verirdi",
+      "cevap5": "cevap veremedim",
+      "cevap6": "üst sınıfın access modifierı, alt sınıfın access modifierından geniş olamaz, kısıtlaması budur.\npolimorfizm ise doğru metodun çağrılmasını sağlar, protected bir metod override edilebilir(public olarak) private veya default metodlarda edilmez",
+      "cevap7": "dinamik bağlama ",
+      "cevap8": "dinamik bağlama\nchild display\nchild special"
+    },
+    {
+      "id": "7214465",
+      "cevap1": "metodun hangi metoda bağlanacağının sürecidir static ve  dynamic çeşitleridir",
+      "cevap2": "Static : static metod, final metod, private metod / Dynamic : override metodlar",
+      "cevap3": "görevi metodun hangi classa ait olduğunu belirlemektir",
+      "cevap4": "performans sorunu oluşur veya hata tespiti zorlaşırdı",
+      "cevap5": "nedeni down casting time complexityde hataya yol açabilir. implict şekilde yapsak time complexity ve kod karmaşıklığı artar",
+      "cevap6": "evet , polimorfizmle ilişkisi dinamik bağlama ile ilgilidir.",
+      "cevap7": "dinamik",
+      "cevap8": "p.special() satırı hatalıdır / Child display / dinamik binding"
+    },
+    {
+      "id": "8783086",
+      "cevap1": "methodların bağlanması static dynamic",
+      "cevap2": "overload static, override dynamic ",
+      "cevap3": "method override edilmiş mi diye kontrol etmek",
+      "cevap4": "program daha yavaş çalışırdı",
+      "cevap5": "classlar bağlı olmayabilir",
+      "cevap6": "var edilemez",
+      "cevap7": "Bark\nMeov\ndinamik bağlama",
+      "cevap8": "göremedim\nChild display\nChild special\ndinamik"
+    },
+    {
+      "id": "1764665",
+      "cevap1": "Static ve dinamik binding olarak ikiye ayrılır. Method class a özgü ve objesiz calisabiliyorsa static objeye bağımlı ise dinamik olarak adlandırılır. Staticler override edilemez dinamikler edilebilir.",
+      "cevap2": "Eğer override edilmesi istenmiyor ve çalışmasi için obje gerekmiyorsa static, eğer her subclass ın bu methodu farklı şekilde çalıştırması gerekiyorsa (override a ihtiyaç varsa) dinamic yapılır. Static methodun Modifierlari private olamaz.",
+      "cevap3": "Methodlarin çağırıldigi referans tipine göre doğru override edilmiş methodu getirme",
+      "cevap4": "Matematik sınıfi gibi objesiz çalışması gereken classlar calisamazdi ",
+      "cevap5": "Tüm özelliklerin olduğunu garanti etmemiz gerekir o yüzden explicittir. Implicit yaparsak runtime error yaşanabilir.",
+      "cevap6": "Evet yapılabilir, ama override edilen methodun modifierlari daraltilamaz. mesela public olan bir method override ile protected yapilamaz.",
+      "cevap7": "Bark Meov",
+      "cevap8": "Parent classı special methoduna sahip değil dolayısıyla p.special çalışmaz. Bu satır silinirse, \"Parent display\" yazılacaktır. Burada dinamik binding var çünkü override yapılmış."
+    },
+    {
+      "id": "8964453",
+      "cevap1": "Kodun ne zaman derlenecegini anlatir, early binding ile static binding cesitleridir",
+      "cevap2": "Private metodlar, static methodlar, final methodlar early binding classa bagli nesne olusturulmadan calisirlar kalani static calisirlar",
+      "cevap3": "Polimorfizm kullanilan methodlarda overridelari takip edip istenilen methoda gitmesi.",
+      "cevap4": "Performans kaybi ve guven acikligi olusturur ongorulebilirligi azaltir",
+      "cevap5": "Tip kontrolu yapmak icindir, implicit yaparsak class cast exception hatalari cikabilir",
+      "cevap6": "Override edecegemiz methodu daha az gorunur yapamayiz fakat ust sinifa giderken access modifieri genisletilebilinir",
+      "cevap7": "Bark Meov dynamic binding gorulmektedir",
+      "cevap8": "P.special() da hata vardir parent classda bu method yoktur, dynamic binding gorulmektedir"
+    },
+    {
+      "id": "1762204",
+      "cevap1": "Static ve dynamic binding vardır ve metodun çağrıldığı yer ile metodun kendisinin eşleştirilmesine denir. ",
+      "cevap2": "Static, private ve final olan metotlar static binding yapılır, gerisinde dynamic binding olur. Override edilemeyen metotlarda static binding olur. ",
+      "cevap3": "Çağrılan metodun hangi objedeki metot olduğunu belirlemektir. ",
+      "cevap4": "Dynamic binding runtime hatası olduğu için, compile time sırasında yanlış yazılan kodlardaki hataları göremezdik ve kod çalıştıktan sonra sorunlu yere gelirse görebilirdik sadece hatayı. ",
+      "cevap5": "Bunun nedeni, her üst class objesi her alt class objesi e cast edilememesindendir. Sadece emin olduğumuz objeleri cast edebiliriz. Alt class objesi olmayan objeyi cast etmeye çalışırsak hata alırız. ",
+      "cevap6": "Eğer override edeceksek sadece daha az kısıtı olan modifier ile override edilebilir. Ve de return type olarak sadece override edilen metodun return ettiği tipin ya kendisini ya da subclass'ını koyabiliriz. ",
+      "cevap7": "Bark\nMeov\nBurada dynamic binding vardır. ",
+      "cevap8": "p.special() çağrılamaz çünkü parent objesinin special isimli metodu yok. Bu satır silinmelidir. Dynamic binding vardır. Çıktı:\nChild display"
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Çağırılan metodun implement edildiği yer ile bağlanmasıdır.",
+      "cevap2": "Override edilen metotlar dynamic bind olur.\nFinal static ve private olan metotlar kesinlikle static bind olur.",
+      "cevap3": "Class larda yukarı giderek metodun ilk karşılaştığı implementation ını metodun çsğırıldığı yere bağlamak.",
+      "cevap4": "Gereksiz bir şekilde yavaş olurdu.",
+      "cevap5": "O class ın ne olduğunu bizim bilip ona göre cast etmemz gerekir çünkü cast edeceğim class ta o classa özgü olan özellikler olabilir.",
+      "cevap6": "Hayır çünkü o classın belirli yetkilere sahip olan yerlerden erişilebilen özelliği olmaktan çıkrsa override olmaz.",
+      "cevap7": "Animal Sound /n Bark /n Animal Sound /n Meov /n Bark /n Meov (Dynamic)",
+      "cevap8": "p.special(); hata verir\nOutput: Child display\n(Static)"
+    },
+    {
+      "id": "4380745",
+      "cevap1": "Hangi metodun hangi versiyonunun kullanılacağının belirlenmesidir. İki tipi bardır: statik ve dinamik",
+      "cevap2": "Overload edilen metotlarda statik, override edilenlerde dinamik binding kullanılır",
+      "cevap3": "Runtime esnasında metodun hangi versiyonunun kullanılacağına karar vermek",
+      "cevap4": "Başlangıçta metotları yükleme aşaması olmaz ve bir statik metoda ihtiyaç duyulduğu zaman kullanılamazdı",
+      "cevap5": "?",
+      "cevap6": "Edilemez çünkü kalıtımda üstteki class’ın hakları kadar alt class’lara kadar aktarılabilir",
+      "cevap7": "Bark Meow\nDinamik",
+      "cevap8": "Parent p = new Child() kısmında Parent olduğunu söylüyoruz javaya p’nin ama parent’da olmayan bir metot çağrılıyor mnce child’a cast edilmeli\n\nDinamik binding\nChild display Child special"
+    },
+    {
+      "id": "6202193",
+      "cevap1": "Dynamic ve static olarak ikiye ayrılır. Çağırılacak bir metodun hangi classtan nasıl çağırılacağının belirlenmesi ve bağlantı kurmasıdır.",
+      "cevap2": "Eğer bir metoda override yapılamazsa static binding yapılır. Static, private ve final",
+      "cevap3": "Dinamik bağlamada kodun mevcut durumuna göre merodun çalışması runtimeda belirlenir. Static bağlamada compiler işi en başta halleder.",
+      "cevap4": "Dinamik olsaydı değiştirilmesini istemediğimiz metodlara override yapılabilirdi",
+      "cevap5": "Yeni bir obje oluşturup downcast etmek gerekir çünkü subclassta olan metod ve instance variable lar parent classta olmayabilir. Bu yüzden implicit yapılsaydı sorunlar çıkardı.",
+      "cevap6": "Hayır. Erişilmesini istemediğimiz metodlar bu sefer oluşturulan parent classlardan erişilebilir olur ",
+      "cevap7": "Bark meow  dinamik",
+      "cevap8": "Yanlışlık yok, Child display Child special, dinamic binding"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Associating method calls and method implementations. Static binding for static and final methods. Dynamic binding for others",
+      "cevap2": "Static ve final niteleyicilerle tanımlanan metotlar static binding ile ilişkilendirilir. Private da dahil diğer metotlar dynamic binding ile ilişkilendirilir.",
+      "cevap3": "Program çalışırken çağrılan metodun hangi tanımının kullanılacağına bakmak.",
+      "cevap4": "Programlar daha yavaş çalışırdı. Nesne değiskenleri üzerinden çağrılan static metotlar farklı davranırdı.",
+      "cevap5": "Down cast uygulanan nesnenin alt classın bir örneği olup olmadığını kontrol etmemiz gerekir. Implicit şekilde yanlıs bir dönüşum yapmaya çalışırsak runtime error ile karşılaşılır.",
+      "cevap6": "Alt class da tekrar yazıla  metodun acsess modifier ı üst klasta kullanılandan dar olamaz.  Protected metod overriding ile public tanımlanabilir",
+      "cevap7": "Bark meov. Dinamik bağlama",
+      "cevap8": "Parent tipi referanstan child finksiyonuna erişilmez"
+    },
+    {
+      "id": "6194008",
+      "cevap1": "Statik dinamik metot bağlama çeşitlendirmesidir",
+      "cevap2": "İlk baş tanımlanan şeyler static binding, çalıştırıldığında olanlar dinamik",
+      "cevap3": "Is",
+      "cevap4": "Dk",
+      "cevap5": "Down casting mesela Animal animal = new Dog()\nDemek de implicit explicit bilmiyorum",
+      "cevap6": "Hayır edilemez public ama protected olarak override edilebilir",
+      "cevap7": "Dinamik bağlama",
+      "cevap8": "P.special silinmeli\nParent display\nDinamik\n\n"
+    }
+  ]
+}

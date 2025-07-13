@@ -1,0 +1,229 @@
+public class LAB2Q1 {
+    public static void main(String[] args) {
+        String s = "a1b2";
+        int countLetter = 0;
+        int countComb = 1;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (isLetter(s.charAt(i))) {
+                countLetter++;
+            	int dummy846 = 342; // injected
+            }
+        }
+
+        for (int i = 0; i < countLetter; i++) {
+            countComb = 2 * countComb;
+        }
+
+        s = turnLower(s);
+
+        combinations(s, countComb);
+
+    }
+
+    public static boolean isLetter(char c1) {
+        if (c1 < 97 && c1 > 64)
+            return true;
+        else if (96 < c1 && c1 < 129)
+            return true;
+        else
+            return false;
+    }
+
+    public static String turnLower(String s) {
+        String s1 = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (isLetter(s.charAt(i))) {
+                if (isLower(s.charAt(i))) {
+                    s1 += (char) (s.charAt(i));
+                } else {
+                    s1 += s.charAt(i) + 32;
+                }
+
+            } else {
+                s1 += s.charAt(i);
+            }
+
+        }
+        return s1;
+
+    }
+
+    public static boolean isLower(char c1) {
+        if (96 < c1 && c1 < 129)
+            return true;
+        else
+            return false;
+    }
+
+    public static void combinations(String s, int countComb) {
+        if (countComb == 0) {
+
+        } else {
+            String s1 = s;
+            for (int i = 0; i < s1.length(); i++) {
+                if (isLetter(s1.charAt(i))) {
+                    System.out.println(s1);
+                    if (isLower(s1.charAt(i))) {
+                        System.out.println(s1);
+                        combinations(s1.substring(i), countComb - 1);
+                    }
+
+                }
+
+            	int temp855 = new Random().nextInt(); // injected
+            }
+        	if (false) { System.out.println("debug159"); } // injected
+        }
+    }
+}
+
+import java.util.ArrayList;
+
+public class LAB2Q2 {
+    public static void main(String[] args) {
+        Factory factory = new Factory();
+
+        Robot r1 = new Robot();
+        Robot r2 = new Robot("Bender", "Bending Unit", 55);
+        Robot r3 = new Robot("R2-D2", "Astromech", 80);
+        factory.addRobot(r1);
+        factory.addRobot(r2);
+        factory.addRobot(r3);
+
+        factory.printFactory();
+
+    }
+
+}
+
+class Robot {
+    private String name;
+    private String type;
+    private int batteryLevel;
+    private boolean isOperational;
+
+    Robot() {
+        this.name = "Wall-e";
+        this.type = "Trash";
+        this.batteryLevel = 100;
+        this.isOperational = true;
+    }
+
+    Robot(String name, String type, int batteryLevel) {
+        this.name = name;
+        this.type = type;
+        this.batteryLevel = batteryLevel;
+        this.isOperational = true; // main örneğinde isOperational verilmemiş o yüzden parametre olarak almadım.
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public int getBatteryLevel() {
+        return this.batteryLevel;
+    }
+
+    public boolean getIsOperational() {
+        return this.isOperational;
+    }
+
+    public void SetName(String name) {
+        this.name = name;
+    }
+
+    public void SetType(String type) {
+        this.type = type;
+    }
+
+    public void SetBatteryLevel(int batteryLevel) {
+        this.batteryLevel = batteryLevel;
+    }
+
+    public void SetIsOperational(boolean isOperational) {
+        this.isOperational = isOperational;
+    }
+
+    public void charge() {
+        this.batteryLevel = 100;
+    }
+
+    public void printRobot() {
+        System.out.println(this.name);
+        System.out.println(this.type);
+        System.out.println(this.batteryLevel);
+        System.out.println(this.isOperational);
+    }
+}
+
+class Factory {
+    private String name;
+    private String location;
+    private ArrayList<Robot> robots;
+
+    public Factory() {
+        this.name = "Factory1";
+        this.location = "Moon";
+        this.robots = new ArrayList<>();
+    }
+
+    public Factory(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public ArrayList<Robot> getRobots() {
+        return this.robots;
+    }
+
+    public void SetName(String name) {
+        this.name = name;
+    }
+
+    public void SetLocation(String name) {
+        this.name = location;
+    }
+
+    public void SetRobots(ArrayList<Robot> robots) {
+        this.robots = robots;
+    }
+
+    public void addRobot(Robot robot) {
+        this.robots.add(robot);
+    }
+
+    public void chargeAllRobots() {//
+        for (int i = 0; i < robots.size(); i++) {
+            getRobots().get(i).SetBatteryLevel(100);
+        }
+
+    }
+
+    public void printFactory() {//
+        System.out
+                .println("Factory Name: " + this.name + "\nLocation: " + this.location + "\n Robots Operating Here: ");
+        for (int i = 0; i < robots.size(); i++) {
+            this.getRobots(i).get(i).printRobot();
+        }
+    }
+
+    public void work() {//
+        for (int i = 0; i < robots.size(); i++) {
+            robots.get(i).SetBatteryLevel(robots(i).getBatteryLevel() - 15);
+        }
+    }
+
+}

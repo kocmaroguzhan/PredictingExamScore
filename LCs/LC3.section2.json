@@ -1,0 +1,312 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Java'da ne zaman static binding yapılır, ne zaman dynamic binding yapılır?",
+    "Java'da static, private ve final metotlar neden static bindingle bağlanır; static, private ve final metotların ortak özelliği nedir?",
+    "Overloading ve overriding yaparken hangi tür binding gerçekleşir, neden?",
+    "Dinamik bağlamada JVM'nin görevi nedir?",
+    "Java'da upcasting neden implicit bir şekilde yapılabilir, neden? Peki ya down casting implicit bir şekilde yapılabilir mi?",
+    "Java'da tüm bindingler dinamik olsaydı ne olurdu, nasıl bir sorunla karşılaşırdık?",
+    "class Parent {\n    void show() { System.out.println(\"Parent\"); }\n}\nclass Child extends Parent {\n    void show() { System.out.println(\"Child\"); }\n}\npublic class Test {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        p.show();\n    }\n}\n\nOutput?\nBurada statik bağlama mı dinamik bağlama mı gözlemlemektesiniz?",
+    "class Product {\n    void display() { System.out.println(\"Product\"); }\n}\nclass Book extends Product {\n    void display() { System.out.println(\"Book\"); }\n}\npublic class Test {\n    public static void main(String[] args) {\n        Product[] items = {new Product(), new Book()};\n        for(Product item : items) {\n            item.display();\n        }\n    }\n}\n\nOutput?\nBurada statik bağlama mı dinamik bağlama mı gözlemlemektesiniz?"
+  ],
+  "answers": [
+    {
+      "id": "5628146",
+      "cevap1": "derleme ve çalışma zamanlarına göre yapılır",
+      "cevap2": "bu metotların derleme zamanında davranışlarının sabit ve kesin olması  override edilemezler",
+      "cevap3": "Overloading için static overriding dynamic çünkü override edilmiş metodu çağrılacaksa, o belirlenir overloarding içinderleme zamanı önemli ",
+      "cevap4": "objenin türünü belirlemek ve doğru metodu çağırmak",
+      "cevap5": "upcating implicit yapılabilir çünkü subclss üst sınıfın tüm özelliklerini metot ve değişken gibi alabilir down casting Implicit yapılmaz üst sınıfın referansı subclassın özelliklerini taşımaz",
+      "cevap6": "işlemci ve bellek kullanımları artardı ",
+      "cevap7": "Child dynamic",
+      "cevap8": "Product , dynamic"
+    },
+    {
+      "id": "6914659",
+      "cevap1": "Metotlar ve variablelar siniflara  özgü ise static, objelere ozgu ise dynamic",
+      "cevap2": "Override edilemezler yani degistirilemezler",
+      "cevap3": "Early binding, çünkü compiler hangi metodu calistiracagina karar verir",
+      "cevap4": "Kodu javanin anlayacagi bytecode a cevirir",
+      "cevap5": "Çünkü üst sınıf referanslı alt sınıf objesi oluşturulur, fakat down casting implicit yapilamaz",
+      "cevap6": "Late binding yapılamazdi ve çoğu kod hatalı olurdu",
+      "cevap7": "Static",
+      "cevap8": "Dinamik"
+    },
+    {
+      "id": "5281670",
+      "cevap1": "static binding compiler time dynamic run time ",
+      "cevap2": "çünkü override edilemezler  dolayısı ile derleme zamanında sınıf üzerinden çözülür ",
+      "cevap3": "overriding run time overloading compile time ",
+      "cevap4": "hangi metotun çağrılacağını nesnenin gerçek türüne göre belirlemek",
+      "cevap5": "upcasting bir child class nesnesinin üst sınıfın referansında saklanmasıdır downcastibg bir üst sınıf referansının alt sonıf türüne çevirmektir",
+      "cevap6": "override edilme özelliği kaybolurdu , gereksiz bellek kullanımı olurdu",
+      "cevap7": "Child // dynamic ",
+      "cevap8": "Product\nBook // Dynamic"
+    },
+    {
+      "id": "9905145",
+      "cevap1": "sonradan degistirmek istiyorsan dynamic kullanmamiz gerek (overwriting), static icindekileri sonradan degistiremiyoruz",
+      "cevap2": "overwriting yapilamadiklari icin static ile baglanirlar(üçününde ortak ozelligi)",
+      "cevap3": "overridingde dynamic, loadingde static ve dynamic",
+      "cevap4": "overwriting yazilan metotlari ve classlari kontrol etmesi, hangisinin kullanilacagina karar verilmesi",
+      "cevap5": "java otomatik olarak upcastingi gerceklestirir ancak bunun downcasting olarak algilanmasi icin parantez icinde bunu belirtmemiz gerek",
+      "cevap6": "kullandigimiz seyler daha onceden yaratilmadigindan onlari kullanmak mumkun olmazdi veya bütün olarak düzgün bir siraya koymamiz gerekirdi runtimeda oluşup kullanilmasi icin",
+      "cevap7": "Parent\nstatik baglama",
+      "cevap8": "Product\nBook\ndinamik baglama"
+    },
+    {
+      "id": "6343320",
+      "cevap1": "Static binding yapmamız gerekenler ilk olarak kullanılmasını istediklerimizdir dynamicler ise öncelik vermek istemediklerimizdir",
+      "cevap2": "Static ile bağlanmazsa değer değiştirme recursion gibi şeylerin yapılabilir olması gerekir ortak özellikleri bu methodlara recursion uygulanamamasıdır",
+      "cevap3": "Dynamic çünkü static olursa override veya overload yapamayız",
+      "cevap4": ".",
+      "cevap5": ".",
+      "cevap6": "Hepsi atama sırasına göre stackde sıralanırdı istediğimize öncelik veremezdik",
+      "cevap7": "Hata verir çünkü parent ile child a ait obje üretemeyiz",
+      "cevap8": "Product\nBook"
+    },
+    {
+      "id": "2103960",
+      "cevap1": "Static static metodlar ve overloadlarda yapılır. Dynamic ise override yapılanlarda runtimeda yapılır",
+      "cevap2": "Hiçbiri Daha sonra override edilemeyeceğinden static binding ile yapılır. ",
+      "cevap3": "Overload da imza farklıdır bu yüzden compile edilirken static binding ile yapılır. Override dynamic binding ile runtime sırasında bakılarak yapılır",
+      "cevap4": "Runtime sırasında overrideları kontrol eder",
+      "cevap5": "Çünkü child class parenttakinin özelliklerine sapihtir ancak tam tersi olmaz parenttakiler childın tüm özelliklerine sahip değildir ",
+      "cevap6": "Overload compile da olur normalde ancak runtimea bırakılırsa isimden dolayı karışıklık çıkabilir?",
+      "cevap7": "Dinamik",
+      "cevap8": "Dinamik"
+    },
+    {
+      "id": "5187413",
+      "cevap1": "Direkt aktarmak istiyorsak static yoksa dinamik",
+      "cevap2": "Override edilemezler değiştirilemezler yani",
+      "cevap3": "Dinamik çünkü değiştirilebilirler",
+      "cevap4": "----",
+      "cevap5": "-----",
+      "cevap6": "Staticler olmadığı için öncelikli aktarım sırasında sorun yasanırdı",
+      "cevap7": "Parent  dinamik",
+      "cevap8": "Product Book  Statik"
+    },
+    {
+      "id": "4114373",
+      "cevap1": "Eğer metot override edilmişse dynamic binding, edilmemişse static binding yapilir.",
+      "cevap2": "Çünkü static, private ve final metotlara override yapılmaz bu yüzden de dynamic binding'e gerek olmaz.",
+      "cevap3": "Dynamic binding gerçekleşir çünkü aynı adda olan iki ayrı metotu çağırırken java'nın hangi metodu çağırmasını hesaplaması gerekiyor.",
+      "cevap4": "JVM'nin görevi referans edilen en parent class'tan başlayarak oluşturulan child objesine doğru gelerek her class'ta metodun override edilmiş olup olmadığını hesaplayıp bularak, doğru metodu çağırmasıdır.",
+      "cevap5": "Parent objenin içerdiği her şeyi child obje içerir fakat child objenin içerdiği her şeyi (metod, değişken vs.) parent obje içermez. Bu yüzden \nParent p = new Child(); yapılabilirken Child c = new Parent(); yapılamaz.",
+      "cevap6": "Tüm bindingler dinamik olsaydı child classta çağırdığımız ve child class'a özgü olan bir override metodu çağıramazdık.",
+      "cevap7": "Parent referansıyla bir child object oluşturulduğu için o referanstan çağırdığımız child objesinin parenttaki metod yerine child'daki override edilmiş metodu çağırmasını istediğimiz için dinamik bağlama.",
+      "cevap8": "İlk objede statik bağlama, ikinci objede dinamik bağlama"
+    },
+    {
+      "id": "4275079",
+      "cevap1": "object olusturulacaksa dinamik sınıfın tamamı çagrilaracaksa statik binding yapilir.",
+      "cevap2": "Metotlar sınıf ismi ile çağrılır.Override edilemez .",
+      "cevap3": "Dynamic gerçekleşir.Object olusturularak kullanilir.",
+      "cevap4": "?",
+      "cevap5": "Down classlar upper classtaki metotlara sahiptir o yüzden implicit casting yapilabilir ancak tam tersi gecerli degildir.",
+      "cevap6": "Degismeyen metotlar elde edemezdik sinifi cagiramazdik. Bilgi güvenliği saglanmazdı.",
+      "cevap7": "Parent, dinamik.",
+      "cevap8": "Product \\n Product , dinamik. "
+    },
+    {
+      "id": "6157698",
+      "cevap1": "Static binding methodların override edilme ihtimalinin olmadığı durumlarda olur iken dynamic binding methodların override edilme ihtimali olduğu durumlarda olur.",
+      "cevap2": "Static private ve final methodlar override edilemedikleri için static bindingle bağlanır.",
+      "cevap3": "Overloading yaparken signature birbirinden ayrı olduğu için static binding gerçekleşir. Overriding yaparken reference variable'dan objeye kadar en son override edilmiş method kullanılacağı için dynamic binding olur",
+      "cevap4": "Methodun override edilme ihtimaline karşı reference variable'ın olduğu class'tan objeye kadar methodun en son override edildiği noktadaki halini bulmaktır.",
+      "cevap5": ".Parent childın bütün özelliklerine sahip olmayabileceği için sıkıntı olabilir.(implicit ne bilmiyorum)",
+      "cevap6": "Dynamic binding sürekli override edilip edilmediğini kontrol etmesi gerektiği için zaman kaybı yaşanırdı.(dynamic yavaş olduğundan)",
+      "cevap7": "dinamik\nChild",
+      "cevap8": "Book\nProduct\ndinamik"
+    },
+    {
+      "id": "4779274",
+      "cevap1": "comp sırasında kodun gidişine göre anlamı değişmeyen bindingler en başta static olarak yapılır, override falan varsa dynamic çünkü hangisine bind etmeli falan",
+      "cevap2": "üçünü de artık override edemezsin, bu yüzden static bindingle direkt net olarak o bağlanır",
+      "cevap3": "overriding varsa dynamic, overloading zaten bambaşka bi methot tanımı anlamına geldiğinden static bindingi bozmaz",
+      "cevap4": "runtime sırasında bağlamı belirlemek ?? yani override var ve en yakın overrideya bağlıyor kısaca açıklamaya çalıştım",
+      "cevap5": "biri diğerini kapsıyo olduğundan upcasting implicit halde olabilir ama downcasting için aynısını diyemeyiz yapılamaz",
+      "cevap6": "e hepsini runtime da belirlemesi bence zaman karmaşıklığını arttırırdı, jvm nin o anda bununla upraşmasına gerek yok bazı bindingler net şekilde başta yapılabilecekken",
+      "cevap7": "Child yazar, override olduğundan comp başında binding olmaz yani dinamik bağlama",
+      "cevap8": "ProductBook çıktısı verir , iki bağlama tipi de var arryin ilk itemi direkt product diğeri ise book olduğu içib ama belki"
+    },
+    {
+      "id": "5902250",
+      "cevap1": "Static binding, compile time’da; dynamic binding ise runtime’da gerçekleşir.",
+      "cevap2": "Sonradan @Override edilmeleri gibi bi durum yoktur.",
+      "cevap3": "Overload static, @Override ise runtime’da gerçekleşir. Metod overload edildiğinde metodu nereden çağıracağımız, signature’dan bellidir. Fakat override işinde Java, tek tek kodu gezer, kodu bağlayan en son @Override şeklini bulur. Bulamazsa bulduğunu çağırır. Onu da bulamazsa yapacak bişey yok",
+      "cevap4": "Kodu gezip, çağırılan elemanın nerede çağırıldığına bağlı olarak, bir scope dahilinde adım adım o elemanı aramaktır.",
+      "cevap5": "Türkçe anlatırsak, her aslan bir hayvandır ve hayvanların her özelliğini gösterir. Fakat her hayvan aslan değildir. Bir aslan objesi oluşturduğumuzda aslan olmanın her özelliğini yerine getirmesini bekleriz fakat Heap’te hayvan objesine bağlarsak, hayvan sınıfı, aslan sınıfının gerektirdiklerini karşılayamaz. Aslan daha detaylıdır çünkü.",
+      "cevap6": "Kodumuzu başlatmak, çalıştırmak hep uzun sürerdi.",
+      "cevap7": "Child. Dinamik bağlama var.",
+      "cevap8": "Product\nBook\nİlk objede statik, ikinci objede dinamik bağlama var."
+    },
+    {
+      "id": "5361565",
+      "cevap1": "static binding final , static , private olan durumlarda yapılır ve overload olan yerlerde olur dynamic binding iste override edilen kodlarda olur polymorphismde olur",
+      "cevap2": "çünkü override edilemezler ve o yüzden polymorphismde kullanilamazlar ve dynamic binding gerekmediği icin static binding olur.",
+      "cevap3": "overloadda dynamic çünkü runtimeda karar verir ama overloadda compile timeda karar verir ve metotların imzaları farklı olduğu için dynamic binding gerekmez o yüzden static binding kullanılır",
+      "cevap4": "run timeda hangi metodun cagirilacagini bulmak",
+      "cevap5": "bir alt sınıf zaten ust sınıfın bütün ozelliklerini içerir o yüzden impilicit bir şekilde yapilabilir./down casting implicit bir sekilde yapilamaz hata alabiliriz sonucunda",
+      "cevap6": "daha az efficient olurdu kodlarımız çünkü hepsi run timeda binding edilirdi",
+      "cevap7": "output:Child\nburada dinamik bağlama gözlenir ",
+      "cevap8": "output: Product\nBook\nburada da dinamik bağlama olur."
+    },
+    {
+      "id": "2179244",
+      "cevap1": "Static, private ve final metotlar kullanıldığında static bindingle bağlanır. Diğer zamanlarda dynamic binding yapılır.",
+      "cevap2": "Override edilemezler",
+      "cevap3": "Dynamic binding",
+      "cevap4": "JVM hangi metodun veya sınıfın çağrılacağına karar verir",
+      "cevap5": "1. Çünkü java otomatik olarak bir üst class özelliklerini subclass a da ekler. \n2. Hayır",
+      "cevap6": "Değişmemesini istediğimiz metotlar da değişirdi",
+      "cevap7": "Dynamic",
+      "cevap8": "Dynamic"
+    },
+    {
+      "id": "8059049",
+      "cevap1": "compile  da static, run da dynamic binding yapılır",
+      "cevap2": "çünkü bu metodlar override edilemezler ve sadece dinamik binding de override gerçekleşir",
+      "cevap3": "Overloading de Static,Overriding de dinamik binding gerçekleşir",
+      "cevap4": "Jvm in görevi runtime da kullanılacak metotları seçmektir ",
+      "cevap5": "Çünkü otomatik olarak alt class dan Üst class a erişime uygundur,down casting implicit yapılırsa compioe hatası verebilir ",
+      "cevap6": "Compile time da hata verirdi,static metodları kullanamazdık",
+      "cevap7": "\nChild\nDynamic Binding",
+      "cevap8": "Product\nBook \nDynamic binding var\n"
+    },
+    {
+      "id": "4856424",
+      "cevap1": "cagrilan methodlarin turune gore degisir ",
+      "cevap2": "derleme zamanlari bellidir",
+      "cevap3": "overloading icin statik \noverriding icin dinamik",
+      "cevap4": "bilmiyorum",
+      "cevap5": "bilmiyorum",
+      "cevap6": "bilmiyorum",
+      "cevap7": "Child\ndinamik",
+      "cevap8": "Product\nBook\nstatik"
+    },
+    {
+      "id": "6494434",
+      "cevap1": "Dynamic binding override edilen metotlarla kullanılır. Static binding overloading için kullanılır. Derleme zamanında belirlenir.",
+      "cevap2": "Ortak noktaları override edilemez olmaları. Bu yüzden de dynamic binding yapamazlar. Static binding yaparlar.",
+      "cevap3": "Overloadingde static binding çünkü derleme aşamasında oluyor. Overrisidingde dynamic binding çünkü çalışma zamanında oluyor.",
+      "cevap4": "Çalışma zamanında nesnenin gerçek türünü belirler ve uygun metodu çağırır.",
+      "cevap5": "Upcasting daha genel türe çevirme bu yüzden implicit. Downcasting daha özel türe çevirme bu yüzden explicit",
+      "cevap6": "Performans düşerdi çünkü her metod çalışma zamanında belirlenlemesi gerekirdi",
+      "cevap7": "Child dynamic binding",
+      "cevap8": "\"Product\" ve \"Book\" dynamic binding"
+    },
+    {
+      "id": "8857652",
+      "cevap1": "Final statice ve private metodlarda static(compiler), diğerlerinde overriding yapabileceğimiz için dynamic (runtime) kullanırız. ",
+      "cevap2": "Override edilemezler ",
+      "cevap3": "Overload için static binding \nOverride için dynamic binding (runtime reading olduğundan daha yavaş)\n",
+      "cevap4": "Kodu run ettigimizde metodun farklı nesneler icin farklı davranıslar sergilemesini sağlar (runtime)",
+      "cevap5": "Örnek üzerinden aciklayayim:\nParent ve child classlarında parent variableı child classının objesine refer edebilir çünkü child is a parent ama tam tersi olamaz typecasting yapmak gereklidir çünkü her parent bir child değildir. (Çocuk annesini doğuramaz:))",
+      "cevap6": "Final static ve private methodları kullanımda sıkıntı yasardık. Çünkü dynamic binding override içindir ve bu methodlar override edilemez.",
+      "cevap7": "Dynamic çünkü override var",
+      "cevap8": "Hem dinamik hem statik "
+    },
+    {
+      "id": "7732416",
+      "cevap1": "Static bindind compilerın işlemi yapmayı bildiği durumlarda yani hangi metodun kullanılabileceğini bildiğimiz durumda dynamic ise polymorphism gibi sonradan bakmamız gereken durumlarda kullanılır",
+      "cevap2": "Çünkü en baştaki durumların sonradan değiştirilmesi istenmiyor veya ulaşılmasıyla alakalı kısıtlamaları var. Dolasıyı ile mekanizmada sonradan karar verilecek bir durumları yok. Ortak özellikleri ise override edilememeleri",
+      "cevap3": "Overloading dynamic overriding ise static yapılır override mekanizmasında objenin polymorphism özellikleri olmasından kaynaklı sonradan karar verilir fakat overloading de her şey önceden bellidir",
+      "cevap4": ".",
+      "cevap5": "Çünkü is a bağlantısı vardır. Down casting implicit yapılamaz çünkü triangle is a shape ama a shape is not a triangle",
+      "cevap6": "Daha önceden belirlenmemiş bilgiler kullanılamazdı",
+      "cevap7": "Dinamik çünkü p referansının p mi yoksa onun child sınıfını mı barındırdığını runtime da bilebiliyoruz",
+      "cevap8": "Dinamik çünkü display metodunun hangisinin çağrılacağı aslında item objesinin gerçek tipine bağlı "
+    },
+    {
+      "id": "6539697",
+      "cevap1": "metot override edilmiş ise dynamic binding, yoksa static binding yapılır",
+      "cevap2": "bu metotlar override edilemeyeceğinden ötürü her zaman static binding ile bağlanırlar",
+      "cevap3": "overloading -> static binding\noverriding -> dynamic binding\noverload edilmiş bir metot çalışırken compile zamanında hangisinin çalışacağı bellidir ancak override edilmiş bir metot için hangi kod parçasının çalışacağı program çalıştırılırken belirlenir",
+      "cevap4": "objeye en yakın olan override'ı bulup o metodu çalıştırmak",
+      "cevap5": "B, A'nın subclass'ı olsun.\nHer B objesi aynı zamanda bir A olduğundan upcasting yaparken sorun yaşanmaz ancak\nHer A objesi aynı zamanda B olmak zorunda değildir bu sebeple downcasting yapılırken sorun yaşanır",
+      "cevap6": "-",
+      "cevap7": "Child\ndinamik bağlama",
+      "cevap8": "Product\nBook\ndinamik bağlama"
+    },
+    {
+      "id": "6094496",
+      "cevap1": "Static binding overloading; dynamic binding override zamanı kullanılır",
+      "cevap2": "static baktığımızda override edilemez. Private kendi sınıfına özel o da override edilemez. Final değiştirilemez o yüzden override edilemez.  O yüzden static binding ile bağlanır",
+      "cevap3": "overloading yaparken static  override yaparken dynamic bining ",
+      "cevap4": "nesnenin türünü belirlemek ve ona uygun metotu call etmek",
+      "cevap5": "Upcast yapacağımızda daha genel bir şeye çeviriyoruz.  Down castte durum farklı. Daha özel bir şeye çeviriyoruz.  Down castte implicit bir şekilde yapamayız",
+      "cevap6": "--",
+      "cevap7": "child    dynamic bağlama ( override)",
+      "cevap8": "product   dinamik bağlama"
+    },
+    {
+      "id": "7374887",
+      "cevap1": "Static binding hangi metodun çalıştırılacağı runtimedan önce belli olan methotlarda olur örneğin static veya final methotlar dynamic binding ise runtime da belli olan methotlarda olur.",
+      "cevap2": "Çünkü bu methotlar override edilemez dolayısıyla binding problemi yoktur",
+      "cevap3": "Overloadingde static binding gerçekleşir çünkü methot signature ı farklı olduğundan kargaşa yoktur overridingde ise dynamic binding gerçekleşir",
+      "cevap4": "Önce reference typeta methodun olup olmadığına bakmak varsa o methodun en son override edildiği yere kadar gidip o methodu çalıştırmak",
+      "cevap5": "Çünkü alt classın objesi üst kcassında objesidir. Downcasting implicit şeklide yapılamaz çünkü üst class alt classın tüm özelliklerini taşımadığından java izin vermez",
+      "cevap6": "Bir anlamı olmazdı çünkü static bindingdeki methotlar zaten override edilemediği için sadece zaman kaybı olurdu.",
+      "cevap7": "Child .Dinamik bağlama vardır.",
+      "cevap8": "Product\nBook\nDinamik bağlama"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "Dynamic binding instance metodları için yapılır, static binding ise diğerleri için. ",
+      "cevap2": "Objeden bağımsız çalışmaları.",
+      "cevap3": "Dynamic binding. ",
+      "cevap4": "Metod call'ının hangi metod bloğunu çağırdığını anlamak. ",
+      "cevap5": "is-a mantığından ötürü. Hayvan bir canlıdır ama her canlı hayvan değildir. Bundan ötürü implicit şekilde upcast yapmamıza Java izin verir. Ama tersi söz konusu olmadığı için implicit şekilde yapamayız. ",
+      "cevap6": " ",
+      "cevap7": "dinamik bağlama. ",
+      "cevap8": "dinamik bağlama."
+    },
+    {
+      "id": "2384475",
+      "cevap1": "Signatureları farklı olan methodlarda static binding aynı olanlarda dynamic binding kullanılır. ",
+      "cevap2": "Bu metotlar değiştirilemez ve override edilemez. Bu yüzden static bindingle bağlanır.",
+      "cevap3": "Overloadingde static binding overridingde dynamic binding gerçekleşir. ",
+      "cevap4": "Run time sırasında karar verir.",
+      "cevap5": "Ana classın referans variable ı alt classın objesini refer ettiği için. Downcast implicit yapılamaz. Typecating ile yapılır.",
+      "cevap6": "Run time sırasında vakit kaybederdik.",
+      "cevap7": "Child\n\nDinamik bağlama",
+      "cevap8": "Product\nBook\n\nDinamik bağlama"
+    },
+    {
+      "id": "9245287",
+      "cevap1": "Eğer programda o metottan veya degiskenden sadece bir tane varsa static binding yapilir. ",
+      "cevap2": "Static final ve private override edilemez",
+      "cevap3": "Dynamic binding gerceklesir, çünkü program çalışırken polymorphism den dolayı ",
+      "cevap4": "Program çalışırken binding işlemini gerçekleştirmek ",
+      "cevap5": "Upcasting yaparken upcasting yapılan classin veya değişkenin bütün özellikleri direkt upcastlenerek aktarılabilir. Ama downcasting de ise veri kaybı olabileceğinden izin verilmez. Örneğin long değişkenin tuttuğu bir veriyi int her zaman tutamayacagindan explicit olarak belirtmek gerekir",
+      "cevap6": "Programın çalışma zamanı artardi program yavaşlardi cost artardi",
+      "cevap7": "Dynamic  ve output child",
+      "cevap8": "Dinamik"
+    },
+    {
+      "id": "6429016",
+      "cevap1": "Static binding compile zamanında yapılır dynamic binding run zamanında yapılır. ",
+      "cevap2": "Override edilemezler. Bu nedenle tek bir metot bulunur. Onun cagrilacagi belirlidir. ",
+      "cevap3": "Overriding yaparken dynamic binding gerçekleşir. Overloading yaparken static binding gerçekleşir. ",
+      "cevap4": "Hangi classtan çağrıldığını bulma sonrasında çağrıldığı nesnenin classına kadar Parenttan childa doğru override edilip edilmediğini kontrol etme. Buna göre son override edilen metodu uygulama. ",
+      "cevap5": "Çünkü upcasting de alt sınıflar üst sınıfların ebeveynin tüm özelliklerine sahiptir. Extend eder. Ama downcastingde bir ebeveyni birden fazla child extend edebileceği için ve ebeveyn childın tüm özelliklerine sahip olamayabilecrgi için yapılamaz. ",
+      "cevap6": "Final, static, private metotları çağırmak yerine obje classının içindeki metodu çağırabilirdi. ",
+      "cevap7": "Child\nDinamik bağlama vardır. ",
+      "cevap8": "Book\nDinamik bağlama gozlemekteyiz "
+    },
+    {
+      "id": "4810237",
+      "cevap1": "Static binding method overloading kullanıldığı durumlarda yapılır. Yani aynı sınıfta aynı isimde farklı parametrelerle metod tanımlandığında.Dynamic binding ise method overriding kullanıldığı durumlarda yapılır.Yani farklı Classlarda aynı isimde ve parametrelerde method tanımlandığı durumlarda.",
+      "cevap2": "Static,private ve final metodların ortak özelliği parent classtan sub classlara aktarılmasıdır. Alt classlara aktarılmadığı için metod overriding işlemi gerçekleşemez dolayısıyla dynamic bindingle bağlanamaz.",
+      "cevap3": "Overloading yaparken static binding overriding yaparken dynamic binding gerçekleşir. Overloading durumlarında binding compiler aşamasında çözülür. Overriding durumlarında ise run time aşamasında çözülür.",
+      "cevap4": "Bilmiyorum ",
+      "cevap5": "Bilmiyorum ",
+      "cevap6": "Aynı class içerisinde aynı isimle sadece parametrelerin farklı olduğu metodları tanımlayamazdık ",
+      "cevap7": "Dinamik",
+      "cevap8": "Dinamik"
+    }
+  ]
+}

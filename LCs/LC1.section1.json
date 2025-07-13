@@ -1,0 +1,194 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Recursion nedir? Recursive bir metodun temel kısımları nelerdir, bu kısımları kısaca açıklayınız.",
+    "Recursive bir metotta base case ne demektir, neden gereklidir; kısaca açıklayınız.",
+    "Bir stringi ters çeviren bir recursive metodu nasıl yazardınız, base case ne olurdu?",
+    "Recursive bir metotta base case olmazsa ne olur?",
+    "Recursive bir metot kendisini çağırdığında stack'te neler olur, kısaca açıklayınız.",
+    "Fibonacci sayılarını recursive bir metotla hesaplamak neden verimsiz olur, kısaca açıklayınız.",
+    "Tail Recursion nedir, kısaca açıklayınız."
+  ],
+  "answers": [
+    {
+      "id": "4380745",
+      "cevap1": "Matematikteki induction’ın proglama dünyasındaki hali",
+      "cevap2": "Recursion’dan çıkış koşuludur. Olmazsa sonsuz recursion’a girilir",
+      "cevap3": "Index’i 0 olqcak şekilde ve başlatmayı string uzunluğunun bir eksiğinden itibaren olacak şekilde stringi gezen bir recursive metot yazılır",
+      "cevap4": "Sonsuz döngüye girer",
+      "cevap5": "Stackde önceki bulununan durumun üstüne doğru yeni parametrelerle yeni durum yazılır ve hali hazırda üzerinde bulunulan fonksiyonlar bittikçe eki değerlere dönülerek veriler işlenerek önceki metotda döndürülmüş olur ",
+      "cevap6": "Çünkü aynı değerler tekrar ve tekrar hesaplanır",
+      "cevap7": "?"
+    },
+    {
+      "id": "7817361",
+      "cevap1": "Recursion bir metodun kendini çağırarak farklı katmanlar oluşturması ve bu katmanlar arasında tek tek bir diğerine geçerek işlevini gerçekleştirmesidir.",
+      "cevap2": "Base case metodun sonunda istenen sonuca ulaşılmasında ger katmanda tekrar eden durumdur.",
+      "cevap3": "Return içerisinde metodu çağırdıktan sonra harfi print ederek yazardım. CharAt(n)",
+      "cevap4": "Stack overload",
+      "cevap5": "Yeni bir katman açar sonuna ulaştıgında tek tek bu katmanları terk eder.",
+      "cevap6": "Optimize çalışmaz.Fazla kaynak harcar.",
+      "cevap7": "Return'ün içinde sonraki katmana geçişte gereken değişkenin değişimini sağlar."
+    },
+    {
+      "id": "8190737",
+      "cevap1": "Özyinelemedir. Bir fonksiyon kendisini çağırıyorsa recursive olur",
+      "cevap2": "Recursion'un bitirildiği case'dir. base case'e girince fonksiyon bir kez daha kendisini çağırmaz",
+      "cevap3": "sondaki harf + f(str.substring(0, uzunluk-1)). base case, stringing 0 uzunluğunda olduğu case olur",
+      "cevap4": "sonsuza kadar kendini çağırmaya devam eder, stackoverflow olur",
+      "cevap5": "her bir çağırma, stack'e bir katman daha ekler. recursion bittiğinde ise katmanlar birer birer işlenir",
+      "cevap6": "n'inci fibonacci sayısı için 2^n kez fonksiyon çağırılır",
+      "cevap7": "fonksiyonun en sonunda return ifadesi ile beraber recursionun çağırılmasıdır"
+    },
+    {
+      "id": "3659398",
+      "cevap1": "Recursion ozyinelemedir. Döngü içinde döngü mantığına benzer. 3 kısımdan oluşur. Bunlardan ilki base case: stack overflow olmasını engeller bizim onkosulumuzdur.",
+      "cevap2": "Base case stack overflow olmasını engelleyen temel koşulumuzdur.",
+      "cevap3": "Base case str.length() == 1 şeklinde if statement olurdu. Stringin ilk harfini alır geri kalanını tersten yazdirmasjni sagliyacak bir recursive metod yazardım.",
+      "cevap4": "Stack overflow",
+      "cevap5": "Stack memory de üst üste yerler açılır ve en üstteki kapanmaya başladığında sırasıyla hepsi kapanır.",
+      "cevap6": "Çünkü fibonaccide recursive mthodta iki bilinmeyen olacağından stack memoryde oldukça yer kaplar ve verimli olmaz.",
+      "cevap7": "."
+    },
+    {
+      "id": "4779274",
+      "cevap1": "recursive (özyineleme) bir metodun kendini tekrar çağırması - tetiklemesi diyebiliriz, base kısmı vardı",
+      "cevap2": "en küçük durum için gerekliydi, bu fonksiyonun yani metodun kendini sürekli çağırarak çalışmasının bi noktada durmasını sağlayan kısım. yani baz kısmında tekrar çağırmayız",
+      "cevap3": "her bi iterasyonda bir önceki elemana giden yani sondan başlayarak yazdıran bi fonksiyonumuz olurdu, base case ise ilk eleman (fonksiyonun eleman girdisi n ise base n ==0 koşulu olabilir)",
+      "cevap4": "sonsuza kadar gidebilir bence anlamli sonuç olmaz, baz ile en son durumda recursiveı durdurmayı amaçlıyoruz çünkü  while yazıp koşul yazmamak gibi bi şey olur",
+      "cevap5": "stackte tüm çağrılan fonksiyonların girdileri birikir üst üste. aynı fonk ne kadar çağrıldıysa",
+      "cevap6": "recursive genel verimsiz ve fibonacci de çok fazla stack depolaması gerektirir bence",
+      "cevap7": "unuttum"
+    },
+    {
+      "id": "6202193",
+      "cevap1": "Recursion, metodun kendisini kendi içinde çağırmasıdır.",
+      "cevap2": "Base case, base condition barındırır. Her recursion gerçekleştiğinde bu belirli base conditiona yaklaşır ve en sonunda zinciri tamamlar",
+      "cevap3": "Baştaki ve sondaki harfleri birbiriylr değiştirip bu işlemi kaç defa yaptığımı sonraki recursiona elde ettiğim stringle gönderirdim. İşlem sayısı string uzunluğunun yarısından büyük olması base condition olurdu.",
+      "cevap4": "stack overflow",
+      "cevap5": "Mevcut stackin üstüne yeni bir katman oluşturulur. Sonraki çağırmalar da böyle sürer.",
+      "cevap6": "Her bir sayı için yeni bir stack oluşturulur ve en sonunda bütün stackler silinip başa dönüldüğünde sonuç rlde edilir. Tail recurdion kullanılsa bile java bunun için optimize edilmemiştir. For döngüsü gibi ilkel çözümler daha pratik olabilir.",
+      "cevap7": "Tail recursion, base condition'un yerine getirilfiği anda hedeflenen işlemin zaten hazır ve elde olmasıdır."
+    },
+    {
+      "id": "6275288",
+      "cevap1": "Recursion metodun içinde kendisini çağırdığımız metod biçimidir. Recursive metodun temel kısımları base case ve metod işlemlerinin olduğu kısımlar ve birleştirme aşamasıdır. ",
+      "cevap2": "Base case recursive metodu sonlandırmamıza yarayan koşuldur. Bu koşulu doğru belirlememiz metodun sonsuz defa çalışmasını önler. ",
+      "cevap3": "Base case stringin uzunluğuyla ilgili olurdu. Her defasında elimizdeki stringin son harfini alırdım ve yazardım. ",
+      "cevap4": "Base case olmazsa metod sonlanmaz ve çıktı alamazsın. ",
+      "cevap5": "Her defasında bir çerçeve açılır. Parametreleri ve nerde bulunduğumuz bilgisini tutarız. ",
+      "cevap6": "Bu konuda fikrim var ama doğru olduğunu düşünmüyorum ",
+      "cevap7": "Bilmiyorum "
+    },
+    {
+      "id": "8964453",
+      "cevap1": "Yineleyen methodlardir. ",
+      "cevap2": "Base case dongunun duracagi yeri anladigi yerdir. Sonsuz donguyu engeller",
+      "cevap3": "String uzunlugunun 0 veya 1 olmasi",
+      "cevap4": "Sonsuz dongu",
+      "cevap5": "Her bir cagri stack frame olusturur, bunlar ust uste yazilmaya devam eder her iterasyonda",
+      "cevap6": "Her bir iterasyonda alt sayilar tekrar tekrar hesaplanir anlamsizdir",
+      "cevap7": "Ciktinin tekrar girise girdigi base case e kadar ne olusuyorsa devam eden iterasyon method turudur"
+    },
+    {
+      "id": "2051651",
+      "cevap1": "Methodun kendi içinde kendisini çağırmasıdır.",
+      "cevap2": "Base case recursive methodun her çağrıldığında kontrol ettigi bir şarttır. İstenilen sonuca ulaşıp ulaşılmadıgını kontrol eder ve ulaşılmışsa çıkar",
+      "cevap3": "Method her çağrıldığında artan bir sayaç koyardım, her seferinde stringin son harfini alıp return'e eklerdim. Sayaç string uzunluğuna eşit oldugunda çıkardım.",
+      "cevap4": "Metod surekli kendini çağırarak belleği doldurur. Stack overflow ",
+      "cevap5": "Çağırılan metod diğer metotların ust katmanına ksydedilir ve bu şekilde ilerler",
+      "cevap6": "Fibonacci dizisinde sadece son 2 sayıyı kullanırız, recursive metot surekli tamamını tekrar eder",
+      "cevap7": "Bilmiyorum "
+    },
+    {
+      "id": "8059049",
+      "cevap1": "Recursion bir metodun kendi kendini çağırmasıdır.Base Case ,Input ve Recursive partlara sahiptir.",
+      "cevap2": "Base case Recursion dan çıkmamızı sağlayan koşuldur,sonsuz döngüye girmemek için gereklidir.",
+      "cevap3": "String in karakter sayısının 1 olması durumu",
+      "cevap4": "Metod recursiondan çıkamaz",
+      "cevap5": "Stack te yeni bir alan  açılır,recursionla sonuca yaklaştıkça alan küçülür",
+      "cevap6": "Durmadan diğer sayılar için metodu çağıracağımızdan(örneğin 2 için 1 ve 0 gibi) bellekte çok fazla yer tutar",
+      "cevap7": "Son koşulu metodun kendisinin  sağladığı Recursion tipi"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "Recursionun temeli bir metodun tekrar kendini çağırmasıdır. Recursion kodlarında bir base case (kodun sonsuz döngüye girmemesi için) olmalıdır, ",
+      "cevap2": "Base case, metoda girilen parametrenin her iterasyonda yaklaştığı bir durum olmalıdır ki kod sonsuz döngüye girmesin.",
+      "cevap3": "if string length < 1",
+      "cevap4": "Kod sonsuz döngüye girer ve stack overflow gerçekleşir",
+      "cevap5": "yeni çağırılan metotlar üst üste biner, en son base case'e ulaşılınca sırayla operasyonlar gerçekleştirilir.",
+      "cevap6": "büyük sayılarla uğraşırken bilgisayar ne kadar hesaplama yapacağını bilmediği için for döngüsü ile yapılan hesaplamalar daha büyük sayılara ulaşabilir",
+      "cevap7": "Tek tek printlemek yerine tüm operasyonları return statementte yapan recursion"
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Kendini çağıran metot. Base case: kendini çağırmayı sonlandırdığı durum. İşlemi yaptığı yer ve birleştirdiği yer.",
+      "cevap2": "Sonsuz kere kendisini çağırmasını önlemek için. ",
+      "cevap3": "Stringin 1 karakter olması base case. Subtring(1)  + Baştaki karakteri ",
+      "cevap4": "Stack overflow",
+      "cevap5": "Yeni metotun kwndi değişkenleri ve parametreleri stacke ekleneir",
+      "cevap6": "N-1 ve n-2 yi ayrı ayrı hesaplarkan aynı değeri birden fazla kez hesapladığından",
+      "cevap7": "Recursive call un fonksiyonun yağtığı en son işlem olması. Loop a kolayca çevrilebilir"
+    },
+    {
+      "id": "8783086",
+      "cevap1": "problemi parçalayarak daha küçük problemler üzerinden büyük problemi çözmek",
+      "cevap2": "döngüden çıkabilmesi için gereken şart",
+      "cevap3": "base case string ==“” olurdu indexi birer birer arttırarak substringle methodu yeniden çağırıp 0. elemanı print ettirirdim",
+      "cevap4": "stack overflow",
+      "cevap5": "üst üste katman halinde veriler stackte birikir ",
+      "cevap6": "çok fazla katman oluşur",
+      "cevap7": "."
+    },
+    {
+      "id": "6194008",
+      "cevap1": "Bir metodun kendini tekrar çağırmasıdır. Base case recursion gerektirmeyen gerçekleşmesi en kolay olan koşuldur. Decompile case de recursion içeren kısımdır. Compile case çağrılmasıdır ( benim anladığım.)",
+      "cevap2": "Base case recursion içermeyen kısımdır ve bu recursiondan çıkmak için gereklidir.",
+      "cevap3": "Base case 1 karakter olması olurdu. Substring alırdım birden itibaren ve bunu geri metoda koyup recursion yaptırırdım sonra da artı charat 0 derdim.",
+      "cevap4": "Recursiondan çıkılamaz sonsuz döngü",
+      "cevap5": "Objeleri falan tutar ve üstteki çizgi falan atılır metod burda",
+      "cevap6": "Çünkü recursion loopa göre daha çok donanım kullanır bu yüzden verimsizdir",
+      "cevap7": "Recursionun olduğu case de returnde sadece recursion olmasıdır loopa en kolay döndürülen recurpn tipidir"
+    },
+    {
+      "id": "7214465",
+      "cevap1": "özyineleme yani bir problemin çözümünün diğer küçük parçalarla çözülmesidir. Temekl Kısımları Temel Basamak ve Özyinelemeli basamaktır.",
+      "cevap2": "Algoritmanın durması gereken durumudur. Gerekli olma sebebi algoritmanın daha fazla dönmesi yerine sonucu çıktı olarak vermesi.",
+      "cevap3": "boş olurdu",
+      "cevap4": "sonsuz döngü",
+      "cevap5": ".",
+      "cevap6": "aynı hesaplama çok kez yapılmasından",
+      "cevap7": "bir algoritmanın kendisini son defa çağırdığı bir yöntemdir"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Kendi kendini çağıran metotlar özyinelemelidir.",
+      "cevap2": "Metodun ne zaman kendini çağırmayı bırakıp bir değer döndüreceğini belirleyen koşul.",
+      "cevap3": "Stringin 1. indexten itibaren sonuna kadar olan kısmı ile kendini tekrar çağıran, çıktıya stringin ilk karakterini ekleyip döndüren bir metot yazarım. Temel koşul string uzunluğu 2 den küçük ise stringin kendisini döndürmesi.",
+      "cevap4": "Sonsuz döngüye girer. Sürekli yeni metot çağırıldığından stack bellekte yer kalmaz.",
+      "cevap5": "Yeni bir yer ayırılıp stack belleğin tepesine yerleştirilir. Metot çalışmayı bitirene kadar hafıza serbest bırakılmaz.",
+      "cevap6": "Bellekte çok fazla yer kaplar. Yavaş çalışır",
+      "cevap7": "."
+    },
+    {
+      "id": "9830856",
+      "cevap1": "bir metodun içerisinde metodun kendisinin tekrar tekrar çağırılmasıdır. Uygun koşul sağlandığında metoda tekrar girmez ve metod burada sonlanır.",
+      "cevap2": "Base case, metodun kendisinin içine tekrardan girmemesini sağlayan koşulu arayan adımdır.",
+      "cevap3": "metoda parametre olarak stringi ve count++ değerini gönderirim, 0la başlayan count lengthe eşit olduğunda tekrar metoda girmez bu da base caseimiz olur",
+      "cevap4": "stack overflowla karşılaşırız",
+      "cevap5": "değişen değerler için stackte her bir veri tipi için teker teker yer açılır.",
+      "cevap6": "tutulması gereken fazla sayıda değer olduğu için her birisini değiştirmek çok zor olur",
+      "cevap7": "metodun kendisinin tekrar return edilmesidir"
+    },
+    {
+      "id": "1764665",
+      "cevap1": "Recursion yenilemeye dayalı bir problem çözme yöntemidir. Bu yöntem problemin belli bir kısmını çözen bir methodun kendini tekrar çağırmasına dayanır. Her yeniden çağırma problemi biraz daha çözer. Recursive bir methodun parçaları base case ",
+      "cevap2": "Base case problem çözümünde sona gelip gelmediğini kontrol eden kısımdır.",
+      "cevap3": "Bios",
+      "cevap4": "Stackoverflow hatası ile karşılaşılır.",
+      "cevap5": "Yeni bir stack açılır, bu stack yerel değişkenleri ve önceki adımda nerede kaldığımız gibi bilgileri içerir.",
+      "cevap6": "Çünkü ",
+      "cevap7": "Methodun kendini çağırdığı kısmın sonda olmasıdır. Önceki stackte okunacak hiç kod kalmaz"
+    }
+  ]
+}

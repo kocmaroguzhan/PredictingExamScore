@@ -1,0 +1,244 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Java'da Exceptionlar kaç çeşittir, her çeşit için birer örnek verin.",
+    "Java'da 'throws' keywordunu kullanırken kısıtlar nedir, override edilen metotlarda bu kısıtlar nasıl işler?",
+    "Finally bloğunun işlevi nedir?\nFinally bloğu exception atılmayan durumlarda da çalışır mı?",
+    "Java'da kendi exceptionunuzu nasıl tanımlarsınız?",
+    "Java'da bazen catch edilen bir exception bazı işlemler yapıldıktan sonra tekrar fırlatılır, bunun amacı ne olabilir?",
+    "static int doExceptionalMath(int x){\n    try{\n         int result = x / 0;\n        return result;\n    }\n    catch(ArithmeticException e){\n        System.out.println(\"CAUGHT\");\n        return -1;\n    }\n    finally{\n        System.out.println(\"FINALLY\");\n        try{\n            finalMath();\n        }\n        catch(Exception e){\n            catchFinal();\n        }\n        return 41;\n    }\n}\n\nstatic void finalMath() throws Exception{\n    System.out.println(\"OOPS\");\n    throw new Exception();\n}\nstatic void catchFinal(){\n    System.out.println(\"DONE\");\n}\n\n// PSVM\nSystem.out.println(doExceptionalMath(77));\n\nOutput?",
+    "static void m2(){\n    try{\n        System.out.println(\"TRYING m1\");\n        m1();\n    }\n    catch(Exception e){\n        System.out.println(\"CAUGHT1\");\n    }\n    catch(IOException e){\n        System.out.println(\"CAUGHT2\");\n    }\n    finally{\n        System.out.println(\"FINALLY\");\n    }\n}\nstatic void m1() throws IOException {\n    try {\n        throw new FileNotFoundException();\n    } catch (FileNotFoundException e) {\n        throw new IOException();\n    }\n}\n\nKod bu şekilde derlenir mi?\nEğer derlenmezse hata(lar)nın kaynağı nedir?\nVarsa hatay(lar)ı nasıl düzeltirsiniz?\nVarsa hata(lar)yı düzelttikten sonra output ne olur?"
+  ],
+  "answers": [
+    {
+      "id": "5628146",
+      "cevap1": "checked(IO),unchecked(null)",
+      "cevap2": "checked exception fırlatıyorsa, bu exception ya çağıran metot tarafından try-catch bloğunda ele alınmalı override edildiyse daha fazla expection eklenemez",
+      "cevap3": "Exception olsa da olmasa da her durumda çalışır işlevi bellek temizleme,dosya kapatma vs.",
+      "cevap4": "Exceptiondan türetilmiş bir sınıf yazarım",
+      "cevap5": "Exception yakalanıp ek bilgi isteniyor olabilir veya mesaj verilebilir ",
+      "cevap6": "CAUGHT  \nFINALLY  \nOOPS  \nDONE  \n41",
+      "cevap7": "TRYING m1  \nCAUGHT2   "
+    },
+    {
+      "id": "2179244",
+      "cevap1": "Checked exception, unchecked exception, errors",
+      "cevap2": "Checked exception throw ediliyorsa, override edilen metotta aynı ya da alt türden ecception olmalı\n",
+      "cevap3": "Kaynakları serbest bırakmak ve temizlemek için kullanılır\nÇalışır\n",
+      "cevap4": "class MyException extends Exception {\n    public MyException(String message) {\n        super(message);\n    }\n}",
+      "cevap5": "İşlenmiş exceptionu dışarı throw etmek için",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE\n41",
+      "cevap7": "IOException zaten Exception’ın alt sınıfı olduğundan aynı try bloğunda iki kez catch edilemez.\n catch(IOException e) bloğunu silmek veya Exception’ı daha sonra catch etmek.\n\nTRYING m1  \nFINALLY  \nCAUGHT1  "
+    },
+    {
+      "id": "4856424",
+      "cevap1": "kontrol edilen ve kontrol edilmeyen",
+      "cevap2": "bilmiyorum ",
+      "cevap3": "bilmiyorum",
+      "cevap4": "exceptionu extend ederek",
+      "cevap5": "bu duruma rethrowing denir hata kaynağını saklamak amaç olabilir",
+      "cevap6": "bilmiyorum ",
+      "cevap7": "bilmiyorum"
+    },
+    {
+      "id": "6914659",
+      "cevap1": "2 çeşittir checked ve unchecked. Checked exception örneği io, unchecked exception örneği runtime.",
+      "cevap2": "Checked exceptionlar için throws kullanılır. Override edilen metodlarda throw yazılarak exception fırlatılır.",
+      "cevap3": "Ne olursa olsun çalıştır demektir. Finally blogu exception atılmayan yerde çalışmaz.",
+      "cevap4": "Class yazıp extends throwable ya da extends exception yazarak.",
+      "cevap5": "Checked exception olduğu için. Veya birden fazla exception olabileceği için.",
+      "cevap6": "CAUGHT\nFINALLY\nDONE",
+      "cevap7": "Derlenmesi. Hata ise ilk catch blogunda exception yazıp altındaki catch blogunda exception classinin alt sınıfı olan ioexception yapmasıdır. Hatayı düzeltmek için ioexception ı yukarı, exception ı aşağı almalıyız. Hata duzeltildikten sonra:\nTRYING m1\n CAUGHT2\nFINALLY"
+    },
+    {
+      "id": "3963286",
+      "cevap1": "2 tanedir io(dosya okuma) ve run time (outofbound)",
+      "cevap2": "Throws attığımızda mutlaka hatayı geri yakalamaĺıyız",
+      "cevap3": "Try yapısında en sonda mutlaka yapılan işlemdir. Her durumda çalışır.",
+      "cevap4": "Class myexeption extend exception",
+      "cevap5": "Hata oluştuğunda belili işlemleri yaptırıp ,sorunu ertelemek",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE\n41",
+      "cevap7": ".."
+    },
+    {
+      "id": "5361565",
+      "cevap1": "2 çeşittir checked ve unchecked checkede ornek olarak IOexception verebiliriz uncheckede ornek olarak ise runtime exception verebiliriz.",
+      "cevap2": "sadece throwable olan objeler için kullanilabilir. unchecked olan exceptionlarda throws diye bildirmemiz gerekmez.bir metot birden fazla thow yapabilir.overrideda ise daha az spesifik bir exception throw edemeyiz bu checkedler icin uncheckedlerde böyle bir kisitlama yok.",
+      "cevap3": "finally blogu her zaman çalışır açık olan socketları falan kapatmak için kullanilir.kaynaklarin bosa harcamasını engeller",
+      "cevap4": "exceptions  classından extend ederek yeni bir class olusturabiliriz ve bunun objesini olusturarak da kendi exceptionımızı oluşturabiliriz.",
+      "cevap5": "farklı bir exception varsa bunu da yakalayabilmek için.",
+      "cevap6": "caught \nfinally\noops\nDone\n77",
+      "cevap7": "?"
+    },
+    {
+      "id": "4114373",
+      "cevap1": "-",
+      "cevap2": "throws kullanırken child classi yazarsak catch içinde parent class'i cagiramayiz. bu yüzden eğer birden fazla hata catch etmek istiyorsak tüm hataların ortak atasını(parentini) throws ile almalıyız",
+      "cevap3": "finally bloğundaki kodlar, try'da throw edilen hata catch'de yakalansa da yakalanmasa da çağrılır",
+      "cevap4": "bir class oluşturarak, ismine oluşturmak istedigimiz hata adını yazarak throwable classini extend edip, olusturmak istediğimiz durumu if'le yazdıktan sonra o durumun içinde hatamızı tanımlıyoruz, daha sonra o hatanin olup olmadığı yerde kontrol için yazdigimiz classta olusturdugumuz hata classini 'throws' ile alıp, catch içinde o hatayı tanimlayarak yazıyoruz.",
+      "cevap5": "o class tam olarak o sorunu çözememiş ise bir sonraki parent'a fırlatır ve hata orda çözülür",
+      "cevap6": "CAUGHT\n-1\nFINALLY\nOOPS\nDONE",
+      "cevap7": "burada m1()deki IOException m2() içerisine gittiğinde catch'de ilk olarak Exception olarak yakalanır bu yüzden de CAUGHT1 yazar yani CAUGHT2 yazmamış olur, çünkü try catch okunurken yukardan başlanarak aşağı inilir"
+    },
+    {
+      "id": "5187413",
+      "cevap1": "2 çeşittir . Unchecked ve checked exceptions. Unchecked exceptionlara runtime exceptionlar  örnek verilebilir örneğin nullpointerexceptin. IOexception checked exceptionlara örnek verilebilir.",
+      "cevap2": "Throws keywordu kullanarak attığımız exceptionlardır. Eğer override edilmiş bir metotta bunu yapıyorsak throws yaptığımız exceptionun classı override ettiģimiz metotta throws yaptığımız exceptionun classından daha üst seviyede olamaz .",
+      "cevap3": "Finally bloğu exception atılsa da atılmasa da her zaman çalıştırılır.",
+      "cevap4": "Exception sınıfından bir class türeterek bu classta bir boş bir de string ifade alan olacak şekilde 2 contructor tanımlarım. Constructorların içinde super metodunu çağırırım.",
+      "cevap5": "Handle edilmesi gerekilen exceptionu daha basitleştirmek.",
+      "cevap6": "CAUGHT\nFINALLY \nOOPS\nDONE\n41",
+      "cevap7": "Derlenmez IO exception Exceptionun subclassıdır bu yüzden sıralamada önce o yazılmalıdır.\n\nTRYING m1\nCAUGHT2\nFINALLY"
+    },
+    {
+      "id": "2103960",
+      "cevap1": " ",
+      "cevap2": " ",
+      "cevap3": " Try chatchten sonra hata bulunsa da bulunmasa da finally bloğu yapılır. Exception atılmazsa trydan sonra catchi atlar ve finallyi yapar",
+      "cevap4": " exception classından yeni bir obje oluşturulur",
+      "cevap5": "  ",
+      "cevap6": "CAUGHT -1 FINALLY OOPS DONE ",
+      "cevap7": " Hayır exception ioexceptionı kapsadığı için sıkıntı çıkar ikisini yer değiştirebiliriz trying CAUGHT 1 FINALLY"
+    },
+    {
+      "id": "6343320",
+      "cevap1": "3 çeşittir\nOut of bound \nIO exception\nArithmetic exception",
+      "cevap2": ".",
+      "cevap3": "Finally bloğu exception catch edilse bile çalışan blokdur. Evet çalışır",
+      "cevap4": "Exception class ından yeni bir exception object i oluşturarak",
+      "cevap5": "O exception haricinde bir exception var mı yok mu bunu bulmak için",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE",
+      "cevap7": "Derlenmez çünkü bu metotlar hiçbir yerde çağırılmıyor"
+    },
+    {
+      "id": "9905145",
+      "cevap1": "2, checked ve unchecked",
+      "cevap2": "throws komudu icin atilan seyin throwable olmasi gerekiyor, override edilen metotlara sirayla bakmak gerekir",
+      "cevap3": "finally bolugu scan gibi sonrasinda kapanmasi gereken metodlari kapatmak icin kullanilabilir, finally blogu her durumda çalışır",
+      "cevap4": "yazdigimiz classi extends exception yaparak",
+      "cevap5": "sorunu tam olarak cozebilmek icin tekrar firlatilmasi gerekiyor olabilir, veya baska bir yerde hataya sebep olup olmadigina bakmak icin",
+      "cevap6": "CAUGHT\nFINALYY\nOOPS\nDONE",
+      "cevap7": "derlenir ancak catch blogunda en uste exception u koydugumuz icin altindaki ioexception hicbir sey yakalayamaz(exception daha genel oldugu icin kendisi tutar)\nTRYING m1\nCAUGHT 1\nFINALLY"
+    },
+    {
+      "id": "6539697",
+      "cevap1": "run-time exception = OutOfBoundException",
+      "cevap2": "override ederken bir üstteki metottan daha genel veya farklı tür bir exception atamayız.",
+      "cevap3": "finally bloğu exception atılsa da atılmasa da en sonda çalışır",
+      "cevap4": "Exception e = new Exception(); ile yeni exception objesi oluşturulabilir,\nclass MyException extends Exception ile yeni bir exception classı oluşturulabilir",
+      "cevap5": "o metodun çağırıldığı diğer metotların da bu exception karşısında yapması gereken işlemler vardır, onların da görebilmesi için tekrar aynı exception fırlatılabilir.",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE\n-1",
+      "cevap7": "2 tane catch bloğu olduğu ve exception türü ikisine de uyduğu için hangisini çalıştıracağını bilemez, ikisinden biri silinirse kod çalışacaktır.\nOutput da buna göre \nTRYING m1\nCAUGTH1 \nya da \nTRYING m1\nCAUGHT2 \nolabilir."
+    },
+    {
+      "id": "9164612",
+      "cevap1": ".",
+      "cevap2": ".",
+      "cevap3": ".",
+      "cevap4": ".",
+      "cevap5": ".",
+      "cevap6": ".",
+      "cevap7": "."
+    },
+    {
+      "id": "6418019",
+      "cevap1": "3 çeşittir: compile time error: syntax hataları örneğin parantezin unutulması, runtime error: sıfıra bölme , logical error: programın çalışıp istenilen sonucu vermemesi.",
+      "cevap2": "checked türündeki hatalar icin kullanılır. ",
+      "cevap3": "-",
+      "cevap4": "o exception adı ile bir class oluştururum. Bu class exception classını override etmelidir.",
+      "cevap5": "-",
+      "cevap6": "CAUGHT \n-1\nFINALLY \nOOPS\nDONE",
+      "cevap7": "-"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "Runtime ve ",
+      "cevap2": "Override eden metodun override ettiği metod'a göre ya eşit, ya da daha dar bir throwable kapsamına sahip olması, veya direkt throws ifadesinin kaldırılması gerekir.",
+      "cevap3": "Finally bloğu her daim işletilen bir kod bloğudur. Catch'e girilirse de girilmezse de çalışır. Catch'in içinde return edilir ve bloktan çıkılırsa da çalışır. ",
+      "cevap4": "Exception sınıfını extend ederek yeni bir exception sınıfı oluşturarak. Bunun içinde exception'un bakacağı kondisyonları ve hangi durumda exception fırlatacağını if case'leri ile kontrol edebiliriz.",
+      "cevap5": " ",
+      "cevap6": "CAUGHTFINALLYOOPSDONE41",
+      "cevap7": "Unreachable code mevcut. exception bloklarından biri silinmeli. "
+    },
+    {
+      "id": "6157698",
+      "cevap1": "3\nFileIo\nnumericalmismatch",
+      "cevap2": "Override ettiği metoddan daha üst, genel bir şey throw edemez eğer override ettiği metod exception throwluyorsa throwable throwlayamaz",
+      "cevap3": "Finally bloğu try da ya da catch exception olup olmamasına bakmaksızın çalışan kod bloğudur",
+      "cevap4": "throw new AException(\"This is AException\")",
+      "cevap5": ".",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE\n-1",
+      "cevap7": "TRYING m1\nCAUGHT1\nFINALLY"
+    },
+    {
+      "id": "8857652",
+      "cevap1": "Checked ve unchecked olmak üzere 2 şekil.  Checked compile zamanı unchecked ise runtime exception olur.",
+      "cevap2": "Override edildiğinde kendinden daha kısıtlı bir exception çağıramaz hiyerarşik olarak. Daha da özelleştiremez ama genelleştirebilir.",
+      "cevap3": "Finally bloğu her durumda execute edilir(return olsa bile). System.exit olup direkt sistemden çıkarsa çalışamaz. Exception atılmayan durumlarda da çalışır\nYani her durumda çalısmasinı istediğim bir kod varsa o bloğa yazarım.",
+      "cevap4": "Normal method gibi ama Exception'ı extend etmeli.",
+      "cevap5": "Başka bir kısmında exceptionlarla karşılasılmıs olabilir. Multiple exception türüyle karsılaşılmış olunabilir.",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE",
+      "cevap7": "m2'de hiyerarşik bozukluk var. Exception daha genel olduğu için IOException'dan daha önce gelmeliydi.\nCAUGHT2\nFINALLY"
+    },
+    {
+      "id": "2384475",
+      "cevap1": "2 çeşittir. Io ve Runtime exception",
+      "cevap2": "Trowable olmak zorundadır ve override edildiğinde kendisi ve subclassları throws edilebilir. ",
+      "cevap3": "Her koşulda kod bloğunu çalıştırır. Exception atılıp atılmaması önemli değildir.",
+      "cevap4": "İstediğimiz türdeki exception classını extend ederiz ve şu koşul gerçekleşirse exception fırlat deriz.",
+      "cevap5": ".",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE\n-1",
+      "cevap7": "Normalde specific olandan olmayana doğru catch ederiz ama böylede çalışır\nTRYING m1\nCAUGHT2\nFINALLY"
+    },
+    {
+      "id": "9245287",
+      "cevap1": "iki çeşittir. Checked ve unchecked exceptions.Ornegin runtime checked exception iken compile time unchecked exception.",
+      "cevap2": "throws sadece throwable objeler için geçerlidir. Method override edilirken throws yazmak zorunlu değil. Eğer yazılırsa parent classin throws ettiği classa eşit veya daha alt seviyede bir exception türü yazılmalıdır.",
+      "cevap3": "Finally blogu hata olsa da olmasa da Çalışır. Exception atılmayan durumlarda da Çalışır.",
+      "cevap4": "myException extends Throwable or myException extends Exception. Yani throwable olan bir objeyi extend ederim.",
+      "cevap5": "Exception düzeltiğinden emin olmak. ",
+      "cevap6": "CAUGHT\nFINALLY\nDONE\n-1",
+      "cevap7": "Unreaceble code\nTRYING m1\n"
+    },
+    {
+      "id": "7374887",
+      "cevap1": "İo exceptions örneğin FileNotFound,Runtime exceptions örn arrayOutOfBounds,",
+      "cevap2": "Throws keywordundan sonra yazacağımız şeyin \"throwable\" olması gerekir.Override da ise overrde ettiğimiz metottan daha genel bir exception fırlatamayız örneğin Ata classın metotunda İO exception fırlatırken override ettiğimiz metotta Exception fırlatamayız.",
+      "cevap3": "Finally bloğu her şekilde çalışır exception bulunsada bulunmasada.",
+      "cevap4": "Exception classını extend eden bir class yazarak",
+      "cevap5": "Yapılan işlem hatayı düzeltmek için yeterli olmama ihtimali varsa olabilir.",
+      "cevap6": "CAUGHT\nFINALLY\nOOPS\nDONE\n41",
+      "cevap7": "m2() metotundaki 2.catch bloğu erişilemez kod olduğundan kod çalışmaz\ncatch bloklarının yerleri değiştirilerek çözülebilir.Output\nTRYİNG M1\nCAUGHT2\nFİNALLY"
+    },
+    {
+      "id": "8059049",
+      "cevap1": "Checked ve Unchecked.Checked e file IO,Unchecked e ArrayIndexOutOfBounds exceptionları örnek verilebilir",
+      "cevap2": "Checked exception da try catch ile kontrol edilmeli.Override da exception ı tekrar yazman gerekmez.",
+      "cevap3": "Finally kaynak temizleme vb. için kullanılan bir bloktur.\nFinally bloğu exception olsa da olmasa da çalışır.",
+      "cevap4": "extends Exception şeklinde derived bir Exception class ı yazarım",
+      "cevap5": "Sadece exception ı catch etmek yetmez,üst class a atıp bilgi isteyebilir",
+      "cevap6": "CAUGHT\nFINALLY\nDONE\n41",
+      "cevap7": "TRYING m1\nCaught2\nFinally"
+    },
+    {
+      "id": "4275079",
+      "cevap1": "2 çesit  checked ve unchecked",
+      "cevap2": ".",
+      "cevap3": "Catchden sonra try catch blogunda kapanistan once yapilmasi gereken seyler icin kullanilir .",
+      "cevap4": "Throwable bir  exception objesi olusturarak.",
+      "cevap5": "Baska bir try catch metodu icin bir isleve sahip olabilir.",
+      "cevap6": "Caught\nFINALLY\n-1\nOOPS\nDONE\n41",
+      "cevap7": "DERLENMEZ CUNKU EXCEPTİON IO EXCEPTİONUN üst sınfı olmasina rağmen daha once olan bir catch blogunda yakalamistir eger catch bloklari yer degistirirse hata düzelir.\nOutput:\nTRYİNG M1 \nCAUGHT1\nFINALLY"
+    },
+    {
+      "id": "2112376",
+      "cevap1": "-",
+      "cevap2": "Exception verebileceğini belirtir, kısıt olarak da ya kendi içerisinde ya da overrideda try catch ile handle edilmesi gerekir",
+      "cevap3": "Try catch durumuna bakmaksızın her durumda çalışmasını sağlar",
+      "cevap4": "-",
+      "cevap5": "Başka bir yerde handle edilip edilmediğini görmek için",
+      "cevap6": "-",
+      "cevap7": "-"
+    }
+  ]
+}

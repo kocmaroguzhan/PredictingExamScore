@@ -1,0 +1,319 @@
+package lab1111;
+
+import java.util.List;
+
+public class MuzikCalar {
+    private CalmaStratejisi strateji;
+
+    // Çalma stratejisini ayarla
+    public void setStrateji(CalmaStratejisi strateji) {
+        this.strateji = strateji;
+    }
+
+    // Seçilen stratejiye göre şarkıları çal
+    public void muzikCal(List<Sarki> sarkiListesi) {
+        if (strateji != null) {
+            strateji.cal(sarkiListesi);
+        } else {
+            System.out.println("Çalma stratejisi belirleyin!.");
+        }
+    }
+}
+
+package lab1111;
+
+
+
+	import java.util.Arrays;
+	import java.util.List;
+
+	public class Main {
+	    public static void main(String[] args) {
+	        // Farklı türde şarkılar oluşturuluyor
+	        Sarki s1 = new MetalSarki("Years of Silence", "Thurisaz", "Aykırı ve atmosferik");
+	        Sarki s2 = new MetalSarki("Voice of the Soul", "Death", "Enstrümantal");
+	        Sarki s3 = new RockSarki("Small Mountain", "Midlake");
+	        Sarki s4 = new RockSarki("Ankara", "Vega");
+	        Sarki s5 = new KlasikSarki("Una Mattina", "Ludovico Einaudi");
+
+	        // Şarkılar çalma listesi
+	        List<Sarki> sarkiListesi = Arrays.asList(s1, s2, s3, s4, s5);
+
+	        // Müzik çalar nesnesi
+	        MuzikCalar muzikCalar = new MuzikCalar();
+
+	        // Sıralı çalma stratejisi
+	        System.out.println("Sirali Calma:");
+	        muzikCalar.setStrateji(new SiraliCalma());
+	        muzikCalar.muzikCal(sarkiListesi);
+
+	        // Karışık çalma stratejisi
+	        System.out.println("Karisik Calma:");
+	        muzikCalar.setStrateji(new KarisikCalma());
+	        muzikCalar.muzikCal(sarkiListesi);
+
+	        // Rockcu özel çalma stratejisi
+	        System.out.println("Rockcu Ozel Calma:");
+	        muzikCalar.setStrateji(new RockcuOzelCalma());
+	        muzikCalar.muzikCal(sarkiListesi);
+
+	        // Metal şarkıların özelliklerini göster
+	        System.out.println("Metal Ozellikleri:");
+	        for (Sarki sarki : sarkiListesi) {
+	            if (sarki instanceof MetalSarki) {
+	            	((MetalSarki) sarki).gosterMetalOzellikleri();
+	            }
+	        }
+	    }
+	}
+	
+	
+	
+
+
+
+package lab1111;
+
+public class KlasikSarki extends Sarki{
+private String klasikOzellik = ("hafif ve sakin");
+
+public KlasikSarki(String isim, String sanatci) {
+super(isim, sanatci);
+
+}
+
+@Override
+public void oynat() {
+    System.out.println("[KLASIK] " + sanatci + " - " + isim + " (" + klasikOzellik + ")");
+}
+
+
+}
+package lab1111;
+
+public class MetalSarki extends Sarki{
+	private String metalOzellik;
+
+
+
+public MetalSarki(String isim, String sanatci, String metalOzellik) {
+	super(isim, sanatci);  // Sarki classından
+	this.metalOzellik = metalOzellik;
+}
+
+
+public void gosterMetalOzellikleri() {
+	System.out.println(" sanatci " +  sanatci +" - " + isim + " (" + metalOzellik + ")");
+}
+
+@Override
+public void oynat() {
+	
+	        System.out.println("[METAL] " + sanatci + " - " + isim + " (" + metalOzellik + ")");
+	    
+	}
+}
+package lab1111;
+
+public class RockSarki extends Sarki {
+	private String rockOzellik = ("huzurlu ve nostaljik");
+    public RockSarki(String isim, String sanatci) {
+        super(isim, sanatci);
+       
+    }
+    
+   
+
+
+    @Override
+    public void oynat() {
+        System.out.println("[ROCK] " + sanatci + " - " + isim + " (" + rockOzellik + ")");
+    }
+}
+package lab1111;
+import java.util.Collections;
+import java.util.List;
+
+
+public class KarisikCalma implements CalmaStratejisi {
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        System.out.println("Şarkılar karışık bir şekilde çalınacak !");
+        Collections.shuffle(sarkiListesi);
+        for (Sarki sarki : sarkiListesi) {
+            sarki.oynat();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package lab1111;
+
+import java.util.List;
+
+public class SiraliCalma implements CalmaStratejisi {
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        System.out.println("Şarkılar sıralı bir şekilde çalacak!");
+        for (Sarki sarki : sarkiListesi) {
+            sarki.oynat();
+        }
+    }
+}
+
+package lab1111;
+
+
+public abstract class Sarki {
+ protected String isim;
+ protected String sanatci;
+ 
+ 
+ 
+ public Sarki(String isim, String sanatci) {
+     this.isim = isim;
+     this.sanatci = sanatci;
+ }
+
+ 
+ public abstract void oynat();
+}
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+package lab1111;
+
+import java.util.List;
+
+public class RockcuOzelCalma implements CalmaStratejisi {
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        System.out.println("Rock şarkılar için özel şarkı listesi çalınacak!");
+
+        boolean isRock = false; 
+        for (Sarki sarki : sarkiListesi) {
+            if (sarki instanceof RockSarki) {
+                System.out.println("Ses seviyesi : YÜKSEK");
+                sarki.oynat();
+                isRock = true;
+            } else {
+                if (isRock) {
+                    System.out.println("Ses seviyesi normale döndü");
+                }
+                sarki.oynat();
+                isRock = false;
+            }
+        }
+    }
+}
+
+
+package lab1111;
+import java.util.List;
+public interface CalmaStratejisi {
+
+void cal(List<Sarki> sarkiListesi);
+}

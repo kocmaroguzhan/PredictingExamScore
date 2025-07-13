@@ -1,0 +1,213 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Java'da abstract class nedir, concrete bir classtan farkı nedir?  Abstract classların veya interfacelerin constructoru olabilir mi? ",
+    "Abstract bir metot abstract bir classta implement edilebilir mi, evet ise nasıl?",
+    "Abstract metot/classların 3 temel özelliğini (veya bize sağladığı yetenekleri) yazınız.",
+    "Abstract class ile Interfaceler arasındaki fark nedir?\nAbstract classlar ve interfaceler tip olarak kullanılabilir mi?\nYani 'MyAbstractClass obj1;' veya 'MyInterface obj2;' şeklindeki declarationlar mümkün müdür?",
+    "Marker interface ve Functional interface kavramları nedir, nasıl kullanılır? ",
+    "Bir class birden çok interfaceyi implement edebilir mi?\nBir interface başka bir interfaceyi implement edebilir mi?",
+    "abstract class Animal {\n    String name;\n    Animal(String name) { this.name = name; }\n    abstract void sound();\n    void printName() { System.out.println(\"Animal: \" + name); }\n}\n\nclass Dog extends Animal {\n    Dog(String name) { super(name); }\n    void sound() { System.out.println(\"Woof\"); }\n}\n\npublic class TestAnimals {\n    public static void main(String[] args) {\n        Animal a = new Animal(\"Buddy\");\n        a.printName();\n        a.sound();\n    }\n}\n\nYukarıdaki kodda hata nerededir, bu hatayı nasıl düzeltirsiniz?\nHatayı düzelttikten sonra output?",
+    "interface Flyable {\n    default void move() {\n         System.out.println(\"Flying\");\n    }\n}\n\ninterface Swimmable {\n    default void move() {\n         System.out.println(\"Swimming\");\n    }\n}\n\nclass Duck implements Flyable, Swimmable {\n    public void move() {\n         super.move();\n    }\n}\n\npublic class TestDuck {\n    public static void main(String[] args) {\n         Duck d = new Duck();\n         d.move();\n    }\n}\n\nKod bu haliyle compile edilebilir mi?\nKoddaki hata nedir, nasıl düzeltilir?\nYeni haliyle output?"
+  ],
+  "answers": [
+    {
+      "id": "5628146",
+      "cevap1": "Abstract classda en az 1 metoda sahip olabilirken concrete classta tüm metotlar tanımlıdır abstract classların constructerı olabilir interfacelerin olamaz",
+      "cevap2": "Hayır edilemez",
+      "cevap3": "abstraction ,partial implementation, polimorfizim",
+      "cevap4": "abstractlar hem abstract hem concrete metotlar içerebilir. Interface\nyalnızca abstract metotlar içerir abstclar extends edilir interface impelements",
+      "cevap5": "marker : içinde hiçbir metot bulunmayan bir arayüz functional :tek bir abstract metodu olan interface",
+      "cevap6": "1. evet implements ile edilir 2. Bir interface başka bir interface’i implements edemez ama extends edebilir",
+      "cevap7": "Animal a = new Animal(\"Buddy\"); \nAnimal classı abstract olduğu için doğrudan bir obje oluşturulamaz. onun yerine subclass olan dogdan oluştururuz \n\n",
+      "cevap8": "çalışmaz"
+    },
+    {
+      "id": "3659398",
+      "cevap1": "Abstract class soyut sınıf anlamına gelir concrete classtan farkı objesini olusturamamaktir abstrac classin constructreri olabilir interfacin olamaz.",
+      "cevap2": "Hayır ",
+      "cevap3": "Objeleri olusturulmaz. Metotlar implement edilmesi kendi class içinde. Override etmek zorunludur.",
+      "cevap4": "Abstract class extend edilir interfaceler implement edilir ve abstract classin constructreri olurkeen interfacin olmaz. İkisinde de obje olusturulamaz",
+      "cevap5": "Marker interface içinde method olmayan boş interfacelere denir functional interface sadece 1 tane abstract methodu olan interfacelere denir.",
+      "cevap6": "İlki evet ikinisi hayır implement etmez extend eder.",
+      "cevap7": "Animal obje olusturamaz onun yerien dog diye olusuturlmasi gerekiuro. Output:animal buddy woof",
+      "cevap8": "Edilmez çünkü ata class yokken süper çağrılmış. Ve iki interface de move diye defaultethod girilmiş bu methodlarin ismi değişmeli ya da ikisinden biri implement edilmemeli öyle bir durumda swimming ya da flying outputu cikacaktir"
+    },
+    {
+      "id": "4380745",
+      "cevap1": "İmplementasyon aşamasında eksik olan sınıftır abstract metotlar tanımlayabilir",
+      "cevap2": "Edilemez",
+      "cevap3": "Temel sağlanması gereken bir şablon sunar, bu da bize abstract metotları, implemente edilmeye zorunlu bırakılan class ve metotlar",
+      "cevap4": "Abstract class’lar concrete metotlar içerebilir",
+      "cevap5": "Bir şeyin bir şey yapıp yapamayacağını belirten interfsce’ler vardır Runnable gibi bir de belirli görevlerin nasıl gerçekleştirileceğinin ayarlanması gereken interface’ler olur",
+      "cevap6": "Bir class birden çok interface’i implemente edebilir. Bir interface diğer interface’leri extend eder.",
+      "cevap7": "a içindeki sound metodu implemente edilmemiş versiyonudur onun yerine dog nesnesi oluşturulup dog referanxı tutan bir variable’a verilmelidir \n\nOutput: Buddy Woof",
+      "cevap8": "İnterface içinde concrete metot oluşturulmuş\nSwimmiable abstract class yapılıp flyable implemente edilmelidir \noutput: Swimming"
+    },
+    {
+      "id": "4779274",
+      "cevap1": "abstract classlar soyuttur, metotu yaratır tanım içermez alt classlar için yapı sağlar; constructor olabilir",
+      "cevap2": "implement dediğimiz interface ile alakalı değil mi",
+      "cevap3": "sıfatlardan bahsedebilir hale geliriz, soyutlama işte yani nesnesel programlama yapabilmek için nesneyi koda soyut aktardığımız hal",
+      "cevap4": "abstract classın abstract olmayan metotları olabilir interface tamamen soyut, tip olabilirler aynı zamanda",
+      "cevap5": "ilk kez duyuyırum",
+      "cevap6": "evet birden çok eder; ama bir interface diğerini extend eder",
+      "cevap7": "hata Animal a variablesinin yine animal tipinde bir objeyi tutuyo olması. bu durumda a.sound abstract kalmış bi function olarak kalır, dogtaki sounda zaten inemez ama bence hata da verir. onu dğzeltirsek de çıktı Animal:Buddy /n Woof olr.",
+      "cevap8": "bence interfacenin içinde de metot içi tanım yapamıyoz zaten ikisi ayrı ayrı yapabilseydi aynı anda implement edemezdik bence, o iç tanım Duck classı içinde yapılmalı ve yazdırılmalı. bu haliyle output doğrudan Swimming ya da Flying biz ne dersek artık sonuçta ikisini de yapabilir, ne durumda olduğuna bağlı bi metot yazılır"
+    },
+    {
+      "id": "8190737",
+      "cevap1": "İçinde abstract metodların bulunduğu classlara abstract class denir. ikisinin de constructurları olamaz",
+      "cevap2": "evet. abstarct keywordu kullanılarak. fonksiyonun tanımı yapılmaz",
+      "cevap3": "abstract metodları tanımı yapılmaz. concrete hale getirilmek istendiğinde yapılır. abstract classlar, atası olduğu classlara \"şunu şunu implement etmek zorundasın\" der. abstract classları polymorphism için kullanabiliriz",
+      "cevap4": "abstract classlar bir classtır, extend edilirler. interfaceler class değildir. implement edilirler. evet type olarak kullanılabilir",
+      "cevap5": "( ´_ゝ`)\nMarker interface bi blueprint görevi görür. İçindeki metodlar tanımsızdır.\nFunctional interface'in içinde tanımı olan metodlar bulunur",
+      "cevap6": "edebilir. edebilir",
+      "cevap7": "new Animal() yerine new Dog() yazarız. output: \nAnimal: Buddy \nWoof",
+      "cevap8": "Etmez. Birden fazla move() tanımı var. İkisinden birini silmemiz lazım. Sonrasında hangisini sildiysek diğerini outputlar."
+    },
+    {
+      "id": "4731282",
+      "cevap1": "abstract classtan veya interfaceden obje üretilemeyeceği için constructor bulunmaz. Abstract classlarda metodlar, metodu başka bir classta implement edilmek üzere yazılır. Concrete classtan farkı metodların implement edilmemesi ve obje üretilememesidir",
+      "cevap2": "Abstract metodların implement edilmesi concrete classlarda gerçekleşir.",
+      "cevap3": "1) Abstract classtan obje üretilmez\n2) Abstract metodlar genel bir metodun yazılması ve farklı classlarda farklı şekilde implement edilmesine yarar.\n3) Abstract metod bulunan bir class otomatik olarak abstracttır.",
+      "cevap4": "interface reference data type olarak kullanılabilir, abstract class objesi yazılamaz. Abstract class ile interface arasında implementation farkları bulunur.",
+      "cevap5": "Marker interface bir interface taslağıdır, functional interface'in kullanılabilir metodları bulunur.",
+      "cevap6": "Bir class birden çok interface'i implement edebilir ve bir interface başka bir interface'i implement edebilir.",
+      "cevap7": "a.printName() çalışmaz, Animal Dog = new Animal(\"Buddy\") yazarsak çalışır.\nOutput:\nBuddy\nWoof",
+      "cevap8": "super.move() compile edilemez, çünkü iki interfacede de bulunduğu için hangisiyle bindlanacağına karar verilemez. \ninstanceOf ile ayrı ayrı neyi implement ettiğine bakılarak \nFlying\nSwimming\nbenzeri bir output alınabilir."
+    },
+    {
+      "id": "8059049",
+      "cevap1": "Abstract class soyut bir classtır,içindeki metodlar da soyut yani bodysiz olabilir,concrete de metodlar da concrete olmalıdır.Interface de constructor olmaz,Abstract de olur",
+      "cevap2": "Evet edilebilir,normal bir şekilde abstract class ve metodları tanımlarız.",
+      "cevap3": "1-Şablon oluştururlar\n2-Kod tekrarını engellerler\n3-Bu metodlarda body kısmı boştur",
+      "cevap4": "Abstract class da extend seçeneği mevcuttur,her zaman yüzde 100 soyutlama olmaz,interface ise yüzde 100 soyutlamadır.İkisi de referans tipi olarak kullanılabilir",
+      "cevap5": "Marker da metod bulunmaz,functional de bulunur",
+      "cevap6": "Class interface i implement eder,interface ise diğer interface i extend eder",
+      "cevap7": "Animal la obje yapılamaz, new Dog denmeli.\nOutput:Buddy\nWoof",
+      "cevap8": "Burada hata super kullanılması,nereden bilebiliriz hangi interface i kullanacağını?\nYapılacak şey süper.move u kaldırmak\nMuhtemel çıktılar da Swimming veya Flying  veya ikisi birden olabilir,hangi interface veya interfaceleri işaret ettiğimize bağlı ."
+    },
+    {
+      "id": "6194008",
+      "cevap1": "Abstract class soyut classtır ve içindeki metotlar tanımlanmadan yazılır. (; ile) constructorları olabilir ama interfacelerin olamax",
+      "cevap2": "Başına abatract yzarak edilebilir abstract metotlar sadece abstract classlarda olur ",
+      "cevap3": "Sonradan tanımlamayı (tanımlamayı geciktirmeyi) sağlar\nİnheritance yardımcı oluyor\nİleride metodun yazılacağını garanti eder(sözleşme)\n",
+      "cevap4": "İnterfaceler bi özelliği belirtirken abstract classlar tam manasıyla soyut classlardır\nMyClass MyAbstractClass’ın altındaki bi class olsun ve abstract olmasın. MyAbstractClass obj1; deyip onu sonradan new MyClass diyebilitiz",
+      "cevap5": "Marker boştur functionalin içinde metotlar vardır",
+      "cevap6": "Bir interface başka bir interface i extend edebilir implement edemez\nBir class birden çok interface implement edebilir",
+      "cevap7": "Animal a = new Animal hatalıdır bunu Animal a = new Dog diyerek düzeltebiliriz\nBuddy\nWoof\n",
+      "cevap8": "Duck un süper classı yoktur oraya öyle denmez\nAynı şekilde duckun implemenr ettiği 2 interface vardır o yüzden hangiainden alınacağı bilinemez \nFlyabledan aldırırsak\nFlying"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Nesnesi üretilemeyean class tır. Içinde abstract metotlar bulunabilir. Abstract classların constructor ı olabilir. Interfacelerin olamaz.",
+      "cevap2": "Evet başka bir abstract class ı genişleten başka bir abstract class ata classın metodunun tanımını içerebilir.",
+      "cevap3": "Abstract classların nesnesi oluşturulamaz. Abstract metotların sadece başlıkları olur, alt class ta tanımlanırlar. Abstract classın tüm alt classlarının metoda sahip olduğundan emin oluruz ama tanımlana kadar tanımlarını bilmeyiz. Programcıya böylece kolaylık sağlar",
+      "cevap4": "Interface bir class değildir. Bir alt class 2 ata classı genişletemez ama 2 veya fazla interface i gerçekleştirebilir. Ikiside tip olarak kullanılabilir.",
+      "cevap5": "Marker interface metot içermez sadece classın belli bir gruba dahil olduğunu belirtir.",
+      "cevap6": "Evet.\nInterface başka interface yi genisletebilir, extends",
+      "cevap7": ".",
+      "cevap8": "."
+    },
+    {
+      "id": "1762204",
+      "cevap1": "Abstract class'ta oluşturulan abstract metotların içeriği olmaz fakat concrete'te olur. Abstract class'larda constructor olabilir fakat interface'lerde olamaz. ",
+      "cevap2": "Abstract metot implemente edilemez, sadece metodun içi olmadan yazılabilir. ",
+      "cevap3": "Nasıl yapılacağını şu an bilmediğimiz fakat daha sonra yazılımcının yapmasını zorlamak istediğimiz metotlar için kullanabiliriz. Yazılımcının yeni class'lar oluştururken kesinlikle oluşturmasını isteğimiz metotlar için kullanabiliriz. ",
+      "cevap4": "Interface içerisine metotların içi yazılamaz ve bir class birden fazla interface'i implements Ile kullanabilirken abstract class'larda concrete metot da yazmak mümkündür ve bir class sadece bir abstract class extend edebilir. Ikisi de tıp olarak kullanılamaz. ",
+      "cevap5": "Marker interface içerisinde değişkenler ve metotlar bulunmaz, sadece class'ın ne olduğunu belirtmek için kullanılırken functional interface içerisine metot da konulabilir. ",
+      "cevap6": "Evet birden fazla interface implement edebilir fakat bir interface başka interface'i implement edemez. ",
+      "cevap7": "new Dog(\"Buddy\"); yazılmalıydı\nOutput:\nAnimal: Buddy\nWoof",
+      "cevap8": "Compile edemez çünkü interface içerisine concrete metot yazılamaz. Metotların içi interface'den silinip Duck class'ına yazılırsa ve içerisine \"Swimming\" yazılırsa output:\nSwimming"
+    },
+    {
+      "id": "2051651",
+      "cevap1": "Abstract class olarak kullanılabilen fakat concrete classın aksine tip obje oluşturulamayan ve içinde implement edilmemiş metodlar bulunan bir tur class dır. Constructorları olabiliri.",
+      "cevap2": "Hayır",
+      "cevap3": "-İmplement edilmemişlerdir\n-tip olarak kullanılabilir\n-uzerinden obje oluşturalamaz\n-altındaki classlarda olmasını istedigimiz ama nasıl yapılacağı serbest bıraktıgımız durumlarda kullanılır.",
+      "cevap4": "İnterface metodlarının tamamı abstract'dır, bir class birden fazla interface implement edebilir ama birden fazla abstract class extend edemez. İkisi de tip olarak kullanılabilir.",
+      "cevap5": "Marker interface içinde metod olmayan interface'dir. functional interface içinde tek bir metod olan interfacelerdir",
+      "cevap6": "Evet, evet.",
+      "cevap7": "Animal abstract class olduğu için uzerinden obje oluşurulamaz. Animal a = new Dog(\"buddy\"); olmalıydı. Output : Animal: Buddy, Woof.",
+      "cevap8": "Default metod override edilemez. Duck classında move metodu olmamalıydı. Output: Flying."
+    },
+    {
+      "id": "8783086",
+      "cevap1": "abstract classlar inherit edilemez constructorları  olamaz",
+      "cevap2": "edilemez",
+      "cevap3": "abstract classlar inherit edilemez abstract metotlar var olması istenen ama sonradan görevi belli olacak methodlarda kullanılabilir",
+      "cevap4": "kullanılabilir mümkün",
+      "cevap5": "marker interface içinde method bulunmaz functionalda ise 1 method bulunur",
+      "cevap6": "ikiside edilebilir",
+      "cevap7": "obje animal olduğu için sound methodu çalışmaz objeyi Dog a çevirerek düzeltilebilir",
+      "cevap8": "compile edilemez move methodu hem swimmable hem flyable içinde var"
+    },
+    {
+      "id": "9830856",
+      "cevap1": "abstract classlar doğrudan nesne oluşturamaz ancak alt sınıflar tarafından miras alınarak kullanılabilir(concrete classtan farklı) \nabstract class ve interfacelerin constructoru yoktur",
+      "cevap2": "evet edilebilir ancak gövdesi abstract class içinde verilmek zorundadır, ve sadece imza olarak bulunur",
+      "cevap3": "abstract class içinde ortak özelliğe sahip metodlar ve özellikler tanımlanabilir ve böylece alt sınıflar bu metodları tekrar etmezler\nbaşka yazmaya vaktin kalmadı",
+      "cevap4": "abstract class tek classı miras alabilir, interface birden fazla sınıfı implement edebilir\ninterfaceler yalnızca abstract metodlar içerir, abstract classlar ise hem gövdeli hem gövdesiz metodlara sahiptir\nevet böyle bir tanımlama mümkündür ",
+      "cevap5": "marker interface hiçbir metod içermez sadece bir sınıfın bir özelliğe sahip olduğunu belirtmek için kullanılır\nfunctional ise sadece bir abstract metodundan oluşan interfacedir, lambda ifadelerinden çok bahsetmiştiniz",
+      "cevap6": "evet bir class birden çok interfacei implement edebilir ancak bir interface başka bir interfacei implement edemez ancak extend edebilir",
+      "cevap7": "abstract class olan animal doğrudan nesne oluşturulmaya çalışılıyor \nanimal a satırı hatalı\nçıktı \nanimal :buddy\nwolf ",
+      "cevap8": "bulamadım"
+    },
+    {
+      "id": "6202193",
+      "cevap1": "Abstract classlarda implement edilmemiş metodlar bulunabilir ve obje çağırılamaz. Abstract classların constructorları olmalıdır fakat interfacelerde olmaz",
+      "cevap2": "Edilebilir, eğer abstract classta hala implement edilmemiş başka metodlar bulunuyorsa ve class o interfaceden extend ediliyorsa olur",
+      "cevap3": "İmplement edilmemişlerdir\n\nObje çağırılamaz\n\nSonradan implement edilirler\n\nYapılacağı kesin olan ama nasıl yapılacağı henüz belirli olmayan metod ve classlar için esnek bir yöntemdir. Soyutlanada çok işe yarar",
+      "cevap4": "Abstract classlarda implement edilmiş metod bulunabilir fakat interfacelerde bulunamaz. A. Classların constructorları vardır ama interfacelerin yoktur. Myabstractclassobj eğer metodlwrı sonradan inplement edilmişse çağırılabilir ama interfacelerde bu mümkün değildir",
+      "cevap5": "Marker interfacelerin metodu yoktur, functionalların tek bir metodu vardır. ",
+      "cevap6": "Bir class bir den çok edebilir. İnterface de edebilir",
+      "cevap7": "Animal objesi çağırılamaz. Bunun yerine new Dog(\"Buddy\") kullanılmalıydı. Output: Animal : Buddy Woof",
+      "cevap8": "Eğer move metodu interfacelerde tanımlanmasaydı hata oluşmazdı ama default ile tanımlanmış durumda. Öyle olunca duck içindeki super.move çağırılınca compiler hangi ata interface e gideceğini bilemez ve hata verir. Bunun yerine ya move metodu interfacelerde abstract bırakılıp duckta tanımlanmalıydı ya da iki interfaceden yalnızca biri ata interface olmalıydı. Metod signaturelarını interfacelerde farklı yapmak da olur.\n\nOutput tercih edilen ata interface e göre\n\nSwimming\n\nVeya\n\nFlying\n\nŞeklinde olurdu."
+    },
+    {
+      "id": "7214465",
+      "cevap1": "Abstract class soyut sınıf demektir Farkı abstractta gövdesiz metod olabilir diğerinde olamaz . abstract sınıfların constructoru olabilir ama doğrudan çağrılamaz. interfscelerin olamaz ama",
+      "cevap2": "evet , abstract sınıf önceki abstract metodu tanımlayıp gövdesini ekleyebilir.",
+      "cevap3": "nesne oluşturmaz\nimplement sağlar\nortak özellik tanımlar",
+      "cevap4": "kalıtım mirası, constructor, değişkenler farklarıdır. evet tip olarak kullanılabilir",
+      "cevap5": "marker : içinde metod bulunmayan interfacedir, etiket ile kullanılır\nfunctional : bir tane abstract metod bulunan interfacedir.\n",
+      "cevap6": "evet class birden çok arayüzü implement edebilri.\nhayır, bir interface başka bir indterfacei implement edemez ama extend edebilir.",
+      "cevap7": "animal abstarcttır bu yüzden nesne oluşturalmaz. düzelltikten sonra output:\nAnimal: Buddy Wolf",
+      "cevap8": "Hayır hata 2 farklı arayüzden aynı isimden metod alıyor.\nOutput: Flying"
+    },
+    {
+      "id": "6275288",
+      "cevap1": "Abstract class abstract metod içerebilen, kendisinden obje üretilemeyen(concreteden farkı), kendisini extend eden classın (eğer varsa) abstract metodu implement etmesi gereken classtır. Constructor bulundurmak zorundadır. Abstract metod bulundurmak zorunda değil.İnterface ise tamamen abstract olmuş classtır. İçine yazılan her metod abstract olmalı. İnstance variable final ve static olmalı. Constructor bulundurmalı. ",
+      "cevap2": "Ata classta implement edilmemiş abstract metod yavru classta implement edilebilir. Yavru class çok başka bir abstract metod içeriyosa(zorunlu değil abstract keywordü ile declar, define edilmesi yeterli) o da abstract olur. Böylece abstract metod abstract classta implement edilmiş olur. ",
+      "cevap3": "Ortak özelliğin ne olduğunu verir biz o özelliği yavru classta implement ederiz. ",
+      "cevap4": "Interface içinde abstract olmayan metod bulunduramaz. İnterface implement edilir. Abstract extend. 1 classı extend edersin ama implement için sınır yok. Tip olarak kullanılamazlar bence. ",
+      "cevap5": ".",
+      "cevap6": "Evet sınırsız implement olabilir. Bir interface diğer bir interfacei implement edemez. ",
+      "cevap7": "Animal objesi oluşturamazsın çünlü abstract. New animali new dog yaparım. Çıktı Animal: Buddy ve Woof olur. ",
+      "cevap8": "İnterfacelerde metod implement edilmez. Çıktı swimming olur. "
+    },
+    {
+      "id": "1764665",
+      "cevap1": "Abstrack class içerisinde henüz implement edilmemiş. Farklı classlarda farklı şekilde overridelanacak olan methodlar içeren classlara denir. Henüz tamamlanmadiklari için obje oluşturmazlar. Extend edilip eksik yerlerin tamamlanması gerekir. Concrete classlar tamamlamış classlardir ve obje üretebilirler. Interfacelerin constructerı olmaz ama abstracklarin olmak zorundadır.",
+      "cevap2": "Abstract classlar abstract classlardan extend edilebilir. Abstract bir classdan extend edilmiş bir abstract classda daha önceki classin abstract methodlari implement edilmiş olabilir.",
+      "cevap3": "Polymorphism sağlar. Yazılım mimarlarının henüz kod yazilamişken classlarin nasıl çalışacağını planlamasını sağlar. Soyutlama yapmaya yarar.",
+      "cevap4": "Abstract classlar extend edilerek kullanılır. Classlarin tabii olduğu limitler sebebiyle iki classdan extend yapılamaz. Interfacelerde böyle bir kısıtlama yoktur. Interfaceler önceden hazırlanmış bazı özelliklerin classda eklenmesini sağlar. Ikisi de tip olarak kullanılabilir. Hatta bunu yapmaya yarayan marker interfaceler kullanilir.",
+      "cevap5": "Marker interface o interfacei kullanarak farklı atadan gelen objeleri tutmaya yarar. Marker interfaceler kendi icinde kod tutmaz. Functional  interfaceler daha önceden hazırlanmış bir özelliği koda eklemeye yarar.",
+      "cevap6": "Bir class birden fazla interface implement edebilir. ",
+      "cevap7": "Animal calssı abstract bir calssdir obje olarak kullanılamaz. Obje üretmek için o class extend edilip abstract methodlari implement edilmelidir. Burda animal yerine dog classi obje olarak kullanılırsa sorun giderilir. Output: Animal: Buddy     Woof",
+      "cevap8": "Compile edilemez. Çünkü ata classda move methodu yoktur. "
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Abstract class içinde implementasyonu yapılmamış metot veya metotlar bulunan class tır. Constructor ları olamaz çünkü implementasyonu yapılmayan bir özellik kullanılamayacağından objeleri oluşturulmaz.",
+      "cevap2": "Extend edilfiğinde bazı abstract metotlar implement edilebilir. Eğer abstarct metot hala varsa extend edilmiş olan class da abstract kalmak zorunda.",
+      "cevap3": "Belli bir grup objenin bir metodunu bir yerde tanımplayıp her obje için farklı implent etme.\nBirden fazla exrend yapamadığımızdan ortak özellikleri olan ama birbirlerini extend etöeyen classlarda ortak özelliklerin bulunmasını sağlama. Bir yerde ihyiyacımız olan metodu tanımlayıp sonra implement etme.",
+      "cevap4": "İnterfaceler implement edilebilir classlar edilemez.\nEvet o özelliklere sahip objeleri tutabilirler.",
+      "cevap5": "Marker içinde metot olmayan interface, tag gibi kullanılır. Functional da içinde bir metot olan lambda olarak oluşturulabilirler.",
+      "cevap6": "Evet .İmplement edemez çünkü class değil ama extend edwbiliriz.",
+      "cevap7": "Animal abstract olduğundan objesi oluşturulamaz new Dog yazarsak düzelir.\nAnimal: Buddy /n Woof",
+      "cevap8": "Evet.\nSwimming"
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "questions": [
+    "Öğrenci No. ",
+    "Java'da abstract class nedir, concrete bir classtan farkı nedir? Abstract classların veya interfacelerin constructoru olabilir mi?",
+    "Abstract bir metot abstract bir classta implement edilebilir mi, evet ise nasıl? ",
+    "Abstract metot/classların 3 temel özelliğini (veya bize sağladığı yetenekleri) yazınız. ",
+    "Abstract class ile Interfaceler arasındaki fark nedir?\nAbstract classlar ve interfaceler tip olarak kullanılabilir mi?\nYani 'MyAbstractClass obj1;' veya 'MyInterface obj2;' şeklindeki declarationlar mümkün müdür?",
+    "Marker interface ve Functional interface kavramları nedir, nasıl kullanılır?",
+    "Bir class birden çok interfaceyi implement edebilir mi?\nBir interface başka bir interfaceyi implement edebilir mi?",
+    "abstract class Shape {\n    abstract void draw();\n    void display() { System.out.println(\"Displaying\"); }\n}\nclass Circle extends Shape {\n    void draw() { System.out.println(\"Drawing Circle\"); }\n}\nShape c = new Shape();\nc.draw();\nc.display();\n\nYukarıdaki kodda hata nerededir, bu hatayı nasıl düzeltirsiniz?\nHatayı düzelttikten sonra output?",
+    "interface A { default void show() { System.out.println(\"A\"); } }\ninterface B { default void show() { System.out.println(\"B\"); } }\nclass C implements A, B {\n    public void show() { super.show(); }\n}\nnew C().show();\n\nKod bu halde compile edilebilir mi?\nYukarıdaki koddaki problem nedir? \nProblemli satırın yeni hali ne olabilir?\nHata düzeltildikten sonra output?"
+  ],
+  "answers": [
+    {
+      "id": "4275079",
+      "cevap1": "Abstract class soyutlanmış class olarak bilinir. Abstract classlarda constructer olabilir ancak interfacelerde yoktur.",
+      "cevap2": "Evet",
+      "cevap3": "Kullanicinin ihtiyaci olmayan methodları saklar ",
+      "cevap4": "Interfaceler ile obje oluşturulamaz .Abstract classlar ile oluşturulabilir.",
+      "cevap5": ".",
+      "cevap6": "Evet,evet.",
+      "cevap7": "Shape deki draw methodu  abstract yapilmalidir hata duzeldikten sonra output \nDrawing circle \nDisplaying",
+      "cevap8": "Compile edilemez .\nimplements edilen iki methodda overriding olmamalidir\nsadece implements A derse mesela \noutput A olarak cikti verir yani tek implement yapilmali ya da interfacelerin birinden show methodu silinmeli ya da signature degismelidir."
+    },
+    {
+      "id": "6343320",
+      "cevap1": "Abstract class",
+      "cevap2": "Edilebilir, ",
+      "cevap3": ".",
+      "cevap4": "abstract soyutlama yapılarak çalışırken, interface nesneyle çalışır",
+      "cevap5": ".",
+      "cevap6": "1-evet ,2-evet",
+      "cevap7": "\nDrawing circle\nDisplaying",
+      "cevap8": "B"
+    },
+    {
+      "id": "3963286",
+      "cevap1": "Soyut bir klasik ifade eder.obje olarak çağrılması ve en az bir metodu overide edilerek implement edilir.",
+      "cevap2": "Edilemez",
+      "cevap3": "Prensiplerimizden ilan abstraction sağlaması,Encapsulation ve polimorfizum sağlamı.",
+      "cevap4": "Interfaceler absttqct classinin daha da soyutlama halidir.extra olarak interfaceler bir den fazla clasa extent edilebilirler.  İkinci sorusu mümkündür.",
+      "cevap5": "...",
+      "cevap6": "İkisinin cevabı: edebilir olacaktır",
+      "cevap7": "C değişkenin shape üzerinden tanimladigimizdan draw metodu override edilemedi abstract olarak jaldi",
+      "cevap8": "Edemez,hata java hangi iterface in metodunu alacağını bilemez hata verir.o yüzden hangi interface i kullanacagini süperdi belirtmeniz lazım.  Cevap hangisini belirtecegimize bağlı olark A veya B olacak"
+    },
+    {
+      "id": "9905145",
+      "cevap1": "abstract sonradan degistirilebilen, ici sonradan doldurulabilen classlar icin kullanilir. evet olabilir",
+      "cevap2": "edilebilir, abstract metotismi(parametreler) seklinde yazabiliyoruz",
+      "cevap3": "sonradan degistirilebilme, overwrite, farkli yerlerde farklı kullanimlar",
+      "cevap4": "interfaceler tip olarak kullanilabilir ancak abstract kullanilamaz. Myinterface obj2 mumkundur",
+      "cevap5": "-",
+      "cevap6": "iki sorunun cevabida evet",
+      "cevap7": "c.draw() obje Shape de acildigi icin calismiyor bu yuzden Circle c = new Circle() yaparsak output:\nDrawing Circle\nDisplaying",
+      "cevap8": "super.show metodunun A ve B interfacelerinden hangisini sececegi belirsiz bu yuzden compile etmez,o yuzden C implements A diye duzeltirsek output: A"
+    },
+    {
+      "id": "2103960",
+      "cevap1": "abstractde metodlar signature olarak tanımlanıyor ancak içi boş oluyor. Hayır",
+      "cevap2": "Hayır?",
+      "cevap3": " ? Constructor/ objesi olmaz abstract metodlar tanımlanır, veya normal merodlarda tanımlanabilir",
+      "cevap4": "Interfacelerde birden fazla ata olabilir. Classta olmaz. Hayır abstractın objesi olmaz",
+      "cevap5": "Marker sadece kolay anlaşılsın diye içi boş\nFunctional ise işlevli metodları olan",
+      "cevap6": "Evet ikisi de olur",
+      "cevap7": "Interfacete obje olmaz?  Circle olarak tanımlarım \nDrawing Circle\nDisplaying",
+      "cevap8": "Hayır İki interfaceten hangisini seçeceğini bilemez. \n? B implements A\nB"
+    },
+    {
+      "id": "5281670",
+      "cevap1": "abstract classlardan nesne oluşturulamaz , evet olabilir ",
+      "cevap2": "hayır yapılamaz ",
+      "cevap3": "genellikle bi şablon görevi görürler , tamamen veya kısmen tamamlanmış metotlar içerebilirler, abstract classlardan nesne oluşturulamaz",
+      "cevap4": "interfacelerde değişkenler final değerlerini alırlar abstract classlar isle sonradan implement edilebilecek şablonlar gibi düşünülebilir o yüzden böyle bi zorunluluk yoktur , abstract classlar kullanılabilir interfaceler kullanılamaz",
+      "cevap5": "-",
+      "cevap6": "evet ikisi de mümkündür ",
+      "cevap7": "c is a Shape ama Shape in draw metodu implement edilmemiş bunun yerine Circle c = new Circle() denilirse \nDrawing Circle \nDisplaying çıktısı verir ",
+      "cevap8": "-"
+    },
+    {
+      "id": "4114373",
+      "cevap1": "Abstract class o class içerisine daha sonra implement etmek istediğimiz özellikleri önceden yazabilmemizi sağlayan class türüdür. Constructor'u olamaz çünkü abstract class'tan obje oluşturulamaz.",
+      "cevap2": "Eğer parent class içerisinde tanimladigimiz abstract metodlarin hepsini child classin içinde implement etmek istemiyorsak child class olrak abstract metodlar harici olusturdugumuz bir abstract class var olabilir. Bu class'ta parent class içinde yaptığımız abstract metotlari implement edebiliriz.",
+      "cevap3": "Abstract metotlar programın daha iyi okunmasını sağlar. Aynı zamanda program için bir şema görevi görür. Abstract class ile farklı insanlar aynı proje içinde daha kolay çalışabilirler çünkü abstract class'larin içindeki her metodu bilmek zorunda kalmazlar, herkes kendi bildiği/yapması gereken yeri yaparak işbirliği içinde çalışabilir.",
+      "cevap4": "Abstract class veya interface'lerden obje oluşturulamaz. İnterface'in abstract class'tan farkı ise içerisindeki tüm metotların/degiskenlerin tanimlanmayacak oluşudur. Yani bir abstract class tamamen abstract metotlar içermek zorunda değildir ama interface tamamen bir kara kutu gibi çalışır, yani içerisinde hiçbir şey yoktur, isimlerden başka.",
+      "cevap5": "-",
+      "cevap6": "Bir class birden fazla interface'i implement edemez. Bir interface başka bir interface'i implement edebilir.",
+      "cevap7": "Abstract olan bir class'tan obje oluşturulamaz. Eğer abstract classi aktardığımız class'tan bir obje oluşturmak istiyorsak \"Circle c = new Circle();\" kullanabiliriz. Hata duzeldikten sonra da, \"Drawing Circle \\n Displaying\" yazılır.",
+      "cevap8": "interface'lerin içindeki metotların ne yaptığı interface içinde tanımlanamaz. Ayrıca class C'deki public void show() metodu implement ettiği iki interface'in hangisinin çağırılacağını bilemez. Bu yüzden class C'deki metotta direkt olarak \"A\" veya \"B\" yazdıran bir metot yazılabilir."
+    },
+    {
+      "id": "4856424",
+      "cevap1": "abstract class ın concrete classlarda oldugu gibi objesi tanımlanamaz , constructorları olabilir",
+      "cevap2": "alt sınıflarda implement ederse edilebilir",
+      "cevap3": "nesneleri olamaz\niçlerinde hem abstract hem de concrete metodlar bulunabilir\n",
+      "cevap4": "bilmiyorum ",
+      "cevap5": "bilmiyorum ",
+      "cevap6": "ikisi de evet",
+      "cevap7": "abstract class ın direkt olarak objesini tanımlayamayız\nCircle c = new Shape();\nc.draw();\nc.display();\nDrawing circle\nDisplaying",
+      "cevap8": "bilmiyorum"
+    },
+    {
+      "id": "7732416",
+      "cevap1": "Abstract class objesi yaratılamayan bir sınıftır içinde abstract ya da değil metotlar bulundurabilir. Constructor sahibi olabilirler çünkü alt sınıfların constructor ı çağırması gerekebilir",
+      "cevap2": "Implement edildiyse zaten abstract değildir. Ama abstract bir sınıfın içinde abstract olmayan bir metot bulunabilir",
+      "cevap3": "Obje yaratmadan sınıf yaratma. Signature belirleyip hiyerarşinin ilerisinde implement etme özgürlüğü.  ",
+      "cevap4": "Abstract sınıflar abstraction seviyesi 0 ile 100 arasında iken interfacelerde 100 dür. Tip olarak kullanılabilirler",
+      "cevap5": "Marker interface ler metot veya fieldları olmayan interfaceler. Functional interfaceler ise sadece bir abstract metodu olan interfacelerdir",
+      "cevap6": "Class birden fazla implement edebilir fakat bir interface başka bir interface i implement etmez extend eder.",
+      "cevap7": "C objesi yaratılamaz abstract class olduğu için. Ya sınıfı ve draw metodunu abstract den çıkartacağız ya da alt bir sınıfın objesini kullanacağız",
+      "cevap8": "İki tane aynı isimli metod ve farklı interfacelerden geliyorlar. Kesinlilik yok "
+    },
+    {
+      "id": "1889298",
+      "cevap1": "Abstract classların olabilirken interfacelerin olamaz",
+      "cevap2": "Abstract bir metod abstract bir classta implement edilebilir. ",
+      "cevap3": "1-Abstract classlar bize sonradan belirleyeceğimiz metodlar için bir cerçeve oluşturur\n2-Abstract classlar inherit edilebildikleri için önceden belirlenmemiş bir fonksiyonu tekrar override edebilmemizi sağlar\n3-",
+      "cevap4": "Abstarct classlar belirlenmemiş metodların yanında belirlenmiş metodlar da içerebilirken interfacelerde bu durum gözlenmez. Interfaceler tip olarak kullanılabilirken abstract classlar kullanılamaz. İki türlü declarationlar mümkün değildir",
+      "cevap5": "Marker belirlemek amaçlı functional ise sonradan kullanılmak amaçlı yazılır (?)",
+      "cevap6": "Evet bir class birden fazla interface implement edebilir. Evet bir interface başka bir interface implement edebilir.",
+      "cevap7": "Hata Shape c = new Shape kısmindadır bu kısmı Shape c = new Circle(); seklinde yazarsak outout \n\"Drawing Circle\" \n\"Displaying\" şeklinde olur.",
+      "cevap8": "-"
+    },
+    {
+      "id": "3688139",
+      "cevap1": "abstract classlar abstract govdesiz metotlar icerebilen siniflardir. normal siniflardan farki nesne olusturamamalaridir. abstract classlarin constructoru olabilir interfacelerin olamaz.",
+      "cevap2": "Eger sonrasinda alt sinifta override ediliyorsa (mecbur edecek) evet edilebilir.",
+      "cevap3": "Abstract metotlar govdesiz metotlardir. Ileride kalitim derinlestiginde bize esneklik ve kolaylik saglar. ",
+      "cevap4": "Interfaceler tip olarak kullanilabilir abstractlar kullanilamaz. interfacelerde instance variablelar olusturulmaz. Bir class sadece 1 abstract class extend edebilirken birden cok interfacei implement edebilir.",
+      "cevap5": "Bilmiyorum.",
+      "cevap6": "1)Evet edebilir.2) Evet edebilir",
+      "cevap7": "abstract classtan nesne olusturulmus. O kod satiri yerine Circle c= new Circle(); yazilirsa hata duzeltilmis olur. Cikti:\nDrawing Circle\nDisplaying",
+      "cevap8": "Hayir edilemez. B interfaceinin A interfaceini implement etmesi gerekir"
+    },
+    {
+      "id": "2384475",
+      "cevap1": "İçinde abstract method(implement edilmemis) bulunduran ya da bulundarmayan classlardır. Abstract classlarda constructur olabilir.Interfacde olamaz.",
+      "cevap2": "Bir abstract classın methodu başka bir abstract classda implement edilebilir.",
+      "cevap3": "Daha sonra kesin olarak implement edileceğini bildiğimiz bir methodu tanımlamamızı sağlar. ",
+      "cevap4": "Interfaceler class değil bir tiptir. Abstract classlardan obje üretilmez.",
+      "cevap5": "Marker interfacelerin içi boştur. Functionallarda implement edilmeyi bekleyen methodlar vardır.",
+      "cevap6": "Classlar birden fazla interface implement edebilir. İnterface başka bir interfacei extend edebilir.",
+      "cevap7": "Abstract classtan obje üretilmez.\nShape c = new Circle(); olmalı\nDrawing Circle\nDisplaying",
+      "cevap8": "Edilemez çünkü hangisini çalıştiracagıni bilemez. \nsuper olmamalıydı. \nnew B().show; yapabiliriz.\nOutput: B"
+    },
+    {
+      "id": "6494434",
+      "cevap1": "Abstract class en az bir abstract metot içeren ve direkt olarak örneklendirilemeyen bir sınıftır. Concrete class ise tüm metotları tanımlı olan New operatörü ile nesnesi oluşturulanilen sınıflardır. Abstract classların constructoru olabilir. İnterfacelerin construturu olamaz.",
+      "cevap2": "Hayır",
+      "cevap3": "Hem soyut hem somut metotlar bulunur. new ile nesne oluşturulumaz. Override edilmek zorundadır.",
+      "cevap4": "Abstract classda somut metotlar olabilir. İnterface ise tamamen soyuttur. Evet tip olarak kullanılabilir.",
+      "cevap5": "Marker interface içinde metot olmayan. Functional interface ise tek adet abstract metot içerendiir.",
+      "cevap6": "1.soru cevap evet \n2.soru cevap hayır ama extends edebilir.",
+      "cevap7": "Shape c = new Shape(); satırı hatalı.\nShape c = new Circle(); yaparak düzeltilir.\nOutput:\nDrawing Circle\nDisplaying",
+      "cevap8": "Hayır.\nAbstract classdan nesne oluşturmaya çalışmış. Böyle bir şey olmaz.\npublic void show() {A.super.show();}\nOUTPUT: A\n"
+    },
+    {
+      "id": "6157698",
+      "cevap1": "Abstract class içinde tanımlanmamış abstract methodu olan ya da üstündeki class ya da interfaceden tanımlanmamış abstract method alan class'lara denir. Objeleri olamadığı için constructorları olamaz.",
+      "cevap2": "evet edilebilir ama implement edilen method dışında classda abstract başka bir methodun olmaaı gerekir. ",
+      "cevap3": "Nasıl implement edileceği belli olmayan methodlar yazmamızı sağlar.\nBir sınıflandırma yapmış oluruz.",
+      "cevap4": "Abstract classlar interfacelerden farklı olarak reference variable olarak kullanılabilir ve classlar başka bir classa extend edilirken interfaceler implement edilir ve 1 class 1den fazla interface implement edebilir. Abstractclass onje oluşturamasada refence variable olarak kullanılabilir. Interface kullanılamaz.",
+      "cevap5": "Sadece düzenleme amaçlı kullanılır. ",
+      "cevap6": "Evet\nEvet",
+      "cevap7": "new Shape() objesi Shape abstract bir clss olduğundan oluşturulamaz. Yerine new Circle() ifadesi gelirse output:\nDrawing Circle\nDisplaying",
+      "cevap8": "Compile edilmez.\nimplement edilen interfacelerde aynı signature'a sahip methodun olması.\n"
+    },
+    {
+      "id": "9164612",
+      "cevap1": "Java'da abstract class  genellikle diğer sınıflar tarafından miras alınması için kullanılan ve kendisinden nesne oluşturulamayan bir sınıftır.concrete class  tüm metotları tanımlanmış ve doğrudan nesne oluşturulabilen normal bir sınıftır.",
+      "cevap2": "Evet, abstract bir metot, abstract bir class içinde implement edilebilir, ancak bu zorunlu değildir. Abstract class içinde bir metodu implement etmek isterseniz, metot gövdesini yazabilirsiniz. Eğer metodu gövdesiz bırakırsanız, bu metodun alt sınıflar tarafından override edilmesi gerekir.",
+      "cevap3": "Ortak davranışları tanımlayarak Kod Tekrarını Azaltır. Kalıtım  ile Polymorphism Sağlar.Nesne Üretimini Kısıtlayarak Güvenli Bir Yapı Sunar.",
+      "cevap4": "Abstract class hem abstract hem de concrete metotlar içerebilir, interface ise sadece abstract metotlar içerebilir. Interface multiple inheritance destekler, abstract class sadece single inheritance destekler.abstract class ve interface bir değişkenin veri tipi olarak kullanılabilir. Ancak doğrudan nesne oluşturulamaz, bir alt sınıf veya implement eden bir sınıfın nesnesi bu tip değişkenlere atanmalıdır.",
+      "cevap5": "Marker Interface, herhangi bir metot içermeyen ancak bir sınıfa özel bir anlam kazandıran bir interface türüdür.Functional Interface, yalnızca bir tane abstract metot içeren bir interface’dir.",
+      "cevap6": "bir class birden fazla interface’i implement edebilir. Java'da çoklu kalıtım doğrudan desteklenmez, ancak interface’ler aracılığıyla çoklu implementasyon mümkündür.\nbir interface başka bir interface’i implement edemez, çünkü implementasyon yalnızca class'lara özgüdür. Ancak, bir interface başka bir interface’i extends anahtar kelimesi ile genişletebilir.",
+      "cevap7": "abstract class’lardan doğrudan nesne oluşturulamaz. Shape sınıfı abstract olduğu için abstract sınıfın yerine onun alt sınıfı olan Circle kullanılarak düzeltilebilir. \nOutput: Drawing Circle\n              Displaying",
+      "cevap8": "edilemez\n bir class'ın birden fazla interface’i implement etmesi ve aynı isimli default metotları içermesi durumunda hangi metodu çağıracağını bilemez.\n A.super.show() veya B.super.show() şeklinde hangi interface’in metodu çağrılacaksa onu açıkça belirtmeliyiz.\nOutuput: A.super.show() yazılırsa A, B.super.show() yazılırsa B"
+    },
+    {
+      "id": "5361565",
+      "cevap1": "abstract classların tamamlanmamış methodları yani sadece imzası olan methodları bulunur concrete bir classta ise bütün methodlar tamamlanmıştır. abstract classların constructoru olabilir ama interfacelerin olamaz.",
+      "cevap2": "evet bir abstract classın abstract bir tane sub classı varsa ve bunda implement edersek olur.cunku sadece bir tane methodun tamamlanmamış olması o classın abstract olması için yeterli olur.",
+      "cevap3": "abstract classlar tamamlanmamis methodlar bulundururlar, bunlardan obje oluşturmayız, ama type olarak kullanabiliriz.",
+      "cevap4": "bir class birden fazla interfacei implement edebilir ama birden fazla classı extend edemez.evet tip olarak kullanılabilirler.",
+      "cevap5": "marker interfaceler method içermezler belirteç olarak kullanılırlar functional interfaceler ise sadece bir tane abstract methoda sahiptirler ayrıca lambdalı bir şeyler hatırlıyorum.",
+      "cevap6": "ikisinin de cevabı evet.",
+      "cevap7": "hatamız cyi tanımlarken new Shape yazmamızda new Circle yazmamız lazim.\n\noutput: drawing circle\ndisplaying",
+      "cevap8": "bu şekilde compile edilebilir ama runtimeda hata verir. koddaki problem aynı signaturea sahip iki adet methodun bulunduğu iki interfacei tek bir classin implement etmesi.problemli satırda iki farklı method tanimplanip ayri ayri cagirilabilirler ya da super çağırmak yerine C yazdirilabilir. ayrı ayrı method olsuturulursa hem A hem B basılır ama ikincisi yapilirsa C basılır sadece."
+    },
+    {
+      "id": "7374887",
+      "cevap1": "Abstract class içinde abstract metot içerir.Abstract metot tamamlanmamış metottur sadece metodun signatureı vardır.Abstract metotların constructorı olabilir.İnterface in constructorı olamaz.",
+      "cevap2": "Eğer abstract metot class a ata classtan geliyorsa implement edilebilir.",
+      "cevap3": "Abstract classtan obje oluşturulamaz.Abstract classların alt classları da abstract metot implement edilmediği sürece abstract olur.Şuanda nasıl implement edeceğini bilmediğimiz metotların gelecekte biri tarafından implement edilmesini kesinleştirmiş oluruz.",
+      "cevap4": "İnterfaceler class değildir.İçlerinde oluşturulan tüm attributelar final ve privatedır.Hem abstract class hemde interfaceler tip olarak kullanılabilir.",
+      "cevap5": "Marker interface bir classın bir özelliğe sahip olduğunu belirtmek için kullanılabilir.Functional interface classlara yetenekler sağlar.",
+      "cevap6": "İkiside mümkün.",
+      "cevap7": "Shape classı abstracttır obje oluşturulamaz.Shape c = new Circle(); yaparak hata düzeltilir. \nDrawing Circle\nDisplaying",
+      "cevap8": "C classında ata class yoktur bu yüzden kod çalışmaz. C classındaki show metodunda başka System.out.println(\"C\");yazılabilir. \nC\n"
+    },
+    {
+      "id": "2179244",
+      "cevap1": "Abstract class obje oluşturamaz. Concrtete ve abstract methodlar bulundyrabilir. ",
+      "cevap2": "Evet. Abstract içinde abstract atarsak conctrete metodu da implement etmek zorundayız",
+      "cevap3": "1concrete metotlar bulundurabilir\n2. Concrete olmayan method bulundurabilir\n3. Obje oluşturamaz",
+      "cevap4": "Evet reference type olarak olabilir. ",
+      "cevap5": "Market interface içinde metot bulunmaz\nFunctional interface içinde 1 abstract metot bulunur.",
+      "cevap6": "Evet\nEvet",
+      "cevap7": "Abatract class ta obje oluşmaz. \nDisplay circle\nDisplaying",
+      "cevap8": "Hayır\nSuper shpw metodu hatalı\nA.super.show() olmalı \nA"
+    },
+    {
+      "id": "6418019",
+      "cevap1": "abstract class içinde normal metod ya da abstract metod olabilir. Abstract metodun gövdesi olmaz ve bu bu classı extend eden classta abstract metodlar override edilmelidir. Abstract classtan bir obje yaratamayız. abstract classların constructoru olabilir ama interfacelerin olmaz",
+      "cevap2": "abstarct classi extend eden baska bir abstarct classta implement edilebilir",
+      "cevap3": "abstract metodun body si olmaz\nabstract class icinde abstract olmayan metod ya yazabiliriz\nabstract classlar sayesinde subclasslara abstarct metodlari zorunlu kılmış oluruz",
+      "cevap4": "abstract classlar tip olarak kullanılamaz ama interfaceler kullanılabilir. interfacelerde metodlar otomatik public abstract olarak tanımlanır",
+      "cevap5": "-",
+      "cevap6": "bir class birden çok interface implement edebilir. bir interface baska bir interfacei implement edebilir.",
+      "cevap7": "abstarct classtan obje yaratamayiz, \nCircle c = new Circle(); yaparız \noutput: Drawing circle \nDisplaying ",
+      "cevap8": "-"
+    },
+    {
+      "id": "9245287",
+      "cevap1": "Abstract classlar daha sonra bir başka subclassta override edilip metodlarin ozellikleri subclassta tanimlanir. Abstract classlarin constructori olabilir ancak direkt cagirilamaz, alt classlarin constructorina diğer aktarmak için kullanılabilir ",
+      "cevap2": "Evet edilebilir ancak abatract metodlarin içi boş olmali. Adı üstünde soyut classlar",
+      "cevap3": "Üzerinden direkt olarak object olusturulamaz, abstract metodlarin içi boş olmalıdır, subclasslarda abstract metodlar override edilmelidir",
+      "cevap4": "Interfaceler %100 soyut classlar iken abstract classlarin soyutluklari %0-100 arasındadır. Tip olarak kullanılabilir çünkü hala onlardan object instantiate etmedik",
+      "cevap5": "Marker interfacede içinde metod bulunmazken functional interface içinde yalnızca bir tane metod bulunur. Serializable bir marker interface türüdür.",
+      "cevap6": "Ikisi de mumkundur",
+      "cevap7": "new Shape() hata verir bunun yerine Shape c = new Circle(); yapsak düzelir output \nDrawing Circle\nDisplaying",
+      "cevap8": "Compile edilemez super.show() hata verir çünkü fonksiyon iki tane interface implement etmiş. Onun yerine A.show() yazarsak çıktı A olur"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "Abstract class'ların metodları tanımlanmak zorunda değil, bu işi onu extend eden class'lara bırakabilir. Constructor'ları olur ama bu super'i çağırsın diye, o class'dan obje üretemeyiz. ",
+      "cevap2": "başına default keyword'ü koyarak default bir mekanizma implement edilebilir. ",
+      "cevap3": "metodun oluşturulmasını erteleyebilmemizi veya başka birine bırakabilmemizi sağlar.\ninherit eden class'larda polymorphism olmasını sağlar/gerektirir.",
+      "cevap4": "Abstract class'larda her metod abstract olacak diye bir kural yok, ancak interface'lerin içeriği %100 abstract'tir. Tip olarak kullanamayız. ",
+      "cevap5": "Marker interface bir sıfat gibi işler, bir class'a o sıfatı atfetmemizi sağlar. İçi boş bir interface tanımından ibarettir. Functional interface ne bilmiyorum. ",
+      "cevap6": "İkisi de mümkün. ",
+      "cevap7": "Shape'den obje üretemeyiz, çünkü abstract class. Circle'dan üretirsek alacağımız sonuç:\n\nDrawing Circle\nDisplaying",
+      "cevap8": "Compile edilemez, belirsizlik var. Implement ettiğimiz bağımsız iki interface'de aynı signature'e sahip iki metod var. super.show() yerine örneğin eğer A interface'indekini kullanmak istiyorsak A.show() diyebiliriz, bu durumda output A olur. "
+    },
+    {
+      "id": "6094496",
+      "cevap1": "Javada abstract classlar hem gövdeli hem gövdesiz metodlar barındırabilir. Concrete classların tüm metotların gövdesi olan tanımlanmış ve nesne oluşturabilen bir sınıftır. İnterfacelerin constructorları yoktur. Çünkü nesne oluşturamazlar. Abstract classların vardır",
+      "cevap2": "Hayır edilemez.",
+      "cevap3": "Soyutluk sağlarlar. Ortak özellikleri bir arada tutarlar. Kendinden türetilen sınıfların farklılaşmasını kolaylaştırır.",
+      "cevap4": "extends ve implents temel farklardır yani biri genişletmek biri ise uygulamak için kullanılır. Tip olarak kullanılabilir ama referans görevi görür bizim için",
+      "cevap5": "---",
+      "cevap6": "bir class birden çok interfaceyi implement edebilir. Bir interface başka bir interface i implent edemez extend edebilir.",
+      "cevap7": "Shape c = new Circle(); Yazsaydık düzelirdi\nHatadan Sonra  drawing circle    displaying çıktısı alırız",
+      "cevap8": "Hocam hatayı bulamadım ama çıktı A olur."
+    },
+    {
+      "id": "6539697",
+      "cevap1": "abstract class en az bir metodu abstract olan classtır. bu metodun ne yapacağı belli olmadığından abstract class objesi oluşturulamaz. abstract class ve interfacelerin objesi oluşturulamadığından constructoru olmasının bi anlamı yoktur.",
+      "cevap2": "abstract A classı olsun.\nabstract B extends A classı olsun.\nA'daki bir abstract metodu B'de implement edip B'de başka bir abstract metot yazarsak hem abstractlığını bozmamış oluruz hem de parent classından aldığı abstract metodu implement etmiş oluruz.",
+      "cevap3": "abstract classları bir reference type olarak kullanabiliriz.\nabstract metotlar parent classta gerekli olmayan ancak subclasslarda override edilecek metotları çağırmamızı sağlar",
+      "cevap4": "abstract classlar tip olarak kullanılabilirken interfaceler tip olarak kullanılamaz",
+      "cevap5": "marker=işlevi yok,sınıflandırma vs. amaçlı\nfunctional=metotları, değişkenleri bulunur",
+      "cevap6": "evet\nevet",
+      "cevap7": "abstract classın objesi oluşturulmaya çalışılmış, mümkün değildir.\nShape c = new Circle();\nşeklinde yazılmalıydı.\nOutput : \nDrawing Circle\nDisplaying",
+      "cevap8": "hayır, hangi metodun çalışacağı belli değildir.\nsuper.show(); \nyerine \nA.show();\nya da\nB.show();\nyazılmalıdır.\nBunlara göre output:\nA\n-ya da-\nB\nolur."
+    },
+    {
+      "id": "6429016",
+      "cevap1": "Abstract class nesne oluşturmaz. Soyut ve somut metodlar içerir ve kendini extend edenlerin bu metodlari bulundurması zorunludur. ",
+      "cevap2": "Evet edilebilir. Ama yine abstract olacaktır. Bir gövde görevi görmez. Implementation olmaz",
+      "cevap3": "Abstract classlar nesne oluşturmaz. Abstract metodlar bulundurabilir.bu metotların gövdesi olmaz. Ancak alt sınıflar bunları bulundurmak zorunda kalır. ",
+      "cevap4": "Abstractın constructor metodu vardır. Interface in constructor metodu yoktur. Abstractta çoklu kalıtım yoktur. Interfacede çoklu kalıtım vardır. Interface Instance variable bulundurma. ",
+      "cevap5": "Marker interface method içermeyen interfacetir. Functional interface bir abstract method içeren interfacetir. ",
+      "cevap6": "\n\n\n\nBir interface başka bir interfaceyi extend edebilir. Bu, bir interface'in diğer interface'in metodlarını miras almasını sağlar. Bir class birden fazla interfaceyi implement edebilir. Burada çoklu kalıtım devreye girer. ",
+      "cevap7": "Abstract class nesne oluşturmaz. New Shape yerine new circle yazarak düzeltiriz.\ncircle\ndisplaying",
+      "cevap8": "Show metodu override ederken bir sorun oluşuyor. Super kullanımı yanlış. "
+    },
+    {
+      "id": "8857652",
+      "cevap1": "Abstract ifadesiyle belirtmezseniz class otomatik olarak concretetir. Abstract class abstract method içerebilir. Implement etmek istedigim ama sonra implementini gerçeklestirmek istediğim şeyler icin abstract classları kullanırım. Abstract classların constructorı olabilir ama interfacerlerin olamaz.",
+      "cevap2": "Abstract classlar abstract metodlar içerebileceği icin evet. (Abstract metod final static ya da private değil)",
+      "cevap3": "Gızlemeye ve delay etmeye yarar\nImplementasyonu hakkinda bilgi sahibi olduğum ama şimdi implement etmek istemediğim metodları yazabilmemi sağlar.\nHiyerarşik olarak daha iyi kod yazılımını sağlar(blueprint özelligi)",
+      "cevap4": "Obj2li olan olmaz çünkü interface objeyle alakalı işlem yapmaz ama obj1 olur abstarct class islem yapar. Interfacede constructor yoktur ama abstract classlarda olabilir. Interfaceler daha çok birden fazla aynı özelliği birbiriyle bağlantısı çok kurulamayan sınıfları bağlamak için kullanılabilir. Abstarct classlar ise başlı başına birer sınıftır. Interface full abstractiondır denebilir. \n\nAbstractionda override olurken interfacede olmaz.",
+      "cevap5": "(Tam emin degilim adından çıkartmaya çalısıcam)\nMarker olan hiyerarşi bozulmasın diye functional olan da gerçekten işe yarar bir şeyler yapan interface.",
+      "cevap6": "Evet. Evet.",
+      "cevap7": "\nnew Shape yerine new Circle derim \nDrawing Circle\nDisplaying",
+      "cevap8": "Super kullanarak çagırdık ama bunlar interface oldugu için saçma olur cünkü 2 interfacei de "
+    }
+  ]
+}

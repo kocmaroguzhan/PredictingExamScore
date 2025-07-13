@@ -1,0 +1,254 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "\"Recursion\" kavramı nedir, kısaca açıklayınız.",
+    "Recursive bir metodun temel kısımları nelerdır, kısaca açıklayınız.",
+    "JVM Recursive call'ları nasıl handle ediyor, kısaca açıklayınız.",
+    "int power(x, y) metodu recursive olarak mı daha verimlidir, iteratif olarak mı; kısaca açıklayınız.",
+    "Bir stringin uzunluğunu bulduracak recursive bir metodu nasıl yazarsınız, base casesi ne olurdu?",
+    "Stack nedir, neden overflow olur; overflow olma nedenlerinden bir tanesini açıklayınız.",
+    "Tail Recursion nedir, kısaca açıklayınız."
+  ],
+  "answers": [
+    {
+      "id": "8862077",
+      "cevap1": "Özyineleme, tekrar tekrar kendini çağırma",
+      "cevap2": "Base Case, Body, Recursive Call",
+      "cevap3": "Stack ve Heaple",
+      "cevap4": "Iteratif olarak, çünkü tek iterasyon öbürü çoklu iterasyon",
+      "cevap5": "Stringin uzunluğunun 0 olması",
+      "cevap6": "Recursive calların stackin alabileceğinden çok çağırılması, taşması. Sebebi base caseye hiç girmemesi",
+      "cevap7": "Methodun kendisinin hiçbir sayıyla çarpılmadan returnlenmesi değişkenleri değişerek"
+    },
+    {
+      "id": "4810237",
+      "cevap1": "Geçen hafta derse gelmedim bilmiyorum.",
+      "cevap2": "Geçen hafta derse gelmedim bilmiyorum",
+      "cevap3": "Geçen hafta derse gelmedim bilmiyorum",
+      "cevap4": "Geçen hafta derse gelmedim bilmiyorum",
+      "cevap5": "Geçen hafta derse gelmedim bilmiyorum",
+      "cevap6": "Geçen hafta derse gelmedim bilmiyorum",
+      "cevap7": "Geçen hafta derse gelmedim bilmiyorum"
+    },
+    {
+      "id": "4856424",
+      "cevap1": "fonksiyonu tekrar çağırma işlemidir ",
+      "cevap2": "parametreler, cagirilan fonksiyon ve parametreyi güncelleme",
+      "cevap3": "bilmiyorum",
+      "cevap4": "iteratif olarak daha verimlidir hem zaman hem bilgisayar kullanimi acisindan",
+      "cevap5": "stringin 0. endeksi base case olur",
+      "cevap6": "bilmiyorum",
+      "cevap7": "problemi bölerek elde edilen çözümleri birleştirmek"
+    },
+    {
+      "id": "5361565",
+      "cevap1": "öz yinelemeli demektir.Bir methodun kendini kendi içinde çağırmasıdır.",
+      "cevap2": "base case vardır metodun sonsuz döngüye girmesini engellemek için. Bir de base case dışındaki kısmı vardır o da elimizde ki problemi küçültmeye çalışır ve sonrasında da küçük problemlerin çözümleri birleşip büyük çözümü oluşturur.",
+      "cevap3": "recursive callları iterasyona dönüştürüyor önce ve bu şekilde handle ediyor",
+      "cevap4": "iteratif olarak daha verimli olur makine adına. çünkü makine için iteratif daha verimlidir.",
+      "cevap5": "base casesi uzunluğu 1 olan string olur ",
+      "cevap6": "stack her defasında recursive call olduğunda yeni açılan alandır ve bunlar üst üste binerler. Overflow olmasının sebebi stacklerin ulaşabilrcekleri en fazla miktara ulaşmasıdır. Örnek olarak ise sonsuz döngüye giren bir recursionı örnek verebiliriz.",
+      "cevap7": "Tail recursion methodun son komutunu kendisi olan yani recursive callın en sonda yapıldığı ve diğer işlemlerin bundan önce yapıldığı recursive methodlardır."
+    },
+    {
+      "id": "5281670",
+      "cevap1": "recursion bir methodun kendini çağırması kavramıdır ",
+      "cevap2": "base case recursive call",
+      "cevap3": "her bir call yapıldığında stacke o methodun variableları ve kendisi çağrılır ve en baştan başlayarak methodlar çalıştırılır ",
+      "cevap4": "iteratif olarak yapmak daha az yer ve zaman kullanımına sebep olacaktır ",
+      "cevap5": "stringin uzunluğunun sıfıra eşit olup olmadığına bakmak ",
+      "cevap6": "stack metod çağrıldığında  variablelarının saklandığı ve kullanımı bitince çıktığı yerdir eşer method çok kez çağrılırsa stack overflow olur ",
+      "cevap7": "-"
+    },
+    {
+      "id": "6539697",
+      "cevap1": "bir metodun tekrar tekrar kendini çağırması",
+      "cevap2": "metottan çıkabilmek için en temel çözüm olan base case,",
+      "cevap3": "jvm için normal bir metottan farksız olarak çalışır",
+      "cevap4": "iteratif olarak daha verimli olduğunu düşünüyorum çünkü tekrar tekrar değişken oluşturmak yerine bir değişkeni sürekli değiştirmek daha verimli olacaktır ",
+      "cevap5": "string boş olduğunda metottan çıkacak şekilde",
+      "cevap6": "stack bellekte metot değişkenlerinin bulunduğu bölgedir, çok sayıda değişken oluşturulması sonucu overflow olur, örneğin recursive bir metodun base case'e hiç girmemesi buna sebep olabilir",
+      "cevap7": "recursive metodun yaptığı işlemin sonucunun en sonda tekrar geri geri gelmek yerine direkt return edilmesi"
+    },
+    {
+      "id": "6343320",
+      "cevap1": "Metodun içinde o metodun aynısını kullanarak döngü yaratmaktır",
+      "cevap2": "Base case, stack",
+      "cevap3": ".",
+      "cevap4": "iteratif olarak daha verimli çalışır çünkü stackte çok fazla birikme olmiyacağı için bilgisayar daha az yorulur",
+      "cevap5": "String i ilk eleman ve geri kalanlar diye iki string e bölerdim ve her metoda girdiğinde ilk stringin boyutunu bir arttırıp ikinciyi bir azaltırdım ve bu metodun içinde length diye bir değişken tutup onu her bu metoda girildiğinde 1 arttırırdım",
+      "cevap6": "Stack bir metodda veya bir döngüde kodların hangi sırayla çalışacağını tutar.",
+      "cevap7": "."
+    },
+    {
+      "id": "3963286",
+      "cevap1": "Sonuc olarak kendini dönen metoddur. Bu islemi istenilen en kucuk parçaya kadar yapar.",
+      "cevap2": "Base case, recursive call kısmı",
+      "cevap3": "Ramde,steak kısmında üst üste yıkarak cağırmasıyla",
+      "cevap4": "İteratif olarak daha verimlidir.Çünkü bilgisayar recursive metodu cağirirken daha maliyetlidir.",
+      "cevap5": "İf blogunun icinde string.length==1 kosulu saglandiginda base case olacak sekilde, 1 sayisini döner.recursive call kiminda 1+recursive(string,n+1) döner",
+      "cevap6": "Ramin medot islemlerini yaptigi kismidir. Eger recursiveden cikalamdiginda dolar.",
+      "cevap7": "Donulecej cevabin en sonda hesaplandigi recursion tipidir."
+    },
+    {
+      "id": "7732416",
+      "cevap1": "Bir metodun kendisini çağırmasıdır",
+      "cevap2": "3 kısımdan oluşur. Base case , composition, decomposition",
+      "cevap3": "Metod her çağırıldığında stack frame eklenir",
+      "cevap4": "Hız anlamında daha az verimlidir. Recursive metotlar daha fazla yer kaplar ve daha yavaştır",
+      "cevap5": "Base case substringin boyutunun 0 olduğu noktadır. Geri kalan durumlarda ise stringin ilk elemanı alınır ve geri kalan kısmının reverse esilmiş halinin üstüne eklenir. ",
+      "cevap6": "Stack local variable ları sakladığımız alan. Eğer stackin alabileceğinden daha fazla stack call yapılırsa stack taşar",
+      "cevap7": "Recursive bir metoddaki returnler sonrası ekstra bir işlem yapılmaması ile olur. En son tail kısımda sonuç dönülür"
+    },
+    {
+      "id": "6429016",
+      "cevap1": "Bir fonksiyonun içinde belirli bir baz duruma kadar kendini tekrar çağırmasıdır. ",
+      "cevap2": "Recursive method kendini çağırma, işlev ve durdurucu temel koşuldan oluşur. ",
+      "cevap3": "Çıkış durumu noktasına kadar içeri doğru yeniden çağırır. Çıkış noktası yoksa stack overflow durumu yaşanır. ",
+      "cevap4": "2 üzeri 2 ye kadar iteratif olarak daha verimlidir. Bundan sonra ise recursive olarak daha verimli olur. ",
+      "cevap5": "Scanner ile bir arrayin içine sürekli i+1 alacak şekilde recursive method ile alırım alırım. Sonrasında arrayin length ine bakarım. ",
+      "cevap6": "Stack hafızada açılan sayfalardır. Bu sayfaların dışına çıkacak kadar",
+      "cevap7": "Recursive metot içinde başka bir recursive metot olması. Yani iç içe recursive kullanimidir. Merhaba "
+    },
+    {
+      "id": "6494434",
+      "cevap1": "Bir fonksiyonun kendi kendini çağırarak problemi çözdüğü yöntemdir.",
+      "cevap2": "Base case ve recursive case ",
+      "cevap3": ".",
+      "cevap4": "Recursive olarak daha verimli ",
+      "cevap5": ".",
+      "cevap6": "Stack girdiğimiz verileri tutan ve ilk giren veriyi son çıkartan bir yapıdır. Sonsuz döngüye girerse mesela overflow olur",
+      "cevap7": "Recursionun sadece parametresini azaltarak veya arttırarak çağırma yapılması."
+    },
+    {
+      "id": "9245287",
+      "cevap1": "Bir fonksiyonun kendini çağırması ",
+      "cevap2": "Base case(olmazsa stackoverflow) kodun kendini cagiracagi kisim(recursion)",
+      "cevap3": "Stackler halinde işliyor",
+      "cevap4": "Iteratif daha verimlidir",
+      "cevap5": "String.substring(1) ile ilk karakteri çıkararak recursive halde cagiririm.Base case string length=0 ",
+      "cevap6": "Memorye eklenen islemler eger ust uste ramin kaldiramayacagindan fazla stack gelirse stackoverflow olur",
+      "cevap7": " En sonda kendini cagiran recursive fonksiyon"
+    },
+    {
+      "id": "7374887",
+      "cevap1": "Recursion bir fonkisyonun kendini çağırarak işlem yapmasıdır.",
+      "cevap2": "Problemin çözebildiğimiz kısmı olan base case,çözmeye çalıştığımız ana problem ve bu ikisi arasında bağ kuran recursive calls",
+      "cevap3": "Bir recursive call a geldiğinde stack de tüm  local variablelar in yeni alan açar ve base case e kadar devam eder base case e ulaşınca tüm local variablelar silinir",
+      "cevap4": "Eğer kuvveti hesaplarken küçük parçalara bölersek recursive daha hızlıdır.",
+      "cevap5": "Stringi tek tek karakterlere bölersek 1 karakterin uzunluğunu bildiğimizden base case olarak kullanabiliriz.",
+      "cevap6": "Stack overflow hatası stack memory de saklanan local variable ların stack memorynin boyutunu aşması sonuvu ortaya çıkar",
+      "cevap7": "-"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "Kendini çağıran metod tekniği. ",
+      "cevap2": "Base case ve tekrar eden case. ",
+      "cevap3": "Normal metod gibi çağırıyor? Hangi açıdan anlamadım. ",
+      "cevap4": "İteratif yöntemin recursive yöntemden çoğu durumda daha verimli olduğu bilgisinden yola çıkarak iteratif derim. ",
+      "cevap5": "?? ",
+      "cevap6": "stack JVM hafızasında ayrılan bir bölüm. Hafıza aşılırsa overflow olur. Bir recursion metodunun base case'inin düzgün çalışmaması sebep olabilir. ",
+      "cevap7": "Recursive case'in sonda olduğu recursion türü. "
+    },
+    {
+      "id": "1889298",
+      "cevap1": "Belirli bir metodun içerisinde sınırlar dahilinde (if ile sınırlayarak)  metodu tekrar kullanarak bir fonksiyon oluşturmak",
+      "cevap2": "Base case ve recursive case ",
+      "cevap3": "Stackte üste doğru depoluyor ve sınır değere ulaştığında tekrardan sonuçları ters yönde stackten siliyor",
+      "cevap4": "İteratif olarak daha verimlidir",
+      "cevap5": "int n=0 sayacı tanımlayarak başta stringin kendisine substring(n,str.length()) olarak kendi içerisine metodu tekrar yazarım if koşulu ule substringden çıktı gelmediğindede sayac değerinin uzunluğa eşit olduğu değeri çıktı olarak veririm",
+      "cevap6": "Stack recursionda verilerin geçici olarak depolanmasını sağlar overflow olmasının nedeni ise recursionun if koşulu ile sınırlandırılmaması sonucu",
+      "cevap7": "-"
+    },
+    {
+      "id": "9367691",
+      "cevap1": "Bir metodun kendi içinde kendini çağırmasıdır",
+      "cevap2": "Metodun kendisi, kendini çağırdığı kısım ve base case",
+      "cevap3": "Her çağırmada yeni bir stack olarak üst üste ekliyor.",
+      "cevap4": "İteratif olarak daha verimlidir çünkü yeni stack açmak zorunda kalmadan tek bir döngüde yapılabilir.",
+      "cevap5": "-",
+      "cevap6": "İşlemin hafızada tutulduğu yerdir. Bu yerler yetersiz gelip taşmasına overflow denir. Eğer metot base case'e ulaşamazsan overflow olur.",
+      "cevap7": "-"
+    },
+    {
+      "id": "1762204",
+      "cevap1": "Bir metodun kendi kendini çağırması demektir. ",
+      "cevap2": "Base case, decomposition, composition ",
+      "cevap3": "Her call edildiğinde stack üzerine yeni değişkenleri yerleştirir. Call bittiğinde de değişkenleri siler. ",
+      "cevap4": "İteratif olarak çünkü sürekli olarak bir metot çağırma ve stack'e değişken oluşturma işlemleri yapmamıza gerek kalmaz. ",
+      "cevap5": "Base case, string uzunluğunun 1 olduğu durumdur. String uzunluğu bir olana kadar string uzunluğunu bir bir azaltarak recursive metodu çağırırız. Recursive metot base case'e ulaştıktan sonra metotlardan bir bir çıkarken dışarıda tutulan string uzunluğunu tutan static değişken 1 artırılır.  En son metot main'e return ettiği zaman uzunluğunu bulmuş oluruz. ",
+      "cevap6": "Base case'i olmayan bir recursion yazarsak infinite loop'a gideceğinden dolayı ve her recursive call'da yeni değişken oluşturacağı için stack dolar. Stack, local variable'ların ram'de tutulduğu yerdir. ",
+      "cevap7": "Bulmak istediğimiz sonucun recursion'da işimiz bittikten sonra geri dönerken hesaplanması yerine ileri giderken ve en sona ulaşınca hesaplanmasıdır. "
+    },
+    {
+      "id": "6418019",
+      "cevap1": "bir methodunun kendi kendini çağırması",
+      "cevap2": "base durum: recursion a girmeden en basit case, decomposition: problemi daha küçük problemlere ayrıdığımız kısım, composition: ",
+      "cevap3": "-",
+      "cevap4": " iteratif olarak for döngüsü yerine recursive yapmak daha verimlidir ",
+      "cevap5": "-",
+      "cevap6": "recursionun sonsuz bir döngüye girmesi",
+      "cevap7": "-"
+    },
+    {
+      "id": "5902250",
+      "cevap1": "Bir işlemi tekrar tekrar çağırarak problemleri adım adım çözmektir",
+      "cevap2": "İstenen sonuca ulaşılıp ulaşılmadığını kontrol eden bir kod parçası ve eğer hedefe ulaşılmadıysa “parçalar” üzerinde istenen işlemi yapan kısım.",
+      "cevap3": "Bir stack üzerinde tekrar tekrar yeni işlemler açıyor, sonsuz/beklenenden uzun recursive döngüye girildiğinde ise StackOverflow ile çıkış yapıyor",
+      "cevap4": "Her iki şekilde de yapılabilir fakat iteratif olarak daha verimlidir. İteratif yolla basit şekilde yapılabilen kodlar recursive yapılırsa kod verimsiz çalışabilir.",
+      "cevap5": "if(str.length() == 1)",
+      "cevap6": "Stack, işlemlerin ayrı ayrı, kabaca üst üste konulduğu ve ayrı ayrı çalıştırıldığı hafızadır. Bu hafızaya çok fazla işlem girerse overflow olur. Örnek sonsuz recursion",
+      "cevap7": "-"
+    },
+    {
+      "id": "6914659",
+      "cevap1": "Bir metodun kendi kendisini çağırmasıdır.",
+      "cevap2": "Base case: temel olan kısımdır. Burasi recursive kolun kilitlendiği yerdir. Call case: burasi ise recursive kismin devamli olarak büyüyüp kuculerek kendisini çağırmaya devam ettigi yerdir.",
+      "cevap3": "Stack denilen bir yapıda bu call'ları tutuyor, son giren veri ilk çıkıyor.",
+      "cevap4": "İteratif yöntem yani for veya while döngüsü daha hızlıdır ve bellekte daha az yer kaplar, fakat bu verilen metodu Recursive yazmak yazılımcı acisindan daha kolaydir ve kod daha clean gozukur.",
+      "cevap5": "Public int length(string s) { if(s.length() == 1) //base case return 1; calling case: else return length(s.substring(1))+1;",
+      "cevap6": "Stack: recursive metotlarda metod kendisini her çağırdığında gelecek veriler burada toplanir, son giren veri ilk cikar. Stackoverflow ise cok fazla veri geldiğinde olusur, stack taşar.",
+      "cevap7": "Metodun sadece kendisini çağırmasıdır yani yaninda toplama veya carpma gibi bir işlem bulunmaz "
+    },
+    {
+      "id": "3688139",
+      "cevap1": "Methodoverriding, Metot içinde metot çalıştırmak",
+      "cevap2": "Base case ",
+      "cevap3": "Tek tek hafıza da bölümler oluşturarak",
+      "cevap4": "Recursive olarak daha iyi okunabilir, hata bulma kısmında daha işlevsel olur. Iteratif ise daha az yer kaplar, performans açısından daha iyidir.",
+      "cevap5": "Tek tek charAt ile baglariz cagiririz. ",
+      "cevap6": "Stack JVM de her bir değer için oluşturan hafıza bölümleridir. Stackoverflow ise bunların sonunun olmayıp dolmasıdır. Fonskiyonun base casei olmazsa oluşabilir.",
+      "cevap7": "Tail recursion fonksiyon baseinin işlemin en sonunda olmasidir."
+    },
+    {
+      "id": "5187413",
+      "cevap1": "Özyinelemeli metot, kendi içinde tekrar kendi çağırarak işler.",
+      "cevap2": "Base case, metotun stack overflow olmasını engelleyen istenilen durum. Büyük problem,  çözmek istediğimiz ana problem(N). Küçük problem, büyük problemi ayırarak çözümüne odaklandığımız parça (N-1).",
+      "cevap3": "Stack'de en alttan başlayarak elde tutması gerekenleri biriktirir. En tepeye ulaştıktan sonra yukarıdan aşağı olacak şekilde kodu işler.",
+      "cevap4": "Tek bir for döngüsüyle halledebileceğimiz için iteratif olarak. Çünkü recursion daha yavaş işler.",
+      "cevap5": "Base case stringin uzunluğu 1e eşitse 1 döndür olur. Her seferinde int count değişkenimi 1 arttırıp stringi substring(1)'den başlatarak tekrar çağırırım.",
+      "cevap6": "Bilgisayar kaynaklarını tükettiyse olur. Base case tanımlanmadığı zaman recursion metotlarında olur.",
+      "cevap7": "Metotun içinde iflere girmediği durumda tekrar metotun çağrılmasıyla olur."
+    },
+    {
+      "id": "4114373",
+      "cevap1": "Recursion, aynı fonksiyonun kendi içerisinde base condition sağlanana kadar çağırılmasıdır.",
+      "cevap2": "Recursive metod, fonksiyonun halletmesi gereken ana problem, diğer fonksiyona(aynı fonksiyon) yollayacağı problem ve en son da çözecek bir şey kalmayınca çıkması gereken kısım olan base conditiondan oluşur.",
+      "cevap3": "",
+      "cevap4": ".",
+      "cevap5": "String'in ölçecek elemanının kalmaması (0'a eşit olması)",
+      "cevap6": "Stack kod içerisinde çağırdığımız fonksiyonun içindeki verileri ilk çağırılandan son çağırılana kadar çağırması, ve eğer recursion yaparken base condition hiçbir zaman sağlanmazsa stack sonsuza kadar dolmaya devam eder ve stack overflow olmuş olur.",
+      "cevap7": "Tail Recursion, recursion'un her defasında return olması yerine en son çağırdığımız fonksiyonda return edip en başa dönmesidir."
+    },
+    {
+      "id": "2103960",
+      "cevap1": "Bir metodun kendisini içinde çağırması",
+      "cevap2": "1 Base recursive olmadan çözülen kısım, 2 base'e yaklaştıran case çağırma, 3 ",
+      "cevap3": "Stackler oluşturuyor",
+      "cevap4": "İteratif çok stack kullanmadığından daha hızlı ",
+      "cevap5": "Lenght 0 olmadığı sürece substring alırım ve countı 1 artırırım substringim giderek 1 küçülür , base case length ==1 olur",
+      "cevap6": "Bir memory biçimi çok fazla üstüste gelirse kaldıramaz overflow olur",
+      "cevap7": "En son stackte sonucun bulunması"
+    }
+  ]
+}

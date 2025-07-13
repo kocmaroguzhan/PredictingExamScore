@@ -1,0 +1,149 @@
+import java.util.Scanner;
+
+public class l2q1 {
+     public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Enter the String");
+        String s=scan.nextLine();
+        comb(s.toCharArray(), 0, "");
+     }
+        public static void comb(char[] chars,int index,String s){
+            if(index==chars.length){
+                System.out.println(s);
+                return ;
+            }
+     else{
+
+                if(chars[index]>='a' && chars[index]<='z'){
+                    comb(chars, index+1, s+chars[index]);
+                    comb(chars, index+1, s+ (char)(chars[index]-32));
+                }
+    else if(chars[index]>='A' && chars[index]<='Z'){
+                    comb(chars, index+1, s+chars[index]);
+                    comb(chars, index+1, s+(char)(chars[index]+32));
+                }
+      else{
+                    comb(chars, index+1, s+chars[index]);
+                }
+            }
+
+        }}
+    
+
+
+import java.util.ArrayList;
+public class l2q2 {
+    public static void main(String[] args) {
+        Factory factory=new Factory();
+
+        Robot r1=new Robot();
+        Robot r2=new Robot("Bender", "Bending Unit", 55, true);//constructor oluşturulurken isoperational parametre olarak alonsın denmiş ama maindeki kodda görünmüyor
+        Robot r3=new Robot("R2-D2", "Astromech", 80, true);
+        factory.addRobot(r1);
+        factory.addRobot(r2);
+        factory.addRobot(r3);
+        factory.printFactory();
+    }
+   
+}
+class Robot{
+    private String name;
+    private String type;
+    private int batteryLevel;
+    private boolean isOperational;
+    public Robot(){
+        this.batteryLevel=100;
+        this.isOperational=true;
+        this.name="Wall-e";
+        this.type="trash";
+    }
+    public Robot(String name,String type, int batteryLevel,boolean isOperational){
+        this.name=name;
+        this.batteryLevel=batteryLevel;
+        this.isOperational=isOperational;
+        this.type=type;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getType(){
+        return type;
+    }
+    public boolean getIsOperaional(){
+        return isOperational;
+    }
+    public int getBatteryLevel(){
+        return batteryLevel;
+    }
+    public void setname(String name){
+        this.name=name;
+    }
+    public void setStype(String type){
+        this.type=type;
+    }
+    public void setBatteryLevel(int batteryLevel){
+        this.batteryLevel=batteryLevel;
+    }
+    public void setIsoperational(boolean isOperational){
+        this.isOperational=isOperational;
+    }
+    public void charge(){
+        this.batteryLevel=100;
+    }
+    public void printRobot(){
+        System.out.println("Robot Name: " +this.getName() + " Robot Type: " +this.getType() + " batteryLevel: " + this.getBatteryLevel()+ " Is operational: "+this.getIsOperaional());
+    }
+    
+}
+    class Factory{
+        private String name;
+        private String location;
+        private ArrayList <Robot> robots;
+        public Factory(){
+            this.location="Moon";
+            this.name="Factory1";
+
+        } 
+        public Factory(String name, String Location){
+          this.location=location;
+          this.name=name;
+
+        }
+        public String getName(){
+            return name;
+        }
+        public String getLocation(){
+            return location;
+        }
+        public void setName(String name){
+            this.name=name;
+        }
+        public void setLocation(String location){
+            this.location=location;
+        }
+        public void work(){
+            for(int a=0; a<robots.size(); a++){
+                this.robots.get(a).setBatteryLevel(this.robots.get(a).getBatteryLevel()-15);
+            }
+        }
+        public void printFactory(){
+            for(int b=0; b<robots.size(); b++){
+                this.robots.get(b).printRobot();
+            }
+        }
+        public void chargeAllRobots(){
+            for(int a=0; a<robots.size();a++){
+                this.robots.get(a).setBatteryLevel(100);
+            }
+        }
+        public void addRobot(Robot robot){
+            if(robots==null){
+                robots=new ArrayList<Robot>();
+            }
+            this.robots.add(robot);
+        }
+
+
+
+    }
+

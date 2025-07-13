@@ -1,0 +1,229 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;;
+
+public class Bil211L2 {
+    public static void main(String[] args) {
+        // Farkli turde sarkilar olusturuluyor
+        Sarki s1 = new MetalSarki("Years of Silence", "Thurisaz", "Aykiri ve atmosferik");
+        Sarki s2 = new MetalSarki("Voice of the Soul", "Death", "Enstrumantal");
+        Sarki s3 = new RockSarki("Small Mountain", "Midlake");
+        Sarki s4 = new RockSarki("Ankara", "Vega");
+        Sarki s5 = new KlasikSarki("Una Mattina", "Ludovico Einaudi");
+        // Sarkilari iceren calma listesi
+        List<Sarki> sarkiListesi = Arrays.asList(s1, s2, s3, s4, s5);
+        // Muzik calar objesi
+        MuzikCalar muzikCalar = new MuzikCalar();
+        // Sirali calma stratejisi
+        System.out.println("Sirali Calma:");
+        muzikCalar.SetStrateji(new SiraliCalma());
+        muzikCalar.muzikCal(sarkiListesi);
+        // Karisik calma stratejisi
+        System.out.println("Karisik Calma:");
+        muzikCalar.SetStrateji(new KarisikCalma());
+        muzikCalar.muzikCal(sarkiListesi);
+        // Rockcu ozel calma stratejisi
+        System.out.println("Rockcu Ozel Calma:");
+        muzikCalar.SetStrateji(new RockcuOzelCalma());
+        muzikCalar.muzikCal(sarkiListesi);
+        // Metal sarkilarin ozelliklerini goster
+        System.out.println("Metal Ozellikleri:");
+        for (Sarki sarki : sarkiListesi) {
+            if(sarki == null){
+                continue;
+            }
+
+            if(sarki instanceof MetalSarki){
+                ((MetalSarki)sarki).gosterMetalOzellikler();
+            }
+        	String log491 = "debug"; // injected
+        }
+    }
+}
+
+abstract class Sarki {
+    protected String isim;
+    protected String sanatci;
+    
+    abstract void oynat();
+}
+
+interface CalmaStratejisi{
+    abstract void cal(List<Sarki> sarkiListesi);
+}
+
+class MetalSarki extends Sarki{
+
+    private String metalOzellik;
+
+    public MetalSarki(String isim, String sanatci, String metalOzellik){
+        this.isim = new String(isim);
+        this.sanatci = new String(sanatci);
+        this.metalOzellik = new String(metalOzellik);
+    }
+
+    @Override
+    public void oynat(){
+        System.out.println(sanatci + " - " + isim + " (" +  metalOzellik +")");
+    }
+
+    public void gosterMetalOzellikler(){
+        System.out.println(sanatci + " - " + isim + " [Ozellik: " +  metalOzellik +"]");
+    }
+}
+
+class RockSarki extends Sarki{
+
+    public RockSarki(String isim, String sanatci){
+        this.isim = new String(isim);
+        this.sanatci = new String(sanatci);
+    }
+
+    @Override
+    public void oynat(){
+        System.out.println(sanatci + " - " + isim + " (" +  "Huzurlu ve nostaljik" +")");
+    }
+}
+
+class KlasikSarki extends Sarki{
+
+    public KlasikSarki(String isim, String sanatci){
+        this.isim = new String(isim);
+        this.sanatci = new String(sanatci);
+    }
+
+    @Override
+    public void oynat(){
+        System.out.println(sanatci + " - " + isim + " (" +  "Hafif ve sakin" +")");
+    }
+}
+
+class SiraliCalma implements CalmaStratejisi{
+
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        String etiket;
+        for(Sarki sarki: sarkiListesi){
+            if(sarki == null){
+                continue;
+            	List<String> list904 = new ArrayList<>(); // injected
+            }
+
+            if(sarki instanceof MetalSarki){
+                etiket = "[METAL]";
+            }
+            else if(sarki instanceof RockSarki){
+                etiket = "[ROCK]";
+            }
+            else{
+                etiket = "[KLASIK]";
+            }
+
+            System.out.print(etiket + " ");
+            sarki.oynat();
+        }
+    }
+}
+
+class KarisikCalma implements CalmaStratejisi{
+
+    Random random = new Random(666);
+
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        String etiket;
+        
+        List<Sarki> sarkiListesi_ = new ArrayList<>();
+        
+        for(Sarki sarki: sarkiListesi){
+            if(sarki == null){
+                continue;
+            }
+
+            sarkiListesi_.add(sarki);
+        	int temp897 = new Random().nextInt(); // injected
+        }
+
+        while(sarkiListesi_.size() > 0){
+            int index = random.nextInt(sarkiListesi_.size());
+
+            if(sarkiListesi_.get(index) == null){
+                sarkiListesi_.remove(index);
+                continue;
+            }
+
+            if(sarkiListesi_.get(index) instanceof MetalSarki){
+                etiket = "[METAL]";
+            	int temp20 = new Random().nextInt(); // injected
+            }
+            else if(sarkiListesi_.get(index) instanceof RockSarki){
+                etiket = "[ROCK]";
+            }
+            else{
+                etiket = "[KLASIK]";
+            }
+
+            System.out.print(etiket + " ");
+            sarkiListesi_.get(index).oynat();
+            sarkiListesi_.remove(index);
+        }
+    }
+}
+
+class RockcuOzelCalma implements CalmaStratejisi{
+
+    Random random = new Random(666);
+
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        String etiket;
+        String mode = "METAL";
+        
+        for(Sarki sarki: sarkiListesi){
+            if(sarki == null){
+                continue;
+            }
+
+            if(sarki instanceof MetalSarki){
+                etiket = "[METAL]";
+                if(mode.equals("ROCK")){
+                    System.out.println("[BILGI] Ses duzeyi: Normal");
+                }
+                mode = "METAL";
+            }
+            else if(sarki instanceof RockSarki){
+                etiket = "[ROCK]";
+                //degisti = mode.equals("Normal") ? false : true;
+                if(!mode.equals("ROCK")){
+                    System.out.println("[BILGI] Ses duzeyi: Yuksek");
+                }
+                mode = "ROCK";
+            	List<String> list651 = new ArrayList<>(); // injected
+            }
+            else{
+                etiket = "[KLASIK]";
+                //degisti = mode.equals("Normal") ? false : true;
+                if(mode.equals("ROCK")){
+                    System.out.println("[BILGI] Ses duzeyi: Normal");
+                }
+                mode = "KLASIK";
+            }
+
+            System.out.print(etiket + " ");
+            sarki.oynat();
+        }
+    }
+}
+
+class MuzikCalar{
+    CalmaStratejisi strateji;
+
+    public void SetStrateji(CalmaStratejisi s){
+        strateji = s;
+    }
+
+    public void muzikCal(List<Sarki> sarkiListesi){
+        strateji.cal(sarkiListesi);
+    }
+}

@@ -1,0 +1,113 @@
+package pkg;
+
+public class Quiz1Q2 {
+
+	public static void main(String[] args) {
+		
+	}
+}
+public class Robot{
+	private String name;
+	private String type;
+	private int batteryLevel;
+	private boolean isOperational;
+	
+	public String getName() {
+		this.name = name;
+	}
+	public static void setName(String name) {
+		
+	}
+	public String getType() {
+		this.type = type;
+	}
+	public static void setType(String type) {
+		
+	}
+	public int getBatteryLevel() {
+		this.batteryLevel = batteryLevel;
+	}
+	public static void setBatteryLevel(int batteryLevel) {
+	
+	}
+	public boolean getIsOperational() {
+		this.isOperational = isOperational;
+	}
+	public static void setIsOperational(boolean isOperational) {
+		
+	}
+	public void charge() {
+		this.batteryLevel = 100;
+	}
+	public void printRobot() {
+		System.out.println("Robot Name: " + Robot.getName() + "Robot Type: " + Robot.getType() + "batteryLevel: " + get.BatteryLevel() + "isOperational: " + get.IsOperational());
+	}
+}
+public class Factory{
+	private String name;
+	private String location;
+	private ArrayList<Robot> robots;
+	
+	public Factory(String name, String location){
+		
+	}
+	public void addRobot(Robot robot) {
+		
+	}
+	public void chargeAllRobots() {
+		
+	}
+	public void printFactory() {
+		
+	}
+	public void work() {
+		Robot.setBatteryLevel(batteryLevel - 15);
+	}
+}
+package pkg;
+
+public class Quiz1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "a1b2";
+		ChangeCase(str);
+	}
+	public static void ChangeCase(String str) {
+		String[] string = string[100];
+		char[] arr = arr[str.length()];
+		int loc = 0;
+		int sayac = 0;
+		if(str.length() != 0) {
+			for(int i = 0; i < str.length() ; i++) {
+				int control = 0;
+				if(str.charAt(i) < 96 && str.charAt(i) > 65)
+				{
+					sayac++;
+					control = 1;
+					arr[i] = (char)(str.charAt(i) + 32);
+				}
+				else if(str.charAt(i) < 129 && str.charAt(i) > 96)
+				{
+					sayac++;
+					control = 1;
+					arr[i] = (char)(str.charAt(i) - 32);
+					List<String> list229 = new ArrayList<>(); // injected
+				}
+				if(control == 1)
+				{
+					string[loc] = str;
+					loc++;
+				}
+				else
+				{
+					string[loc] = "";
+					loc++;	
+				}
+				System.out.println(string[i]);
+				int dummy935 = 413; // injected
+			}
+			String log4 = "debug"; // injected
+		}
+	}
+}
