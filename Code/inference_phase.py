@@ -36,6 +36,19 @@ with open(config_path, "r") as f:
 print("✅ augmentation_count =", augmentation_count)
 print("✅ model_embedding_size =", model_embedding_size)
 print("✅ number_of_augmented_code_saving_threshold =", number_of_augmented_code_saving_threshold)
+prediction_index_path = os.path.join(dataset_folder, "prediction_index.txt")
+prediction_index=0
+
+# Read config value
+with open(prediction_index_path, "r") as f:
+    for line in f:
+        if line.startswith("prediction_index"):
+            prediction_index= int(line.strip().split("=")[1])
+            
+next_prediction_index=prediction_index+1
+print("✅ current prediction_index =", prediction_index)
+print("✅ new prediction_index =", next_prediction_index)
+
 # Identify embedding columns
 embedding_original_cols = [col for col in inference_df.columns if "_original" in col and not col.endswith("_valid")]
 embedding_augmented_cols = [col for col in inference_df.columns if "_augmented" in col and not col.endswith("_valid")]
@@ -90,20 +103,20 @@ class MLP(nn.Module):
             nn.ReLU(),
             nn.Dropout(0.2),
 
-            nn.Linear(256, 64),
+            nn.Linear(256, 128),
             #nn.BatchNorm1d(128),
             nn.ReLU(),
             nn.Dropout(0.2),
 
-            nn.Linear(64, 16),
+            nn.Linear(128, 64),
             #nn.BatchNorm1d(64),
             nn.ReLU(),
             nn.Dropout(0.1),
 
-            #nn.Linear(16, 1),
+            nn.Linear(64, 16),
             #nn.BatchNorm1d(32),
-            #nn.ReLU(),
-            #nn.Dropout(0.1),
+            nn.ReLU(),
+            nn.Dropout(0.1),
 
             nn.Linear(16, 1)
         )
@@ -134,6 +147,11 @@ result_df = pd.DataFrame({
 })
 
 # === Save to CSV ===
-output_path = os.path.join(dataset_folder, "predicted_scores.csv")
+output_path = os.path.join(dataset_folder, f"prediction_{next_prediction_index}_predicted_scores.csv")
 result_df.to_csv(output_path, index=False)
 print(f"✅ Saved predicted scores to: {output_path}")
+
+prediction_index=next_prediction_index
+with open(prediction_index_path, "w") as f:
+    f.write(f"prediction_index={prediction_index}\n")
+print(f"✅ Prediction index is updated as {prediction_index} and written to : {prediction_index_path}")

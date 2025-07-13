@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.utils import shuffle
 import numpy as np
 import pandas as pd
 import os
@@ -17,7 +18,68 @@ def flatten_embeddings_with_valid_flag(row, emb_cols, valid_cols):
     return np.concatenate(emb_vectors + [valid_flags])
 
 
-import numpy as np
+def mixup_data_augmentation(X, y, embedding_dim, alpha=0.4):
+    if alpha <= 0:
+        return X, y
+
+    lam = np.random.beta(alpha, alpha)
+    indices = np.random.permutation(len(X))
+
+    # Embeddings
+    X_emb = X[:, :embedding_dim]
+    X_valid = X[:, embedding_dim:]
+
+    X_mixed_emb = lam * X_emb + (1 - lam) * X_emb[indices]
+    X_mixed_valid = np.minimum(X_valid, X_valid[indices])  # Logical AND since flags are 0 or 1
+
+    X_mixed = np.concatenate([X_mixed_emb, X_mixed_valid], axis=1)
+    y_mixed = lam * y + (1 - lam) * y[indices]
+
+    return X_mixed, y_mixed
+
+
+def generate_mixup_data_variants(X, y, embedding_dim, alpha_start=0.2, alpha_stop=1.0, alpha_step_size=0.2):
+    """
+    Generate a list of mixup augmented datasets for a range of alpha values.
+
+    Parameters:
+    - X: np.ndarray, shape (n_samples, n_features)
+    - y: np.ndarray, shape (n_samples,)
+    - embedding_dim: int, number of dimensions for embedding part
+    - alpha_start: float, starting value of alpha (inclusive)
+    - alpha_stop: float, stopping value of alpha (inclusive)
+    - alpha_step: float, increment of alpha
+
+    Returns:
+    - List of tuples: [(X_mix_1, y_mix_1), (X_mix_2, y_mix_2), ...]
+    """
+    mixup_data_results = []
+    alpha = alpha_start
+    # We add (alpha_step_size / 2) to alpha_stop in np.arange to ensure the final value is included.
+    # This accounts for floating point precision issues where np.arange might exclude alpha_stop
+    # due to tiny rounding errors (e.g., 0.2 + 0.2 + 0.2 may result in 0.6000000000000001 instead of 0.6).
+    # Adding half the step size ensures the range goes slightly beyond alpha_stop, making inclusion reliable.
+    for alpha in np.arange(alpha_start, alpha_stop + alpha_step_size / 2, alpha_step_size):
+        X_mixed, y_mixed = mixup_data_augmentation(X, y, embedding_dim, alpha=alpha)
+        mixup_data_results.append((X_mixed, y_mixed))
+
+    return mixup_data_results
+
+def combine_data_array_list(data_array_list):
+    """
+    Combine multiple (X, y) tuples into a single X and y array.
+
+    Parameters:
+    - mixup_data_results: List of (X, y) tuples
+
+    Returns:
+    - Tuple: (X_combined, y_combined)
+    """
+    X_all = np.concatenate([pair[0] for pair in data_array_list], axis=0)
+    y_all = np.concatenate([pair[1] for pair in data_array_list], axis=0)
+    return X_all, y_all
+
+
 
 def generate_noisy_samples(
         X_clean: np.ndarray,
@@ -60,7 +122,11 @@ def generate_noisy_samples(
     return X_noisy
 
 
-
+# Combine mix up  features
+def merge_samples(X_sample_0,X_sample_1,y_sample_0,y_sample_1):
+    X_combined = np.concatenate([X_sample_0, X_sample_1], axis=0)
+    y_combined = np.concatenate([y_sample_0, y_sample_1], axis=0)
+    return (X_combined,y_combined)
 
 # Combine clean + noisy features
 def merge_original_and_noise_samples(X_train,X_train_noisy,y_train):
@@ -160,17 +226,28 @@ X_train = X_aug
 y_train = y_aug
 
 embedding_dim=model_embedding_size*num_of_embeddings
+
+alpha_start=0.1
+alpha_stop=1.0
+alpha_step_size=0.1
+#Mixup data augmentation with using original data original data
+mixup_data_list=generate_mixup_data_variants(original_X,original_y,embedding_dim,
+                             alpha_start,alpha_stop,alpha_step_size)
+X_mixup_combined_final,y_mixup_combined_final=combine_data_array_list(mixup_data_list)
 #Add noise to training samples
+X_mixup_noisy = generate_noisy_samples(X_mixup_combined_final,embedding_dim=embedding_dim)
+X_mixup_combined, y_mixup_combined = merge_original_and_noise_samples(X_mixup_combined_final, X_mixup_noisy, y_mixup_combined_final)
 X_train_noisy = generate_noisy_samples(X_train,embedding_dim=embedding_dim)
 X_train, y_train = merge_original_and_noise_samples(X_train, X_train_noisy, y_train)
-
-print("Training Feature matrix shape:", X_train.shape)
-print("Number of samples for training:", X_train.shape[0])
-print("Feature dimension (per sample):", X_train.shape[1])
+X_train_final,y_train_final=merge_samples(X_mixup_combined,X_train,y_mixup_combined,y_train)
+X_train_final, y_train_final = shuffle(X_train_final, y_train_final, random_state=42)
+print("Training Feature matrix shape:", X_train_final.shape)
+print("Number of samples for training:", X_train_final.shape[0])
+print("Feature dimension (per sample):", X_train_final.shape[1])
 print("Number of samples for validation:", y_val.shape[0])
 
-X_train_tensor = torch.tensor(X_train, dtype=torch.float32).to(device)
-y_train_tensor = torch.tensor(y_train, dtype=torch.float32).view(-1, 1).to(device)
+X_train_tensor = torch.tensor(X_train_final, dtype=torch.float32).to(device)
+y_train_tensor = torch.tensor(y_train_final, dtype=torch.float32).view(-1, 1).to(device)
 X_val_tensor = torch.tensor(X_val, dtype=torch.float32).to(device)
 y_val_tensor = torch.tensor(y_val, dtype=torch.float32).view(-1, 1).to(device)
 
@@ -189,34 +266,34 @@ class MLP(nn.Module):
             nn.ReLU(),
             nn.Dropout(0.2),
 
-            nn.Linear(256, 64),
+            nn.Linear(256, 128),
             #nn.BatchNorm1d(128),
             nn.ReLU(),
             nn.Dropout(0.2),
 
-            nn.Linear(64, 16),
+            nn.Linear(128, 64),
             #nn.BatchNorm1d(64),
             nn.ReLU(),
             nn.Dropout(0.1),
 
-            #nn.Linear(16, 1),
+            nn.Linear(64, 16),
             #nn.BatchNorm1d(32),
-            #nn.ReLU(),
-            #nn.Dropout(0.1),
+            nn.ReLU(),
+            nn.Dropout(0.1),
 
             nn.Linear(16, 1)
         )
 
     def forward(self, x):
         return self.model(x)
-input_dim = X_train.shape[1]
+input_dim = X_train_final.shape[1]
 model = MLP(input_dim).to(device)  # ✅ Send model to GPU
 criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
 epochs = 500
 val_r2_history=[]
 # Early stopping parameters
-early_stop_r2_threshold=0.8
+early_stop_r2_threshold=0.9
 trigger_count=0
 patience=20
 best_val_r2 = float("-inf")
