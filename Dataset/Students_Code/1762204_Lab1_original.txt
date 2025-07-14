@@ -1,0 +1,102 @@
+public class Question2 {
+    public static void main(String[] args) {
+        int arr[] = {5, 4, 1, 2};
+
+        cocktailSort(arr);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void cocktailSort(int[] arr) {
+        sort(false, arr);
+    }
+
+    public static void sort(boolean reverse, int[] arr) {
+        boolean sorted = true;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                sorted = false;
+                break;
+            }
+        }
+        
+        if (sorted)
+            return;
+    
+        if (reverse) {
+            for (int i = arr.length - 1; i > 0; i--) {
+                if (arr[i] < arr[i - 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i - 1];
+                    arr[i - 1] = temp;
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            }
+        }
+        sort(!reverse, arr);
+    }
+}
+public class Question1 {
+    public static void main(String[] args) {
+        int count = collatz(5);
+
+        System.out.println(count);
+    }
+
+    public static int collatz(int i) {
+        return calculate(0, i);
+    }
+
+    public static int calculate(int count, int number) {
+        int newNumber = 0;
+
+        if (number == 1)
+            return count;
+        if (number % 2 == 0)
+            newNumber = number / 2;
+        else if (number % 2 != 0)
+            newNumber = number * 3 + 1;
+
+        return calculate(count + 1, newNumber);
+    }
+}
+public class Question3 {
+    public static void main(String[] args) {
+        Sayac s1 = new Sayac("10001");
+        Sayac s2 = new Sayac("1111");
+
+        System.out.println(s1.say());
+        System.out.println(s2.say());
+    }
+}
+
+class Sayac {
+    public String text = "";
+    public Sayac(String text) {
+        this.text = text;
+    }
+
+    public int say() {
+        return count(0, text);
+    }
+
+    public int count(int number, String text) {
+        if (text.length() == 0) {
+            return number;
+        }
+        if (text.charAt(0) == '1') {
+            number++;
+        }
+        return count(number, text.substring(1));
+    }
+}

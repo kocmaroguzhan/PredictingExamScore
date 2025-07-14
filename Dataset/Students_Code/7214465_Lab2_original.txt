@@ -1,0 +1,149 @@
+import java.util.Collections;
+import java.util.List;
+
+
+interface CalmaStratejisi {
+    void cal(List<Sarki> sarkiListesi);
+}
+    class SiraliCalma implements CalmaStratejisi {
+        @Override
+        public void cal(List<Sarki> sarkiListesi) {
+            for (Sarki sarki : sarkiListesi) {
+                sarki.oynat();
+            }
+        }
+    }
+
+    class KarisikCalma implements CalmaStratejisi {
+        @Override
+        public void cal(List<Sarki> sarkiListesi) {
+            Collections.shuffle(sarkiListesi);
+            for (Sarki sarki : sarkiListesi) {
+                sarki.oynat();
+            }
+        }
+    }
+
+
+    class RockcuOzelCalma implements CalmaStratejisi {
+        @Override
+        public void cal(List<Sarki> sarkiListesi) {
+            boolean bl = true;
+            for (Sarki sarki : sarkiListesi) {
+                if (sarki instanceof RockSarki && bl == false) {
+                    System.out.println("     [BİLGİ] Ses düzeyi: Yüksek");
+                    bl = true;
+                } 
+                else if (!(sarki instanceof RockSarki) && bl == true) {
+                    System.out.println("     [BİLGİ] Ses düzeyi: Normal");
+                    bl = false;
+                }
+                sarki.oynat();
+            }
+            if (bl) {
+                System.out.println("     [BİLGİ] Ses düzeyi: Normal");
+            }
+        }
+    }
+
+
+import java.util.List;
+
+class MuzikCalar {
+    private CalmaStratejisi strateji;
+
+    public void setStrateji(CalmaStratejisi s) {
+        this.strateji = s;
+    }
+
+    public void muzikCal(List<Sarki> sarkiListesi) {
+        if (strateji != null) {
+            strateji.cal(sarkiListesi);
+        }
+    }
+}
+
+import java.util.Arrays;
+import java.util.List;
+
+public class soru1 {
+    public static void main(String[] args) {
+        Sarki s1 = new MetalSarki("Years of Silence", "Thurisaz", "Aykiri ve atmosferik");
+        Sarki s2 = new MetalSarki("Voice of the Soul", "Death", "Enstrumantal");
+        Sarki s3 = new RockSarki("Small Mountain", "Midlake");
+        Sarki s4 = new RockSarki("Ankara", "Vega");
+        Sarki s5 = new KlasikSarki("Una Mattina", "Ludovico Einaudi");
+        List<Sarki> sarkiListesi = Arrays.asList(s1, s2, s3, s4, s5);
+
+        MuzikCalar muzikCalar = new MuzikCalar();
+
+        System.out.println("Sirali Calma:");
+        muzikCalar.setStrateji(new SiraliCalma());
+        muzikCalar.muzikCal(sarkiListesi);
+
+        System.out.println("Karisik Calma:");
+        muzikCalar.setStrateji(new KarisikCalma());
+        muzikCalar.muzikCal(sarkiListesi);
+
+        System.out.println("Rockcu Ozel Calma:");
+        muzikCalar.setStrateji(new RockcuOzelCalma());
+        muzikCalar.muzikCal(sarkiListesi);
+
+        System.out.println("Metal Ozellikleri:");
+        for (Sarki sarki : sarkiListesi) {
+            if (sarki instanceof MetalSarki){
+                ((MetalSarki) sarki).gosterMetalOzellikleri();
+            } 
+        }
+    }
+}
+abstract class Sarki {
+    public String isim;
+    public String sanatci;
+
+    public Sarki(String isim, String sanatci) {
+        this.isim = isim;
+        this.sanatci = sanatci;
+    }
+
+    public abstract void oynat();
+}
+class MetalSarki extends Sarki {
+    private String metalOzellik;
+
+    public MetalSarki(String isim, String sanatci, String metalOzellik) {
+        super(isim, sanatci);
+        this.metalOzellik = metalOzellik;
+    }
+
+    @Override
+    public void oynat() {
+        System.out.println("     [METAL] " + sanatci + " - " + isim + " (" + metalOzellik + ")");
+    }
+
+    public void gosterMetalOzellikleri() {
+        System.out.println("     " + sanatci + " - " + isim + " [Özellik: " + metalOzellik + "]");
+    }
+}
+
+class RockSarki extends Sarki {
+    public RockSarki(String isim, String sanatci) {
+        super(isim, sanatci);
+    }
+
+    @Override
+    public void oynat() {
+        System.out.println("     [ROCK] " + sanatci + " - " + isim + " (Huzurlu ve nostaljik)");
+    }
+}
+
+class KlasikSarki extends Sarki {
+    public KlasikSarki(String isim, String sanatci) {
+        super(isim, sanatci);
+    }
+
+    @Override
+    public void oynat() {
+        System.out.println("     [KLASİK] " + sanatci + " - " + isim + " (Hafif ve sakin)");
+    }
+}

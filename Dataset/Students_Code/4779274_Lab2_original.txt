@@ -1,0 +1,142 @@
+import java.sql.Time;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class lab2_221301009 {
+    public static void main(String[] args) {
+    // Farkli turde sarkilar olusturuluyor
+    Sarki s1 = new MetalSarki("Years of Silence", "Thurisaz", "Aykiri ve atmosferik");
+    Sarki s2 = new MetalSarki("Voice of the Soul", "Death", "Enstrumantal");
+    Sarki s3 = new RockSarki("Small Mountain", "Midlake");
+    Sarki s4 = new RockSarki("Ankara", "Vega");
+    Sarki s5 = new KlasikSarki("Una Mattina", "Ludovico Einaudi");
+    // Sarkilari iceren calma listesi
+    List<Sarki> sarkiListesi = Arrays.asList(s1, s2, s3, s4, s5);
+    // Muzik calar objesi
+    MuzikCalar muzikCalar = new MuzikCalar();
+    // Sirali calma stratejisi
+    System.out.println("Sirali Calma:");
+    muzikCalar.setStrateji(new SiraliCalma());
+    muzikCalar.muzikCal(sarkiListesi);
+    // Karisik calma stratejisi
+    System.out.println("Karisik Calma:");
+    muzikCalar.setStrateji(new KarisikCalma());
+    muzikCalar.muzikCal(sarkiListesi);
+    // Rockcu ozel calma stratejisi
+    System.out.println("Rockcu Ozel Calma:");
+    muzikCalar.setStrateji(new RockcuOzelCalma());
+    muzikCalar.muzikCal(sarkiListesi);
+    // Metal sarkilarin ozelliklerini goster
+    System.out.println("Metal Ozellikleri:");
+    for (Sarki sarki : sarkiListesi) {
+        if(sarki instanceof MetalSarki) {
+            ((MetalSarki)sarki).gosterMetalOzellikleri();
+        }
+    }
+}
+
+}
+
+abstract class Sarki {
+    String isim, sanatci;
+
+    abstract void oynat();
+}
+
+class MetalSarki extends Sarki {
+    String metalOzellik;
+    MetalSarki(String isim, String sanatci, String metalOzellik) {
+        this.isim = isim;
+        this.sanatci = sanatci;
+        this.metalOzellik = metalOzellik;
+    }
+
+    void oynat() {
+        System.out.println("[METAL] "+this.sanatci+" - "+this.isim+" ("+this.metalOzellik+")");
+    }
+
+    void gosterMetalOzellikleri() {
+        System.out.println(this.sanatci+" - "+this.isim+" [Ozellik: "+this.metalOzellik+"]");
+    }
+
+}
+
+class RockSarki extends Sarki {
+    String rockOzellik = "Huzurlu ve nostaljik";
+    RockSarki(String isim, String sanatci) {
+        this.isim = isim;
+        this.sanatci = sanatci;
+    }
+
+    void oynat() {
+        System.out.println("[ROCK] "+this.sanatci+" - "+this.isim+" ("+this.rockOzellik+")");
+    }
+}
+
+class KlasikSarki extends Sarki {
+    String klasikOzellik = "Hafif ve sakin";
+    KlasikSarki(String isim, String sanatci) {
+        this.isim = isim;
+        this.sanatci = sanatci;
+    }
+
+    void oynat() {
+        System.out.println("[KLASIK] "+this.sanatci+" - "+this.isim+" ("+this.klasikOzellik+")");
+    }
+}
+
+interface CalmaStratejisi{
+    void cal(List<Sarki> sarkiListesi);
+}
+
+class SiraliCalma implements CalmaStratejisi {
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        for (Sarki sarki : sarkiListesi) {
+            sarki.oynat();
+        }
+        System.out.println();
+    }
+}
+
+class KarisikCalma implements CalmaStratejisi {
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        Collections.shuffle(sarkiListesi);
+        for (Sarki sarki : sarkiListesi) {
+            sarki.oynat();
+        }
+        System.out.println();
+    }
+}
+
+class RockcuOzelCalma implements CalmaStratejisi {
+    @Override
+    public void cal(List<Sarki> sarkiListesi) {
+        boolean yuksekMi = false;
+        for (Sarki sarki : sarkiListesi) {
+            if (sarki instanceof RockSarki && yuksekMi == false) {
+                System.out.println("[BILGI] Ses duzeyi: Yuksek");
+                yuksekMi = true;
+            }
+            else if (!(sarki instanceof RockSarki) && yuksekMi == true) {
+                System.out.println("[BILGI] Ses duzeyi: Normal");
+                yuksekMi = false;
+            }
+            sarki.oynat();
+        }
+    }
+}
+
+class MuzikCalar {
+    CalmaStratejisi strateji;
+    void setStrateji(CalmaStratejisi s) {
+        strateji = s;
+    }
+
+    void muzikCal(List<Sarki> sarkiListesi) {
+        strateji.cal(sarkiListesi);
+    }
+}
+
