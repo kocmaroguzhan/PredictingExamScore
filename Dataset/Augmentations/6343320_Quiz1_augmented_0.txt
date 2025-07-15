@@ -102,7 +102,7 @@ public class Quiz1 {
 				{
 					string[loc] = "";
 					loc++;	
-					if (false) { System.out.println("debug748"); } // injected
+					int dummy488 = 299; // injected
 				}
 				System.out.println(string[i]);
 			}

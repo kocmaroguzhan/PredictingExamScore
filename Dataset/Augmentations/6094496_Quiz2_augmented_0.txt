@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	String log131 = "debug"; // injected
+	 	List<String> list692 = new ArrayList<>(); // injected
 	 }
  }
  
@@ -345,7 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			if (false) { System.out.println("debug158"); } // injected
+			boolean flag879 = true; // injected
 		}
 	}
 	
@@ -471,9 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	if (false) { System.out.println("debug69"); } // injected
+            	String log393 = "debug"; // injected
             }
-        	if (false) { System.out.println("debug701"); } // injected
+        	boolean flag40 = true; // injected
         }
 	}
 	
@@ -482,9 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	int temp809 = new Random().nextInt(); // injected
+	            	boolean flag819 = true; // injected
 	            }
-	        	String log622 = "debug"; // injected
+	        	if (false) { System.out.println("debug259"); } // injected
 	        }
 	    }
 
@@ -493,9 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	String log946 = "debug"; // injected
+	            	int temp277 = new Random().nextInt(); // injected
 	            }
-	        	if (false) { System.out.println("debug791"); } // injected
+	        	int temp192 = new Random().nextInt(); // injected
 	        }
 	    }
 	    

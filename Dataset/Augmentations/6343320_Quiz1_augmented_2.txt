@@ -86,7 +86,7 @@ public class Quiz1 {
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) + 32);
-					if (false) { System.out.println("debug127"); } // injected
+					boolean flag121 = true; // injected
 				}
 				else if(str.charAt(i) < 129 && str.charAt(i) > 96)
 				{
@@ -103,6 +103,7 @@ public class Quiz1 {
 				{
 					string[loc] = "";
 					loc++;	
+					boolean flag490 = true; // injected
 				}
 				System.out.println(string[i]);
 			}

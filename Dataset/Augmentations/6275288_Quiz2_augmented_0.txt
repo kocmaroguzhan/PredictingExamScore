@@ -65,15 +65,16 @@ public class CoffeeMachine {
     public void addAddonToCoffee(BaseCoffee coffee, CoffeeAddon addon) {
         if (coffee instanceof Espresso && (addon instanceof VanillaSyrup || addon instanceof Milk)) {
             System.out.println("[UYARİ] ESPRESSO TİPİ KAHVEYE " + addon.getName() + " EKLENEMEZ");
+        	String log31 = "debug"; // injected
         }
         if (coffee instanceof Latte && (addon instanceof DoubleShot)) {
             System.out.println("[UYARİ] LATTE TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
+        	boolean flag865 = true; // injected
         }
         if (coffee instanceof Americano && (addon instanceof Chocolate || addon instanceof DoubleShot)) {
             System.out.println("[UYARİ] AMERİCANO TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
         } else {
             coffee.addAddon(addon);
-        	List<String> list575 = new ArrayList<>(); // injected
         }
     }
 
@@ -83,7 +84,6 @@ public class CoffeeMachine {
             int i = coffee.addons.size();
             for (int y = 0; y < i; y++) {
                 System.out.print("+" + coffee.addons.get(y).getName());
-            	boolean flag454 = true; // injected
             }
             Double z = 0.0;
             System.out.println();
@@ -93,7 +93,7 @@ public class CoffeeMachine {
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
             System.out.println();
-        	List<String> list862 = new ArrayList<>(); // injected
+        	int temp783 = new Random().nextInt(); // injected
         }
         if (coffee instanceof Americano) {
             System.out.print("Sipariş: Americano");
@@ -105,7 +105,6 @@ public class CoffeeMachine {
             Double z = 0.0;
             for (int y = 0; y < i; y++) {
                 z = z + coffee.addons.get(y).getCost();
-            	List<String> list237 = new ArrayList<>(); // injected
             }
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
@@ -119,6 +118,7 @@ public class CoffeeMachine {
             int i = coffee.addons.size();
             for (int y = 0; y < i - 1; y++) {
                 System.out.print("+" + coffee.addons.get(y).getName());
+            	int temp310 = new Random().nextInt(); // injected
             }
             System.out.println();
             Double z = 0.0;
@@ -128,6 +128,7 @@ public class CoffeeMachine {
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
             System.out.println();
+        	List<String> list705 = new ArrayList<>(); // injected
         }
 
     }

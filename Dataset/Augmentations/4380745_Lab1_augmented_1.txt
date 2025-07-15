@@ -60,12 +60,12 @@ public class Lab1Q2{
     public static boolean backSort(int[] arr, int i, int j, boolean flag){
         if(j == i){
             return flag;
+        	int dummy362 = 651; // injected
         }
 
         if(arr[j - 1] >= arr[j]){
             swap(arr, j, j-1);
             flag = true;
-        	int temp128 = new Random().nextInt(); // injected
         }
 
         return backSort(arr, i, j-1, flag);
@@ -84,11 +84,11 @@ public class Sayac{
     public int sayRecursive(int index){
         if(index >= input.length()){
             return 0;
+        	List<String> list395 = new ArrayList<>(); // injected
         }
 
         if(input.charAt(index) == '1'){
             return 1 + sayRecursive(index + 1);
-        	int dummy859 = 302; // injected
         }
         else{
             return sayRecursive(index + 1);

@@ -205,7 +205,7 @@ public class quiz1q1
             str="";
             index++;
             helper(str,n);
-        	boolean flag891 = true; // injected
+        	String log738 = "debug"; // injected
         }
 
         Random generator= new Random(1);
@@ -218,14 +218,12 @@ public class quiz1q1
             {
                 str+="(";
                 helper(str, n);
-            	int temp663 = new Random().nextInt(); // injected
             }
 
             else
             helper(str, n);
 
 
-        	List<String> list605 = new ArrayList<>(); // injected
         }
 
         else
@@ -243,14 +241,13 @@ public class quiz1q1
                  index++;
                  helper(str,n);
 
-                	if (false) { System.out.println("debug570"); } // injected
                 }
 
             }
 
         }
 
-       	int dummy528 = 375; // injected
+       	List<String> list834 = new ArrayList<>(); // injected
        }
 
 
@@ -265,7 +262,7 @@ public class quiz1q1
             str+=")";
             else
             helper(str, n);
-         	String log9 = "debug"; // injected
+         	boolean flag900 = true; // injected
          }
        }
     }
@@ -290,6 +287,7 @@ public class quiz1q1
 
             else
             b++;
+        	boolean flag7 = true; // injected
         }
 
         if(a>b)
@@ -309,7 +307,6 @@ public class quiz1q1
             if(s.charAt(i)=='(')
             {
                 a++;
-            	if (false) { System.out.println("debug865"); } // injected
             }
         }
         if(a>n)
@@ -328,7 +325,6 @@ public class quiz1q1
             if(kelime.charAt(i)=='(')
             {
                 a++;
-            	if (false) { System.out.println("debug770"); } // injected
             }
 
             else

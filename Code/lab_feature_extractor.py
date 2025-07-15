@@ -166,44 +166,64 @@ def inject_dead_code(code: str, min_method_length=6, max_insertions=2) -> str:
 # Long Code Embedding Function
 # ----------------------------
 
-def get_embedding_for_long_code(code, tokenizer, model, device, chunk_size=512):
-    tokenized = tokenizer.encode_plus(
-        code,
-        return_tensors="pt",
-        add_special_tokens=True,
-        return_attention_mask=True,
-        truncation=False,
-        max_length=99999  # large number to avoid truncation here
-    )
+def get_embedding_for_long_code(question,code, tokenizer, model, device, chunk_size=512):
+    """
+    Generate a normalized embedding for long code with question included in every chunk.
 
-    input_ids = tokenized['input_ids'].squeeze(0)
-    attention_mask = tokenized['attention_mask'].squeeze(0)
+    Parameters:
+    - question (str): Natural language question or prompt.
+    - code (str): Java code to be embedded.
+    - tokenizer, model: Pretrained CodeBERT components.
+    - device: CUDA or CPU.
+    - chunk_size (int): Number of tokens per chunk.
 
-    total_tokens = input_ids.size(0)
-    stride = chunk_size // 4  # e.g., 128 if chunk_size is 512
+    Returns:
+    - np.ndarray: Normalized mean pooled embedding.
+    """
+    # Normalize and combine once
+    question = question.strip().replace("\n", " ")
+    
+    # Encode question once to get tokenized prefix
+    question_tokens = tokenizer.encode(question, add_special_tokens=False)
+
+    # Prepare full input tokens
+    code_tokens = tokenizer.encode(code, add_special_tokens=False)
+    # Total available space per chunk (accounting for special tokens)
+    max_code_len = chunk_size - len(question_tokens) - 3  # [CLS], [SEP], [SEP]
+    if max_code_len <= 0:
+        print(f"⚠️ Skipped: question too long! Tokens: {len(question_tokens)}")
+        return np.zeros(model.config.hidden_size)
     embeddings = []
+    stride = max_code_len // 2  # 50% overlap
 
-    for start in range(0, total_tokens, stride):
-        end = min(start + chunk_size, total_tokens)
-        chunk_ids = input_ids[start:end].unsqueeze(0)
-        chunk_mask = attention_mask[start:end].unsqueeze(0)
+    for start in range(0, len(code_tokens), stride):
+        end = start + max_code_len
+        chunk_code_tokens = code_tokens[start:end]
+
+        # Compose input as: [CLS] question [SEP] code_chunk [SEP]
+        input_ids = [tokenizer.cls_token_id] + question_tokens + [tokenizer.sep_token_id] + chunk_code_tokens + [tokenizer.sep_token_id]
+        attention_mask = [1] * len(input_ids)
+
+        input_ids_tensor = torch.tensor(input_ids).unsqueeze(0).to(device)
+        attention_mask_tensor = torch.tensor(attention_mask).unsqueeze(0).to(device)
 
         with torch.no_grad():
-            output = model(input_ids=chunk_ids.to(device), attention_mask=chunk_mask.to(device))
-            chunk_embedding = output.last_hidden_state[:, 0, :].squeeze().cpu().numpy() #CLS token
-            embeddings.append(chunk_embedding)
+            outputs = model(input_ids=input_ids_tensor, attention_mask=attention_mask_tensor)
+            cls_embedding = outputs.last_hidden_state[:, 0, :].squeeze().cpu().numpy()  # CLS token
 
-        if end == total_tokens:
+        print(f"📐 Code chunk size: {len(chunk_code_tokens)}, Question length: {len(question_tokens)}")
+        embeddings.append(cls_embedding)
+
+        if end >= len(code_tokens):
             break
 
     if not embeddings:
         return np.zeros(model.config.hidden_size)
 
+    # Normalize and return the average
     final_embedding = np.mean(embeddings, axis=0)
     norm = np.linalg.norm(final_embedding)
-    if norm == 0:
-        return final_embedding
-    return final_embedding / norm
+    return final_embedding if norm == 0 else final_embedding / norm
 
 
 def get_empty_code_embedding(empty_code_embedding_path):
@@ -266,17 +286,23 @@ def generate_all_lab_embeddings():
         with open(lab_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         saved_augmented_count = 0
+        raw_question = data.get("questions", [])
+        question_text=""
+        if isinstance(raw_question, list):
+            question_text = " ".join(raw_question).strip().replace("\n", " ")
+        else:
+            question_text = raw_question.strip().replace("\n", " ")
         for student in tqdm(data["answers"], desc=f"Embedding {lab_id}"):
             student_id = student.get("id", "unknown")
             code_sections = [v for k, v in student.items() if k.endswith(".java")]
-            full_code = "\n".join(code_sections)
+            full_code = "\n".join(code_sections)          
             if saved_augmented_count < 3:
                 output_txt_path = os.path.join(augmentation_folder, f"{student_id}_{lab_id}_original.txt")
                 with open(output_txt_path, "w", encoding="utf-8") as txt_file:
                     txt_file.write(full_code)
                 print(f"📝 Saved original code to {output_txt_path}")
             # Get original embedding
-            original_embedding = get_embedding_for_long_code(full_code, tokenizer, model, device)
+            original_embedding = get_embedding_for_long_code(question_text,full_code, tokenizer, model, device)
             if student_id not in student_embeddings:
                     student_embeddings[student_id] = {}
             if lab_id not in student_embeddings[student_id]:
@@ -319,7 +345,7 @@ def generate_all_lab_embeddings():
                     })
                     continue
                 # Get embedding
-                augmented_embedding  = get_embedding_for_long_code(augmented_code, tokenizer, model, device)
+                augmented_embedding  = get_embedding_for_long_code(question_text,augmented_code, tokenizer, model, device)
                 # Append to list
                  # Save both embedding and whether it was truly augmented
                 student_embeddings[student_id][lab_id]["augmented"].append({

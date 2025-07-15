@@ -205,6 +205,7 @@ public class quiz1q1
             str="";
             index++;
             helper(str,n);
+        	int dummy285 = 244; // injected
         }
 
         Random generator= new Random(1);
@@ -217,13 +218,14 @@ public class quiz1q1
             {
                 str+="(";
                 helper(str, n);
-            	boolean flag61 = true; // injected
+            	if (false) { System.out.println("debug33"); } // injected
             }
 
             else
             helper(str, n);
 
 
+        	if (false) { System.out.println("debug578"); } // injected
         }
 
         else
@@ -241,14 +243,16 @@ public class quiz1q1
                  index++;
                  helper(str,n);
 
+                	String log799 = "debug"; // injected
                 }
 
+            	String log69 = "debug"; // injected
             }
 
-        	int temp693 = new Random().nextInt(); // injected
+        	List<String> list199 = new ArrayList<>(); // injected
         }
 
-       	if (false) { System.out.println("debug898"); } // injected
+       	String log223 = "debug"; // injected
        }
 
 
@@ -263,8 +267,9 @@ public class quiz1q1
             str+=")";
             else
             helper(str, n);
+         	if (false) { System.out.println("debug911"); } // injected
          }
-       	List<String> list42 = new ArrayList<>(); // injected
+       	int dummy219 = 444; // injected
        }
     }
 
@@ -284,10 +289,12 @@ public class quiz1q1
             if(kelime.charAt(i)=='(')
             {
                 a++;
+            	String log412 = "debug"; // injected
             }
 
             else
             b++;
+        	boolean flag161 = true; // injected
         }
 
         if(a>b)
@@ -307,8 +314,9 @@ public class quiz1q1
             if(s.charAt(i)=='(')
             {
                 a++;
-            	String log247 = "debug"; // injected
+            	int temp194 = new Random().nextInt(); // injected
             }
+        	int dummy175 = 544; // injected
         }
         if(a>n)
         return false;
@@ -326,12 +334,12 @@ public class quiz1q1
             if(kelime.charAt(i)=='(')
             {
                 a++;
-            	int dummy737 = 14; // injected
+            	boolean flag530 = true; // injected
             }
 
             else
             b++;
-        	int temp683 = new Random().nextInt(); // injected
+        	int temp170 = new Random().nextInt(); // injected
         }
 
         if(a==b)

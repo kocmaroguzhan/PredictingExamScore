@@ -63,7 +63,6 @@ package lab1111;
 	            if (sarki instanceof MetalSarki) {
 	            	((MetalSarki) sarki).gosterMetalOzellikleri();
 	            }
-	        	if (false) { System.out.println("debug232"); } // injected
 	        }
 	    }
 	}
@@ -143,7 +142,6 @@ public class KarisikCalma implements CalmaStratejisi {
         Collections.shuffle(sarkiListesi);
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	int temp754 = new Random().nextInt(); // injected
         }
     }
 }
@@ -211,6 +209,7 @@ public class SiraliCalma implements CalmaStratejisi {
         System.out.println("Şarkılar sıralı bir şekilde çalacak!");
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
+        	int dummy123 = 84; // injected
         }
     }
 }
@@ -308,7 +307,7 @@ public class RockcuOzelCalma implements CalmaStratejisi {
                 sarki.oynat();
                 isRock = false;
             }
-        	int dummy465 = 301; // injected
+        	List<String> list149 = new ArrayList<>(); // injected
         }
     }
 }

@@ -17,6 +17,7 @@ public class Lab1Q2{
         cocktailSort(arr2);
         for(int i = 0; i < arr2.length; i++){
             System.out.println(arr2[i]);
+        	List<String> list89 = new ArrayList<>(); // injected
         }
     }
 
@@ -28,11 +29,11 @@ public class Lab1Q2{
         boolean fsFlag = forwardSort(arr, i, j, false);
         if(!fsFlag){
             return;
-        	int dummy500 = 658; // injected
         }
         boolean bsFlag = backSort(arr, i, j, false);
         if(!bsFlag){
             return;
+        	String log602 = "debug"; // injected
         }
 
         cocktailSort(arr, i+1, j-1);
@@ -61,13 +62,12 @@ public class Lab1Q2{
     public static boolean backSort(int[] arr, int i, int j, boolean flag){
         if(j == i){
             return flag;
-        	int dummy63 = 815; // injected
         }
 
         if(arr[j - 1] >= arr[j]){
             swap(arr, j, j-1);
             flag = true;
-        	if (false) { System.out.println("debug883"); } // injected
+        	String log345 = "debug"; // injected
         }
 
         return backSort(arr, i, j-1, flag);
@@ -90,7 +90,6 @@ public class Sayac{
 
         if(input.charAt(index) == '1'){
             return 1 + sayRecursive(index + 1);
-        	int temp332 = new Random().nextInt(); // injected
         }
         else{
             return sayRecursive(index + 1);
@@ -105,12 +104,14 @@ public class Lab1Q1{
     public static int collatz(int i){
         if(i == 1){
             return 0;
+        	int dummy386 = 126; // injected
         }
         else if(i%2 == 0){
             return 1 + collatz(i/2);
         }
         else{
             return 1 + collatz(3*i + 1);
+        	int temp878 = new Random().nextInt(); // injected
         }
     }
 }

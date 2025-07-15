@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	String log185 = "debug"; // injected
+	 	List<String> list808 = new ArrayList<>(); // injected
 	 }
  }
  
@@ -345,7 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			int temp824 = new Random().nextInt(); // injected
+			int dummy121 = 363; // injected
 		}
 	}
 	
@@ -471,9 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	boolean flag946 = true; // injected
+            	if (false) { System.out.println("debug537"); } // injected
             }
-        	int dummy576 = 230; // injected
+        	int temp472 = new Random().nextInt(); // injected
         }
 	}
 	
@@ -482,9 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	boolean flag224 = true; // injected
+	            	if (false) { System.out.println("debug802"); } // injected
 	            }
-	        	List<String> list462 = new ArrayList<>(); // injected
+	        	String log482 = "debug"; // injected
 	        }
 	    }
 
@@ -493,9 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	int dummy771 = 831; // injected
+	            	boolean flag976 = true; // injected
 	            }
-	        	int dummy210 = 697; // injected
+	        	if (false) { System.out.println("debug3"); } // injected
 	        }
 	    }
 	    

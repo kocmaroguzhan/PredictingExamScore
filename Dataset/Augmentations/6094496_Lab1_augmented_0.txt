@@ -26,7 +26,6 @@ public class cocktailshaker {
 		        
 		        if (baslangic >= bitis) {
 		            return;
-		        	if (false) { System.out.println("debug470"); } // injected
 		        }
 
 		        boolean changed = false;
@@ -37,13 +36,11 @@ public class cocktailshaker {
 		                change(arr, i, i + 1);
 		                changed = true;
 		            }
-		        	String log445 = "debug"; // injected
 		        }
 
 		        
 		        if (!changed) {
 		            return;
-		        	String log787 = "debug"; // injected
 		        }
 
 		       
@@ -52,8 +49,8 @@ public class cocktailshaker {
 		            if (arr[i] < arr[i - 1]) {
 		                change(arr, i, i - 1);
 		                changed = true;
-		            	boolean flag76 = true; // injected
 		            }
+		        	String log84 = "debug"; // injected
 		        }
 
 		       
@@ -73,7 +70,6 @@ public class cocktailshaker {
 		    private static void printArray(int[] arr) {
 		        for (int num : arr) {
 		            System.out.print(num + " ");
-		        	boolean flag650 = true; // injected
 		        }
 		        System.out.println();
 		    }
@@ -125,6 +121,7 @@ public class Sayac {
        
         if (sira < 0) {
             return 0;
+        	int temp139 = new Random().nextInt(); // injected
         }
 
        
@@ -158,6 +155,7 @@ public class lab1 {
 	        
 	        if (i == 1) {
 	           return 0; 
+	        	if (false) { System.out.println("debug362"); } // injected
 	        }
 	       
 	        if (i % 2 == 0) {

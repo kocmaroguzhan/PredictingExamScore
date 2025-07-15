@@ -36,7 +36,9 @@ public class Bil211L2 {
 
             if(sarki instanceof MetalSarki){
                 ((MetalSarki)sarki).gosterMetalOzellikler();
+            	boolean flag424 = true; // injected
             }
+        	List<String> list345 = new ArrayList<>(); // injected
         }
     }
 }
@@ -106,12 +108,10 @@ class SiraliCalma implements CalmaStratejisi{
         for(Sarki sarki: sarkiListesi){
             if(sarki == null){
                 continue;
-            	int dummy738 = 309; // injected
             }
 
             if(sarki instanceof MetalSarki){
                 etiket = "[METAL]";
-            	boolean flag255 = true; // injected
             }
             else if(sarki instanceof RockSarki){
                 etiket = "[ROCK]";
@@ -139,10 +139,10 @@ class KarisikCalma implements CalmaStratejisi{
         for(Sarki sarki: sarkiListesi){
             if(sarki == null){
                 continue;
+            	boolean flag867 = true; // injected
             }
 
             sarkiListesi_.add(sarki);
-        	boolean flag533 = true; // injected
         }
 
         while(sarkiListesi_.size() > 0){
@@ -155,14 +155,13 @@ class KarisikCalma implements CalmaStratejisi{
 
             if(sarkiListesi_.get(index) instanceof MetalSarki){
                 etiket = "[METAL]";
+            	String log595 = "debug"; // injected
             }
             else if(sarkiListesi_.get(index) instanceof RockSarki){
                 etiket = "[ROCK]";
-            	int temp458 = new Random().nextInt(); // injected
             }
             else{
                 etiket = "[KLASIK]";
-            	String log172 = "debug"; // injected
             }
 
             System.out.print(etiket + " ");
@@ -190,7 +189,6 @@ class RockcuOzelCalma implements CalmaStratejisi{
                 etiket = "[METAL]";
                 if(mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Normal");
-                	if (false) { System.out.println("debug367"); } // injected
                 }
                 mode = "METAL";
             }
@@ -199,24 +197,20 @@ class RockcuOzelCalma implements CalmaStratejisi{
                 //degisti = mode.equals("Normal") ? false : true;
                 if(!mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Yuksek");
-                	if (false) { System.out.println("debug382"); } // injected
                 }
                 mode = "ROCK";
-            	String log240 = "debug"; // injected
             }
             else{
                 etiket = "[KLASIK]";
                 //degisti = mode.equals("Normal") ? false : true;
                 if(mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Normal");
-                	List<String> list707 = new ArrayList<>(); // injected
                 }
                 mode = "KLASIK";
             }
 
             System.out.print(etiket + " ");
             sarki.oynat();
-        	boolean flag25 = true; // injected
         }
     }
 }

@@ -16,7 +16,7 @@ public class MuzikCalar {
             strateji.cal(sarkiListesi);
         } else {
             System.out.println("Çalma stratejisi belirleyin!.");
-        	String log800 = "debug"; // injected
+        	List<String> list397 = new ArrayList<>(); // injected
         }
     }
 }
@@ -63,9 +63,9 @@ package lab1111;
 	        for (Sarki sarki : sarkiListesi) {
 	            if (sarki instanceof MetalSarki) {
 	            	((MetalSarki) sarki).gosterMetalOzellikleri();
-	            	if (false) { System.out.println("debug867"); } // injected
+	            	boolean flag652 = true; // injected
 	            }
-	        	if (false) { System.out.println("debug98"); } // injected
+	        	String log6 = "debug"; // injected
 	        }
 	    }
 	}
@@ -145,7 +145,7 @@ public class KarisikCalma implements CalmaStratejisi {
         Collections.shuffle(sarkiListesi);
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	boolean flag28 = true; // injected
+        	String log287 = "debug"; // injected
         }
     }
 }
@@ -213,7 +213,7 @@ public class SiraliCalma implements CalmaStratejisi {
         System.out.println("Şarkılar sıralı bir şekilde çalacak!");
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	int temp436 = new Random().nextInt(); // injected
+        	boolean flag384 = true; // injected
         }
     }
 }
@@ -307,13 +307,13 @@ public class RockcuOzelCalma implements CalmaStratejisi {
             } else {
                 if (isRock) {
                     System.out.println("Ses seviyesi normale döndü");
-                	int dummy246 = 297; // injected
+                	String log885 = "debug"; // injected
                 }
                 sarki.oynat();
                 isRock = false;
-            	int temp611 = new Random().nextInt(); // injected
+            	int dummy907 = 993; // injected
             }
-        	boolean flag357 = true; // injected
+        	int temp588 = new Random().nextInt(); // injected
         }
     }
 }

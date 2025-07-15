@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	int temp977 = new Random().nextInt(); // injected
+	 	String log352 = "debug"; // injected
 	 }
  }
  
@@ -345,7 +345,6 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			int dummy353 = 180; // injected
 		}
 	}
 	
@@ -471,9 +470,8 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	boolean flag117 = true; // injected
+            	String log251 = "debug"; // injected
             }
-        	List<String> list417 = new ArrayList<>(); // injected
         }
 	}
 	
@@ -482,9 +480,8 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	String log729 = "debug"; // injected
+	            	List<String> list780 = new ArrayList<>(); // injected
 	            }
-	        	String log850 = "debug"; // injected
 	        }
 	    }
 
@@ -493,9 +490,8 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	List<String> list213 = new ArrayList<>(); // injected
+	            	List<String> list67 = new ArrayList<>(); // injected
 	            }
-	        	List<String> list3 = new ArrayList<>(); // injected
 	        }
 	    }
 	    
