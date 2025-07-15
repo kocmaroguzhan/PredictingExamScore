@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	List<String> list110 = new ArrayList<>(); // injected
+	 	String log185 = "debug"; // injected
 	 }
  }
  
@@ -345,7 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			boolean flag372 = true; // injected
+			int temp824 = new Random().nextInt(); // injected
 		}
 	}
 	
@@ -471,9 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	int temp736 = new Random().nextInt(); // injected
+            	boolean flag946 = true; // injected
             }
-        	String log64 = "debug"; // injected
+        	int dummy576 = 230; // injected
         }
 	}
 	
@@ -482,9 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	List<String> list525 = new ArrayList<>(); // injected
+	            	boolean flag224 = true; // injected
 	            }
-	        	if (false) { System.out.println("debug229"); } // injected
+	        	List<String> list462 = new ArrayList<>(); // injected
 	        }
 	    }
 
@@ -493,9 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	List<String> list776 = new ArrayList<>(); // injected
+	            	int dummy771 = 831; // injected
 	            }
-	        	if (false) { System.out.println("debug198"); } // injected
+	        	int dummy210 = 697; // injected
 	        }
 	    }
 	    

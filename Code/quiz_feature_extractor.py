@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 import os
+import ast
 from transformers import RobertaTokenizer, RobertaModel
 import random
 import re
@@ -204,7 +205,14 @@ def get_embedding_for_long_code(code, tokenizer, model, device, chunk_size=512):
         return final_embedding
     return final_embedding / norm
 
+def get_empty_code_embedding(empty_code_embedding_path):
+    # Load the CSV
+    df = pd.read_csv(empty_code_embedding_path)
 
+    # Convert string back to list
+    empty_code_embedding = ast.literal_eval(df["empty_code_embedding"].iloc[0])
+
+    return empty_code_embedding
 # ----------------------------
 # Main Embedding Pipeline
 # ----------------------------
@@ -215,6 +223,8 @@ def generate_all_quiz_embeddings():
     quizes_folder = os.path.join(parent_folder, "Quizzes")
     dataset_folder = os.path.join(parent_folder, "Dataset")
     augmentation_folder=os.path.join(dataset_folder, "Augmentations")
+    empty_code_embedding_path=os.path.join(dataset_folder, "empty_code_embedding.csv")
+    empty_code_embedding=get_empty_code_embedding(empty_code_embedding_path)
     os.makedirs(dataset_folder, exist_ok=True)
     config_path = os.path.join(dataset_folder, "config.txt")
     augmentation_count=0
@@ -301,10 +311,11 @@ def generate_all_quiz_embeddings():
                             txt_file.write(augmented_code)
                         print(f"📝 Saved augmented code to {output_txt_path}")
                 else : 
+                    #If no injection put the original one
                     print("No dead code was injected!")
                     student_embeddings[student_id][quiz_id]["augmented"].append({
-                        "embedding": [0.0] * model_embedding_size,
-                        "valid": was_augmented
+                        "embedding": original_embedding.tolist(),
+                        "valid": True
                     })
                     continue
                 # Get embedding
@@ -321,19 +332,19 @@ def generate_all_quiz_embeddings():
     for quiz_scores in student_embeddings.values():
         all_quiz_ids.update(quiz_scores.keys())
 
-    
+    ##For missing students fill it with empty code embedding
     for student_id in student_embeddings:
         for quiz_id in all_quiz_ids:
             if quiz_id not in student_embeddings[student_id]:
                 student_embeddings[student_id][quiz_id] = {
                      "original": {
-                        "embedding": [0.0] * model_embedding_size,
-                        "valid": False
+                        "embedding": empty_code_embedding,
+                        "valid": True
                     },
                     "augmented": [
                         {
-                            "embedding": [0.0] * model_embedding_size,
-                            "valid": False
+                            "embedding": empty_code_embedding,
+                            "valid": True
                         }
                         for _ in range(augmentation_count)
                     ]

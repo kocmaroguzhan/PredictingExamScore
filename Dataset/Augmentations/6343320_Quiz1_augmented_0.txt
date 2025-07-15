@@ -86,14 +86,12 @@ public class Quiz1 {
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) + 32);
-					if (false) { System.out.println("debug832"); } // injected
 				}
 				else if(str.charAt(i) < 129 && str.charAt(i) > 96)
 				{
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) - 32);
-					List<String> list203 = new ArrayList<>(); // injected
 				}
 				if(control == 1)
 				{
@@ -104,11 +102,10 @@ public class Quiz1 {
 				{
 					string[loc] = "";
 					loc++;	
+					if (false) { System.out.println("debug748"); } // injected
 				}
 				System.out.println(string[i]);
-				int dummy635 = 372; // injected
 			}
-			boolean flag21 = true; // injected
 		}
 	}
 }

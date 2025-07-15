@@ -16,7 +16,7 @@ public class MuzikCalar {
             strateji.cal(sarkiListesi);
         } else {
             System.out.println("Çalma stratejisi belirleyin!.");
-        	if (false) { System.out.println("debug485"); } // injected
+        	String log800 = "debug"; // injected
         }
     }
 }
@@ -63,9 +63,9 @@ package lab1111;
 	        for (Sarki sarki : sarkiListesi) {
 	            if (sarki instanceof MetalSarki) {
 	            	((MetalSarki) sarki).gosterMetalOzellikleri();
-	            	String log138 = "debug"; // injected
+	            	if (false) { System.out.println("debug867"); } // injected
 	            }
-	        	if (false) { System.out.println("debug995"); } // injected
+	        	if (false) { System.out.println("debug98"); } // injected
 	        }
 	    }
 	}
@@ -145,7 +145,7 @@ public class KarisikCalma implements CalmaStratejisi {
         Collections.shuffle(sarkiListesi);
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	if (false) { System.out.println("debug678"); } // injected
+        	boolean flag28 = true; // injected
         }
     }
 }
@@ -213,7 +213,7 @@ public class SiraliCalma implements CalmaStratejisi {
         System.out.println("Şarkılar sıralı bir şekilde çalacak!");
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	int dummy765 = 858; // injected
+        	int temp436 = new Random().nextInt(); // injected
         }
     }
 }
@@ -307,13 +307,13 @@ public class RockcuOzelCalma implements CalmaStratejisi {
             } else {
                 if (isRock) {
                     System.out.println("Ses seviyesi normale döndü");
-                	boolean flag739 = true; // injected
+                	int dummy246 = 297; // injected
                 }
                 sarki.oynat();
                 isRock = false;
-            	boolean flag270 = true; // injected
+            	int temp611 = new Random().nextInt(); // injected
             }
-        	boolean flag602 = true; // injected
+        	boolean flag357 = true; // injected
         }
     }
 }

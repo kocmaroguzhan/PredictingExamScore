@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	int temp859 = new Random().nextInt(); // injected
+	 	int temp977 = new Random().nextInt(); // injected
 	 }
  }
  
@@ -345,6 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
+			int dummy353 = 180; // injected
 		}
 	}
 	
@@ -470,8 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
+            	boolean flag117 = true; // injected
             }
-        	int temp178 = new Random().nextInt(); // injected
+        	List<String> list417 = new ArrayList<>(); // injected
         }
 	}
 	
@@ -480,7 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
+	            	String log729 = "debug"; // injected
 	            }
+	        	String log850 = "debug"; // injected
 	        }
 	    }
 
@@ -489,8 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	int dummy679 = 43; // injected
+	            	List<String> list213 = new ArrayList<>(); // injected
 	            }
+	        	List<String> list3 = new ArrayList<>(); // injected
 	        }
 	    }
 	    

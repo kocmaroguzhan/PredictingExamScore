@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	if (false) { System.out.println("debug609"); } // injected
+	 	String log131 = "debug"; // injected
 	 }
  }
  
@@ -345,7 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			int dummy129 = 442; // injected
+			if (false) { System.out.println("debug158"); } // injected
 		}
 	}
 	
@@ -471,9 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	List<String> list251 = new ArrayList<>(); // injected
+            	if (false) { System.out.println("debug69"); } // injected
             }
-        	if (false) { System.out.println("debug957"); } // injected
+        	if (false) { System.out.println("debug701"); } // injected
         }
 	}
 	
@@ -482,9 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	int dummy419 = 434; // injected
+	            	int temp809 = new Random().nextInt(); // injected
 	            }
-	        	if (false) { System.out.println("debug67"); } // injected
+	        	String log622 = "debug"; // injected
 	        }
 	    }
 
@@ -493,9 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	List<String> list5 = new ArrayList<>(); // injected
+	            	String log946 = "debug"; // injected
 	            }
-	        	boolean flag638 = true; // injected
+	        	if (false) { System.out.println("debug791"); } // injected
 	        }
 	    }
 	    

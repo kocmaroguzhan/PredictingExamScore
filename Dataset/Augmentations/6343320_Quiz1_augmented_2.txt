@@ -86,14 +86,13 @@ public class Quiz1 {
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) + 32);
-					int temp540 = new Random().nextInt(); // injected
+					if (false) { System.out.println("debug127"); } // injected
 				}
 				else if(str.charAt(i) < 129 && str.charAt(i) > 96)
 				{
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) - 32);
-					if (false) { System.out.println("debug946"); } // injected
 				}
 				if(control == 1)
 				{
@@ -106,9 +105,7 @@ public class Quiz1 {
 					loc++;	
 				}
 				System.out.println(string[i]);
-				boolean flag958 = true; // injected
 			}
-			int temp912 = new Random().nextInt(); // injected
 		}
 	}
 }

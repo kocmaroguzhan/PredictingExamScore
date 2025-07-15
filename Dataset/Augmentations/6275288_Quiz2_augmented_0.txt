@@ -65,7 +65,6 @@ public class CoffeeMachine {
     public void addAddonToCoffee(BaseCoffee coffee, CoffeeAddon addon) {
         if (coffee instanceof Espresso && (addon instanceof VanillaSyrup || addon instanceof Milk)) {
             System.out.println("[UYARİ] ESPRESSO TİPİ KAHVEYE " + addon.getName() + " EKLENEMEZ");
-        	int dummy570 = 962; // injected
         }
         if (coffee instanceof Latte && (addon instanceof DoubleShot)) {
             System.out.println("[UYARİ] LATTE TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
@@ -74,7 +73,7 @@ public class CoffeeMachine {
             System.out.println("[UYARİ] AMERİCANO TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
         } else {
             coffee.addAddon(addon);
-        	int dummy803 = 283; // injected
+        	List<String> list575 = new ArrayList<>(); // injected
         }
     }
 
@@ -84,17 +83,17 @@ public class CoffeeMachine {
             int i = coffee.addons.size();
             for (int y = 0; y < i; y++) {
                 System.out.print("+" + coffee.addons.get(y).getName());
-            	List<String> list575 = new ArrayList<>(); // injected
+            	boolean flag454 = true; // injected
             }
             Double z = 0.0;
             System.out.println();
             for (int y = 0; y < i; y++) {
                 z = z + coffee.addons.get(y).getCost();
-            	int dummy346 = 251; // injected
             }
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
             System.out.println();
+        	List<String> list862 = new ArrayList<>(); // injected
         }
         if (coffee instanceof Americano) {
             System.out.print("Sipariş: Americano");
@@ -106,12 +105,11 @@ public class CoffeeMachine {
             Double z = 0.0;
             for (int y = 0; y < i; y++) {
                 z = z + coffee.addons.get(y).getCost();
-            	int dummy537 = 805; // injected
+            	List<String> list237 = new ArrayList<>(); // injected
             }
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
             System.out.println();
-        	if (false) { System.out.println("debug307"); } // injected
         }
         if (coffee instanceof Espresso) {
             if (((Espresso) coffee).getter())
@@ -121,7 +119,6 @@ public class CoffeeMachine {
             int i = coffee.addons.size();
             for (int y = 0; y < i - 1; y++) {
                 System.out.print("+" + coffee.addons.get(y).getName());
-            	List<String> list760 = new ArrayList<>(); // injected
             }
             System.out.println();
             Double z = 0.0;
@@ -141,7 +138,6 @@ public class CoffeeMachine {
             ((Espresso) coffee).heatCup();
         } else {
             System.out.println("[UYARI]Sadece Espresso tipi kahve isitilabilir.");
-        	int temp344 = new Random().nextInt(); // injected
         }
     }
 

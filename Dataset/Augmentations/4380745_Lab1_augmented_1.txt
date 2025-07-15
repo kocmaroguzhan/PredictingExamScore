@@ -32,7 +32,6 @@ public class Lab1Q2{
         boolean bsFlag = backSort(arr, i, j, false);
         if(!bsFlag){
             return;
-        	if (false) { System.out.println("debug361"); } // injected
         }
 
         cocktailSort(arr, i+1, j-1);
@@ -66,6 +65,7 @@ public class Lab1Q2{
         if(arr[j - 1] >= arr[j]){
             swap(arr, j, j-1);
             flag = true;
+        	int temp128 = new Random().nextInt(); // injected
         }
 
         return backSort(arr, i, j-1, flag);
@@ -88,6 +88,7 @@ public class Sayac{
 
         if(input.charAt(index) == '1'){
             return 1 + sayRecursive(index + 1);
+        	int dummy859 = 302; // injected
         }
         else{
             return sayRecursive(index + 1);

@@ -2,13 +2,26 @@ import pandas as pd
 import os
 import ast
 
-def fill_embedding(x,embedding_size):
-    try:
-        return x if isinstance(ast.literal_eval(x), list) else str([0.0] * embedding_size)
-    except:
-        return str([0.0] * embedding_size)
 parent_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 dataset_folder = os.path.join(parent_folder, "Dataset")
+empty_code_embedding_path=os.path.join(dataset_folder, "empty_code_embedding.csv")
+
+
+def get_empty_code_embedding():
+    # Load the CSV
+    df = pd.read_csv(empty_code_embedding_path)
+
+    # Convert string back to list
+    empty_code_embedding = ast.literal_eval(df["empty_code_embedding"].iloc[0])
+
+    return empty_code_embedding
+empty_code_embedding=get_empty_code_embedding()
+def fill_embedding(x):
+    try:
+        return x if isinstance(ast.literal_eval(x), list) else empty_code_embedding
+    except:
+        return empty_code_embedding
+
 config_path = os.path.join(dataset_folder, "config.txt")
 augmentation_count=0
 model_embedding_size = 0
@@ -40,11 +53,11 @@ validity_cols = [col for col in labeled_df.columns if col.endswith("_valid")]
 
 # Fill empty embeddings columns with zero-vectors
 for col in embedding_original_cols + embedding_augmented_cols:
-    labeled_df[col] = labeled_df[col].apply(lambda x: fill_embedding(x, model_embedding_size))
+    labeled_df[col] = labeled_df[col].apply(lambda x: fill_embedding(x))
 
-# Fill status columns with 0
+# Fill status columns with 1
 for col in validity_cols:
-    labeled_df[col] = labeled_df[col].fillna(0).astype(int)
+    labeled_df[col] = labeled_df[col].fillna(1).astype(int)
 # Save to CSV
 output_path = os.path.join(dataset_folder, "labeled_data.csv")
 labeled_df.to_csv(output_path, index=False)

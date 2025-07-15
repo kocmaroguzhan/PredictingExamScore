@@ -65,6 +65,7 @@ public class CoffeeMachine {
     public void addAddonToCoffee(BaseCoffee coffee, CoffeeAddon addon) {
         if (coffee instanceof Espresso && (addon instanceof VanillaSyrup || addon instanceof Milk)) {
             System.out.println("[UYARİ] ESPRESSO TİPİ KAHVEYE " + addon.getName() + " EKLENEMEZ");
+        	int temp469 = new Random().nextInt(); // injected
         }
         if (coffee instanceof Latte && (addon instanceof DoubleShot)) {
             System.out.println("[UYARİ] LATTE TİPİ KAHVEYE" + addon.getName() + "EKLENEMEZ");
@@ -82,12 +83,13 @@ public class CoffeeMachine {
             int i = coffee.addons.size();
             for (int y = 0; y < i; y++) {
                 System.out.print("+" + coffee.addons.get(y).getName());
-            	List<String> list573 = new ArrayList<>(); // injected
+            	if (false) { System.out.println("debug391"); } // injected
             }
             Double z = 0.0;
             System.out.println();
             for (int y = 0; y < i; y++) {
                 z = z + coffee.addons.get(y).getCost();
+            	int temp206 = new Random().nextInt(); // injected
             }
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
@@ -98,15 +100,18 @@ public class CoffeeMachine {
             int i = coffee.addons.size();
             for (int y = 0; y < i; y++) {
                 System.out.print("+" + coffee.addons.get(y).getName());
+            	int dummy710 = 439; // injected
             }
             System.out.println();
             Double z = 0.0;
             for (int y = 0; y < i; y++) {
                 z = z + coffee.addons.get(y).getCost();
+            	boolean flag950 = true; // injected
             }
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);
             System.out.println();
+        	if (false) { System.out.println("debug93"); } // injected
         }
         if (coffee instanceof Espresso) {
             if (((Espresso) coffee).getter())
@@ -121,6 +126,7 @@ public class CoffeeMachine {
             Double z = 0.0;
             for (int y = 0; y < i; y++) {
                 z = z + coffee.addons.get(y).getCost();
+            	boolean flag980 = true; // injected
             }
             z = z + coffee.calculatePrice();
             System.out.println("Toplam Fiyat:" + z);

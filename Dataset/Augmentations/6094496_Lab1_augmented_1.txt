@@ -26,6 +26,7 @@ public class cocktailshaker {
 		        
 		        if (baslangic >= bitis) {
 		            return;
+		        	if (false) { System.out.println("debug392"); } // injected
 		        }
 
 		        boolean changed = false;
@@ -35,12 +36,15 @@ public class cocktailshaker {
 		            if (arr[i] > arr[i + 1]) {
 		                change(arr, i, i + 1);
 		                changed = true;
+		            	boolean flag302 = true; // injected
 		            }
+		        	int dummy608 = 728; // injected
 		        }
 
 		        
 		        if (!changed) {
 		            return;
+		        	List<String> list248 = new ArrayList<>(); // injected
 		        }
 
 		       
@@ -49,8 +53,8 @@ public class cocktailshaker {
 		            if (arr[i] < arr[i - 1]) {
 		                change(arr, i, i - 1);
 		                changed = true;
+		            	int temp546 = new Random().nextInt(); // injected
 		            }
-		        	if (false) { System.out.println("debug509"); } // injected
 		        }
 
 		       
@@ -70,7 +74,7 @@ public class cocktailshaker {
 		    private static void printArray(int[] arr) {
 		        for (int num : arr) {
 		            System.out.print(num + " ");
-		        	String log370 = "debug"; // injected
+		        	int temp223 = new Random().nextInt(); // injected
 		        }
 		        System.out.println();
 		    }
@@ -122,6 +126,7 @@ public class Sayac {
        
         if (sira < 0) {
             return 0;
+        	String log39 = "debug"; // injected
         }
 
        
@@ -130,13 +135,12 @@ public class Sayac {
         
            return 1 + sayacbir(string, sira - 1);
            
-    	if (false) { System.out.println("debug828"); } // injected
     } 
         
         else {
             
         	return sayacbir(string, sira - 1);
-        	int dummy857 = 273; // injected
+        	int dummy26 = 222; // injected
         }
     }
 
@@ -165,7 +169,6 @@ public class lab1 {
 	       
 	        else {
 	            return 1 + collatz((3 * i) + 1);
-	        	int temp571 = new Random().nextInt(); // injected
 	        }
 	    }
 
