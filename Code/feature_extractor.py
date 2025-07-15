@@ -1,8 +1,8 @@
 from quiz_feature_extractor import generate_all_quiz_embeddings
 from lab_feature_extractor import generate_all_lab_embeddings
 from merge_features import merge_student_features
-generate_quiz_features=True
-generate_lab_features=True
+generate_quiz_features=False
+generate_lab_features=False
 merge_all_features=True
 def generate_features():
     if generate_quiz_features:

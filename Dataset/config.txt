@@ -1,4 +1,0 @@
-augmentation_count=16
-model_embedding_size=768
-number_of_augmented_code_saving_threshold=3
-num_of_embeddings=1
