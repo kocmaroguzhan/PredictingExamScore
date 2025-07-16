@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	List<String> list808 = new ArrayList<>(); // injected
+	 	List<String> list726 = new ArrayList<>(); // injected
 	 }
  }
  
@@ -345,7 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			int dummy121 = 363; // injected
+			int temp122 = new Random().nextInt(); // injected
 		}
 	}
 	
@@ -471,9 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	if (false) { System.out.println("debug537"); } // injected
+            	if (false) { System.out.println("debug242"); } // injected
             }
-        	int temp472 = new Random().nextInt(); // injected
+        	int dummy60 = 496; // injected
         }
 	}
 	
@@ -482,9 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	if (false) { System.out.println("debug802"); } // injected
+	            	List<String> list527 = new ArrayList<>(); // injected
 	            }
-	        	String log482 = "debug"; // injected
+	        	if (false) { System.out.println("debug921"); } // injected
 	        }
 	    }
 
@@ -493,9 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	boolean flag976 = true; // injected
+	            	int dummy103 = 312; // injected
 	            }
-	        	if (false) { System.out.println("debug3"); } // injected
+	        	if (false) { System.out.println("debug991"); } // injected
 	        }
 	    }
 	    

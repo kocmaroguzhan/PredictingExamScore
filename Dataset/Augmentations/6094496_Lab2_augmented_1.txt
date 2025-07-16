@@ -16,7 +16,7 @@ public class MuzikCalar {
             strateji.cal(sarkiListesi);
         } else {
             System.out.println("Çalma stratejisi belirleyin!.");
-        	List<String> list397 = new ArrayList<>(); // injected
+        	int temp146 = new Random().nextInt(); // injected
         }
     }
 }
@@ -63,9 +63,9 @@ package lab1111;
 	        for (Sarki sarki : sarkiListesi) {
 	            if (sarki instanceof MetalSarki) {
 	            	((MetalSarki) sarki).gosterMetalOzellikleri();
-	            	boolean flag652 = true; // injected
+	            	int temp410 = new Random().nextInt(); // injected
 	            }
-	        	String log6 = "debug"; // injected
+	        	int dummy490 = 237; // injected
 	        }
 	    }
 	}
@@ -145,7 +145,7 @@ public class KarisikCalma implements CalmaStratejisi {
         Collections.shuffle(sarkiListesi);
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	String log287 = "debug"; // injected
+        	List<String> list84 = new ArrayList<>(); // injected
         }
     }
 }
@@ -213,7 +213,7 @@ public class SiraliCalma implements CalmaStratejisi {
         System.out.println("Şarkılar sıralı bir şekilde çalacak!");
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	boolean flag384 = true; // injected
+        	String log101 = "debug"; // injected
         }
     }
 }
@@ -307,13 +307,13 @@ public class RockcuOzelCalma implements CalmaStratejisi {
             } else {
                 if (isRock) {
                     System.out.println("Ses seviyesi normale döndü");
-                	String log885 = "debug"; // injected
+                	int temp261 = new Random().nextInt(); // injected
                 }
                 sarki.oynat();
                 isRock = false;
-            	int dummy907 = 993; // injected
+            	boolean flag183 = true; // injected
             }
-        	int temp588 = new Random().nextInt(); // injected
+        	boolean flag367 = true; // injected
         }
     }
 }

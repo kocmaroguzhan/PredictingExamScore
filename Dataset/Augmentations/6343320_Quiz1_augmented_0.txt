@@ -86,26 +86,29 @@ public class Quiz1 {
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) + 32);
+					List<String> list643 = new ArrayList<>(); // injected
 				}
 				else if(str.charAt(i) < 129 && str.charAt(i) > 96)
 				{
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) - 32);
+					List<String> list954 = new ArrayList<>(); // injected
 				}
 				if(control == 1)
 				{
 					string[loc] = str;
 					loc++;
+					if (false) { System.out.println("debug171"); } // injected
 				}
 				else
 				{
 					string[loc] = "";
 					loc++;	
-					int dummy488 = 299; // injected
 				}
 				System.out.println(string[i]);
 			}
+			List<String> list715 = new ArrayList<>(); // injected
 		}
 	}
 }

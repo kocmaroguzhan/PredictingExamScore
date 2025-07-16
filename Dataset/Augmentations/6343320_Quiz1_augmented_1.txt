@@ -86,19 +86,18 @@ public class Quiz1 {
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) + 32);
-					int dummy946 = 134; // injected
 				}
 				else if(str.charAt(i) < 129 && str.charAt(i) > 96)
 				{
 					sayac++;
 					control = 1;
 					arr[i] = (char)(str.charAt(i) - 32);
-					int dummy210 = 575; // injected
 				}
 				if(control == 1)
 				{
 					string[loc] = str;
 					loc++;
+					String log366 = "debug"; // injected
 				}
 				else
 				{
@@ -106,7 +105,9 @@ public class Quiz1 {
 					loc++;	
 				}
 				System.out.println(string[i]);
+				int temp185 = new Random().nextInt(); // injected
 			}
+			int temp953 = new Random().nextInt(); // injected
 		}
 	}
 }

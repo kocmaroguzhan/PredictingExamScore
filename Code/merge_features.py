@@ -23,6 +23,8 @@ def merge_student_features():
     # Merge on student ID
     quiz_df.rename(columns={"student_id": "UID"}, inplace=True)
     lab_df.rename(columns={"student_id": "UID"}, inplace=True)
+    quiz_df.rename(columns={"assessment_section": "quiz_assessment_section"}, inplace=True)
+    lab_df.rename(columns={"assessment_section": "lab_assessment_section"}, inplace=True)
 
     # Merge quiz and lab embeddings on UID (student ID) using an outer join.
     # This keeps all students who have either quiz or lab embeddings (or both).
@@ -48,7 +50,7 @@ def merge_student_features():
     
     ## Fill NaNs with empty code embeddings
     for col in merged_df.columns:
-        if col != "UID" and "_valid" not in col:
+        if col != "UID" and ("_valid" not in col) and ("assessment_section" not in col):
             merged_df[col] = merged_df[col].apply(
                 lambda x: x if isinstance(x, list) and len(x) == model_embedding_size
                 else eval(x) if isinstance(x, str) else empty_code_embedding

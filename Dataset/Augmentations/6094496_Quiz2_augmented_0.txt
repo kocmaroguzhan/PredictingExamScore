@@ -212,7 +212,7 @@ public class SecurityRobot extends AbstractRobot {
 	 } else {
 		 System.out.println(modelName + "Not enough battery to scan threats...");
 		 
-	 	List<String> list692 = new ArrayList<>(); // injected
+	 	int dummy414 = 37; // injected
 	 }
  }
  
@@ -345,7 +345,7 @@ public  class CleaningRobot extends AbstractRobot{
 		    batteryLife = batteryLife - 10;
 		} else {
 			System.out.println(modelName + " Not enough battery to scan threats...");
-			boolean flag879 = true; // injected
+			if (false) { System.out.println("debug324"); } // injected
 		}
 	}
 	
@@ -471,9 +471,9 @@ public class RobotFactory {
                 System.out.println("CleaningRobot - Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Cleaning Power: "  + ((CleaningRobot) robot).getCleaningPower());
             } else if (robot instanceof SecurityRobot) {
                 System.out.println("SecurityRobot  Model: " + robot.getModelName() + ", Battery: " + robot.getBatteryLife() + ", Armed: " + ((SecurityRobot) robot).getİsArmed());
-            	String log393 = "debug"; // injected
+            	boolean flag468 = true; // injected
             }
-        	boolean flag40 = true; // injected
+        	String log493 = "debug"; // injected
         }
 	}
 	
@@ -482,9 +482,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof CleaningRobot) {
 	                ((CleaningRobot) robot).boostCleaningPower(miktar);
-	            	boolean flag819 = true; // injected
+	            	String log541 = "debug"; // injected
 	            }
-	        	if (false) { System.out.println("debug259"); } // injected
+	        	int dummy182 = 468; // injected
 	        }
 	    }
 
@@ -493,9 +493,9 @@ public class RobotFactory {
 	        for (AbstractRobot robot : robots) {
 	            if (robot instanceof SecurityRobot) {
 	                ((SecurityRobot) robot).toggleArmedMode();
-	            	int temp277 = new Random().nextInt(); // injected
+	            	boolean flag941 = true; // injected
 	            }
-	        	int temp192 = new Random().nextInt(); // injected
+	        	boolean flag740 = true; // injected
 	        }
 	    }
 	    

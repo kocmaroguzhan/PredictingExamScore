@@ -32,13 +32,12 @@ public class Bil211L2 {
         for (Sarki sarki : sarkiListesi) {
             if(sarki == null){
                 continue;
+            	int dummy408 = 153; // injected
             }
 
             if(sarki instanceof MetalSarki){
                 ((MetalSarki)sarki).gosterMetalOzellikler();
-            	boolean flag424 = true; // injected
             }
-        	List<String> list345 = new ArrayList<>(); // injected
         }
     }
 }
@@ -115,6 +114,7 @@ class SiraliCalma implements CalmaStratejisi{
             }
             else if(sarki instanceof RockSarki){
                 etiket = "[ROCK]";
+            	String log555 = "debug"; // injected
             }
             else{
                 etiket = "[KLASIK]";
@@ -139,10 +139,10 @@ class KarisikCalma implements CalmaStratejisi{
         for(Sarki sarki: sarkiListesi){
             if(sarki == null){
                 continue;
-            	boolean flag867 = true; // injected
             }
 
             sarkiListesi_.add(sarki);
+        	boolean flag842 = true; // injected
         }
 
         while(sarkiListesi_.size() > 0){
@@ -155,10 +155,10 @@ class KarisikCalma implements CalmaStratejisi{
 
             if(sarkiListesi_.get(index) instanceof MetalSarki){
                 etiket = "[METAL]";
-            	String log595 = "debug"; // injected
             }
             else if(sarkiListesi_.get(index) instanceof RockSarki){
                 etiket = "[ROCK]";
+            	if (false) { System.out.println("debug590"); } // injected
             }
             else{
                 etiket = "[KLASIK]";
@@ -191,20 +191,24 @@ class RockcuOzelCalma implements CalmaStratejisi{
                     System.out.println("[BILGI] Ses duzeyi: Normal");
                 }
                 mode = "METAL";
+            	int dummy298 = 169; // injected
             }
             else if(sarki instanceof RockSarki){
                 etiket = "[ROCK]";
                 //degisti = mode.equals("Normal") ? false : true;
                 if(!mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Yuksek");
+                	List<String> list674 = new ArrayList<>(); // injected
                 }
                 mode = "ROCK";
+            	if (false) { System.out.println("debug341"); } // injected
             }
             else{
                 etiket = "[KLASIK]";
                 //degisti = mode.equals("Normal") ? false : true;
                 if(mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Normal");
+                	List<String> list373 = new ArrayList<>(); // injected
                 }
                 mode = "KLASIK";
             }

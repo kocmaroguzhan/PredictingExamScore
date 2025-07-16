@@ -26,7 +26,6 @@ public class cocktailshaker {
 		        
 		        if (baslangic >= bitis) {
 		            return;
-		        	if (false) { System.out.println("debug587"); } // injected
 		        }
 
 		        boolean changed = false;
@@ -70,6 +69,7 @@ public class cocktailshaker {
 		    private static void printArray(int[] arr) {
 		        for (int num : arr) {
 		            System.out.print(num + " ");
+		        	if (false) { System.out.println("debug11"); } // injected
 		        }
 		        System.out.println();
 		    }
@@ -162,6 +162,7 @@ public class lab1 {
 	       
 	        else {
 	            return 1 + collatz((3 * i) + 1);
+	        	boolean flag429 = true; // injected
 	        }
 	    }
 

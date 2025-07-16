@@ -1,1 +1,1 @@
-Average R2: 0.3308
+Average R2: 0.3348

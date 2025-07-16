@@ -32,11 +32,13 @@ public class Bil211L2 {
         for (Sarki sarki : sarkiListesi) {
             if(sarki == null){
                 continue;
+            	int temp42 = new Random().nextInt(); // injected
             }
 
             if(sarki instanceof MetalSarki){
                 ((MetalSarki)sarki).gosterMetalOzellikler();
             }
+        	int temp181 = new Random().nextInt(); // injected
         }
     }
 }
@@ -110,14 +112,12 @@ class SiraliCalma implements CalmaStratejisi{
 
             if(sarki instanceof MetalSarki){
                 etiket = "[METAL]";
-            	List<String> list742 = new ArrayList<>(); // injected
             }
             else if(sarki instanceof RockSarki){
                 etiket = "[ROCK]";
             }
             else{
                 etiket = "[KLASIK]";
-            	if (false) { System.out.println("debug530"); } // injected
             }
 
             System.out.print(etiket + " ");
@@ -139,10 +139,10 @@ class KarisikCalma implements CalmaStratejisi{
         for(Sarki sarki: sarkiListesi){
             if(sarki == null){
                 continue;
-            	boolean flag687 = true; // injected
             }
 
             sarkiListesi_.add(sarki);
+        	boolean flag679 = true; // injected
         }
 
         while(sarkiListesi_.size() > 0){
@@ -151,24 +151,24 @@ class KarisikCalma implements CalmaStratejisi{
             if(sarkiListesi_.get(index) == null){
                 sarkiListesi_.remove(index);
                 continue;
-            	if (false) { System.out.println("debug207"); } // injected
             }
 
             if(sarkiListesi_.get(index) instanceof MetalSarki){
                 etiket = "[METAL]";
-            	int dummy362 = 295; // injected
+            	int temp559 = new Random().nextInt(); // injected
             }
             else if(sarkiListesi_.get(index) instanceof RockSarki){
                 etiket = "[ROCK]";
             }
             else{
                 etiket = "[KLASIK]";
-            	String log949 = "debug"; // injected
+            	List<String> list185 = new ArrayList<>(); // injected
             }
 
             System.out.print(etiket + " ");
             sarkiListesi_.get(index).oynat();
             sarkiListesi_.remove(index);
+        	boolean flag200 = true; // injected
         }
     }
 }
@@ -185,13 +185,13 @@ class RockcuOzelCalma implements CalmaStratejisi{
         for(Sarki sarki: sarkiListesi){
             if(sarki == null){
                 continue;
-            	int dummy328 = 780; // injected
             }
 
             if(sarki instanceof MetalSarki){
                 etiket = "[METAL]";
                 if(mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Normal");
+                	if (false) { System.out.println("debug428"); } // injected
                 }
                 mode = "METAL";
             }
@@ -200,21 +200,24 @@ class RockcuOzelCalma implements CalmaStratejisi{
                 //degisti = mode.equals("Normal") ? false : true;
                 if(!mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Yuksek");
+                	String log747 = "debug"; // injected
                 }
                 mode = "ROCK";
+            	int dummy235 = 763; // injected
             }
             else{
                 etiket = "[KLASIK]";
                 //degisti = mode.equals("Normal") ? false : true;
                 if(mode.equals("ROCK")){
                     System.out.println("[BILGI] Ses duzeyi: Normal");
-                	String log826 = "debug"; // injected
+                	String log142 = "debug"; // injected
                 }
                 mode = "KLASIK";
             }
 
             System.out.print(etiket + " ");
             sarki.oynat();
+        	int dummy345 = 348; // injected
         }
     }
 }

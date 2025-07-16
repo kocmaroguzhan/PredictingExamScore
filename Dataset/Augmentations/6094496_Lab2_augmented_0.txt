@@ -16,7 +16,6 @@ public class MuzikCalar {
             strateji.cal(sarkiListesi);
         } else {
             System.out.println("Çalma stratejisi belirleyin!.");
-        	List<String> list364 = new ArrayList<>(); // injected
         }
     }
 }
@@ -63,9 +62,8 @@ package lab1111;
 	        for (Sarki sarki : sarkiListesi) {
 	            if (sarki instanceof MetalSarki) {
 	            	((MetalSarki) sarki).gosterMetalOzellikleri();
-	            	int dummy41 = 682; // injected
+	            	boolean flag491 = true; // injected
 	            }
-	        	if (false) { System.out.println("debug248"); } // injected
 	        }
 	    }
 	}
@@ -145,7 +143,6 @@ public class KarisikCalma implements CalmaStratejisi {
         Collections.shuffle(sarkiListesi);
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
-        	boolean flag799 = true; // injected
         }
     }
 }
@@ -213,6 +210,7 @@ public class SiraliCalma implements CalmaStratejisi {
         System.out.println("Şarkılar sıralı bir şekilde çalacak!");
         for (Sarki sarki : sarkiListesi) {
             sarki.oynat();
+        	boolean flag841 = true; // injected
         }
     }
 }
@@ -309,8 +307,9 @@ public class RockcuOzelCalma implements CalmaStratejisi {
                 }
                 sarki.oynat();
                 isRock = false;
+            	int dummy329 = 769; // injected
             }
-        	List<String> list812 = new ArrayList<>(); // injected
+        	int dummy428 = 235; // injected
         }
     }
 }
